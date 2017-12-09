@@ -186,9 +186,9 @@ $(document).ready(function() {
 
 	// Find location of jets (hands of figure)
 	function findJets() {
-		leftJetY = leftJet.offset().top + leftJet.height() * 1.05;
+		leftJetY = leftJet.offset().top + leftJet.height() * .5;
 		leftJetX = leftJet.offset().left + leftJet.width() * 1.05;
-		rightJetY = rightJet.offset().top + leftJet.height() * 1.05;
+		rightJetY = rightJet.offset().top + leftJet.height() * .5;
 		rightJetX = rightJet.offset().left + leftJet.width() * 1.05;
 	}
 	//Particles
@@ -200,21 +200,14 @@ $(document).ready(function() {
 			this.coordinates = [];
 			this.coordinateCount = 2;
 			while( this.coordinateCount-- ) {
-				this.coordinates.push( [ this.x, this.y ] );
-			}
+					this.coordinates.push( [ this.x, this.y ] );
+				}
+			
 			this.side = side;
 			this.init = init;
 			// set a random angle in all possible directions, in radians
 			this.angle = random( 0, Math.PI *.25 );
 			this.speed = random( 1, 10 );
-			// particle shape
-			// this.numPoints = 5;
-			// this.rng = d3.randomNormal(0, 0.15);
-			// this.points = d3.range(numPoints).map( i => ({
-			// 	x: (rng() * winWidth) + (winWidth / 2),
-			// 	y: (rng() * winHeight) + (winHeight / 2),
-			// 	color: [0, Math.random(), 0],
-			// }));
 			// friction will slow the particle down
 			this.friction = 0.95;
 			// gravity will be applied and pull the particle down
@@ -241,18 +234,16 @@ $(document).ready(function() {
 			} else if (this.side == 'left' ) {
 				this.x += Math.sin( this.angle ) * this.speed;
 			}
-			if (this.init == true) {
-				this.y += Math.sin( this.angle ) * this.speed + this.gravity;
-			} else if (this.init == false) {
-				this.y += Math.sin( this.angle ) * this.speed + this.gravity;
-				this.gravity -= this.decay;
-			}
+			this.y += Math.sin( this.angle ) * this.speed + this.gravity;
 			this.hue = this.hue + 3;
 			// fade out the particle
 			this.alpha -= this.decay;
 			// remove the particle once the alpha is low enough, based on the passed in index
 			if( this.alpha <= this.decay ) {
 				particles.splice( index, 1 );
+			}
+			if (this.init == false) {
+				particles.splice(index++, 1);
 			}
 		}
 
@@ -263,17 +254,20 @@ $(document).ready(function() {
 			ctx.lineTo( this.x, this.y );
 			ctx.strokeStyle = 'hsla(' + this.hue + ', 100%, ' + this.brightness + '%, ' + this.alpha + ')';
 			ctx.lineWidth = 3;
-			ctx.stroke();
-
+			
 			// ctx.beginPath();
-			ctx.strokeStyle = 'none';
 			ctx.lineTo( this.x, this.y );
-			ctx.lineTo( this.x + 10, this.y + 2);
-			ctx.lineTo( this.x - 10, this.y + 12);
-			ctx.lineTo( this.x - 10, this.y + 4);
+			ctx.lineTo( this.x + 6, this.y + 9);
+			ctx.lineTo( this.x - 6, this.y + 9);
+			ctx.lineTo( this.x, this.y);
+			ctx.moveTo( this.x, this.y + 12);
+			ctx.lineTo( this.x -6, this.y + 3);
+			ctx.lineTo( this.x + 6, this.y + 3);
+			ctx.lineTo( this.x, this.y + 12);
 			ctx.fillStyle = this.pattern;
 			ctx.fill();
-			ctx.closePath()
+			ctx.closePath();
+			ctx.stroke();
 		}
 	
 	function createParticles() {
@@ -288,7 +282,6 @@ $(document).ready(function() {
 		ctx.globalCompositeOperation = 'destination-out';
         ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
 		ctx.fillRect( particle.x, particle.y, canvas.width, canvas.height );
-		console.log(particle.x);
 		ctx.globalCompositeOperation = 'lighter';
 		var i = particles.length;
 		while( i-- ) {
@@ -299,7 +292,23 @@ $(document).ready(function() {
 
 	function removeParticles() {
 		findJets();
-		cancelAnimationFrame(createParticles);
+		startJets = requestAnimationFrame(removeParticles);
+		// increase the particle count for a bigger explosion, beware of the canvas performance hit with the increased particles though
+		var particleCount = 2;
+		while( particleCount-- ) {
+			particles.push( new Particle( leftJetX, leftJetY, 'left', false ) );
+			particles.push( new Particle( rightJetX, rightJetY, 'right', false ) );
+		}
+		ctx.globalCompositeOperation = 'destination-out';
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+		ctx.fillRect( particle.x, particle.y, canvas.width, canvas.height );
+		console.log(particle.x);
+		ctx.globalCompositeOperation = 'lighter';
+		var i = particles.length;
+		while( i-- ) {
+			particles[ i ].draw();
+			particles[ i ].update( i );
+		}
 	}
 
 
@@ -310,6 +319,12 @@ $(document).ready(function() {
 
 	$('.db').on('click', function() {
 		cancelAnimationFrame(startJets);
+		// ease jets out with new animation 
+		startJets = requestAnimationFrame(removeParticles);
+		// cancel animation frame after easing complete
+		setTimeout(function() {
+			cancelAnimationFrame(startJets);
+		}, 2000);
 	});
 
 	astronaut.on('click', function() {

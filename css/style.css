@@ -939,13 +939,13 @@ h1 {
           .astronaut-container .astronaut.Take-Off .upper-body .right-arm .lower {
             transform: rotate(5deg) translate(3%, -5%); }
             .astronaut-container .astronaut.Take-Off .upper-body .right-arm .lower .hand {
-              transform: rotate(-65deg) translate(98%, 0%); }
+              transform: rotate(-65deg) translate(82%, 18%); }
         .astronaut-container .astronaut.Take-Off .upper-body .left-arm {
           transform: rotate(-5deg) translate(0%, 1.33%); }
           .astronaut-container .astronaut.Take-Off .upper-body .left-arm .lower {
             transform: rotate(-5deg) translate(-3%, -5%); }
             .astronaut-container .astronaut.Take-Off .upper-body .left-arm .lower .hand {
-              transform: rotate(65deg) translate(-98%, 0%); }
+              transform: rotate(65deg) translate(-82%, 18%); }
       .astronaut-container .astronaut.Take-Off .lower-body {
         transform: translateY(-8%); }
         .astronaut-container .astronaut.Take-Off .lower-body .left-leg {
@@ -957,7 +957,7 @@ h1 {
             .astronaut-container .astronaut.Take-Off .lower-body .left-leg .lower .calve {
               transform: translateX(0%); }
             .astronaut-container .astronaut.Take-Off .lower-body .left-leg .lower .foot {
-              transform: translateY(0%); }
+              transform: translate(3%, 0%) scaleY(1.1); }
         .astronaut-container .astronaut.Take-Off .lower-body .right-leg {
           transform: rotate(0deg); }
           .astronaut-container .astronaut.Take-Off .lower-body .right-leg .upper {
@@ -967,7 +967,7 @@ h1 {
             .astronaut-container .astronaut.Take-Off .lower-body .right-leg .lower .calve {
               transform: translateX(0%); }
             .astronaut-container .astronaut.Take-Off .lower-body .right-leg .lower .foot {
-              transform: translateY(0%); }
+              transform: translate(-3%, 0%) scaleY(1.1); }
     .astronaut-container .astronaut.Enter {
       transform: translate(-200%, 200%); }
       .astronaut-container .astronaut.Enter .head,

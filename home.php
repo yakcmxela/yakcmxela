@@ -88,7 +88,7 @@
 <div class="canvas">
 	<div class="epaPlanet"></div>
 </div>
-<!-- <div class="info d-flex align-items-center justify-content-center flex-column">
+<div class="info d-flex align-items-center justify-content-center flex-column">
 	<h6 class="center">Hello, my name is Alex McKay. <br/>Welcome to my brain.</h6>
 	<div class="menu d-flex align-items-center justify-content-center">
 		<h6 id="portfolio" data-page="portfolio">Portfolio</h6>
@@ -96,7 +96,7 @@
 		<h6 id="experience" data-page="experience">Experience</h6>
 		<h6 id="bio" data-page="bio">Bio</h6>
 	</div>
-</div> -->
+</div>
 
 <script type="text/javascript">
 
