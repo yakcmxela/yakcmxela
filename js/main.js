@@ -138,6 +138,52 @@ $(document).ready(function() {
 		$(window).on('resize', function() {
 			canvasSize();
 		});
+	// regl stuff
+		// var numPoints = 1e4;
+		// var pointWidth = 4;
+		// var winWidth = window.innerWidth;
+		// var winHeight = window.innerHeight;
+		// var rng = d3.randomNormal(0, 0.15);
+		// var points = d3.range(numPoints).map( i => ({
+		// 	x: (rng() * winWidth) + (winWidth / 2),
+		// 	y: (rng() * winHeight) + (winHeight / 2),
+		// 	color: [0, Math.random(), 0],
+		// }));
+
+		// regl.frame(() =>{
+		// 	regl.clear({
+		// 		color: [0, 0, 0, 1],
+		// 		depth: 1,
+		// 	});
+
+		// 	drawPoints({
+		// 		pointWidth,
+		// 		stageWidth: width,
+		// 		stageHeight: height,
+		// 	});
+		// });
+
+		// var drawPoints = regl({
+		// 	frag: '',
+		// 	vert: '',
+
+		// 	attributes: {
+		// 		position: points.map(d => [d.x, d.y]),
+		// 		color: points.map(d => d.color),
+		// 	},
+
+		// 	uniforms: {
+		// 		pointWidth: regl.prop('pointWidth'),
+
+		// 		stateWidth: regl.prop('stageWidth'),
+		// 		stageHeight: regl.prop('stageHeight'),
+		// 	},
+
+		// 	count: points.length,
+
+		// 	primitive: 'points',
+		// });
+
 	// Find location of jets (hands of figure)
 	function findJets() {
 		leftJetY = leftJet.offset().top + leftJet.height() * 1.05;
@@ -159,8 +205,16 @@ $(document).ready(function() {
 			this.side = side;
 			this.init = init;
 			// set a random angle in all possible directions, in radians
-			this.angle = random( 0, Math.PI );
+			this.angle = random( 0, Math.PI *.25 );
 			this.speed = random( 1, 10 );
+			// particle shape
+			// this.numPoints = 5;
+			// this.rng = d3.randomNormal(0, 0.15);
+			// this.points = d3.range(numPoints).map( i => ({
+			// 	x: (rng() * winWidth) + (winWidth / 2),
+			// 	y: (rng() * winHeight) + (winHeight / 2),
+			// 	color: [0, Math.random(), 0],
+			// }));
 			// friction will slow the particle down
 			this.friction = 0.95;
 			// gravity will be applied and pull the particle down
@@ -171,6 +225,7 @@ $(document).ready(function() {
 			this.alpha = 1;
 			// set how fast the particle fades out
 			this.decay = random( 0.015, 0.03 );
+			this.pattern = ctx.createPattern(particleImage, 'repeat');
 		}
 
 		Particle.prototype.update = function( index ) {
@@ -192,8 +247,7 @@ $(document).ready(function() {
 				this.y += Math.sin( this.angle ) * this.speed + this.gravity;
 				this.gravity -= this.decay;
 			}
-			
-			
+			this.hue = this.hue + 3;
 			// fade out the particle
 			this.alpha -= this.decay;
 			// remove the particle once the alpha is low enough, based on the passed in index
@@ -208,21 +262,20 @@ $(document).ready(function() {
 			ctx.moveTo( this.coordinates[ this.coordinates.length - 1 ][ 0 ], this.coordinates[ this.coordinates.length - 1 ][ 1 ] );
 			ctx.lineTo( this.x, this.y );
 			ctx.strokeStyle = 'hsla(' + this.hue + ', 100%, ' + this.brightness + '%, ' + this.alpha + ')';
-			this.hue++;
+			ctx.lineWidth = 3;
 			ctx.stroke();
-			ctx.closePath();
 
-
-			ctx.beginPath();
-			ctx.arc(this.x, this.y, random(2, 15), 0, 2*Math.PI)
+			// ctx.beginPath();
 			ctx.strokeStyle = 'none';
-			var pat = ctx.createPattern(particleImage, 'repeat');
-			ctx.fillStyle = pat;
+			ctx.lineTo( this.x, this.y );
+			ctx.lineTo( this.x + 10, this.y + 2);
+			ctx.lineTo( this.x - 10, this.y + 12);
+			ctx.lineTo( this.x - 10, this.y + 4);
+			ctx.fillStyle = this.pattern;
 			ctx.fill();
 			ctx.closePath()
-			
 		}
-	var startJets;
+	
 	function createParticles() {
 		findJets();
 		startJets = requestAnimationFrame(createParticles);
@@ -234,7 +287,8 @@ $(document).ready(function() {
 		}
 		ctx.globalCompositeOperation = 'destination-out';
         ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
-		ctx.fillRect( 0, 0, canvas.width, canvas.height );
+		ctx.fillRect( particle.x, particle.y, canvas.width, canvas.height );
+		console.log(particle.x);
 		ctx.globalCompositeOperation = 'lighter';
 		var i = particles.length;
 		while( i-- ) {
