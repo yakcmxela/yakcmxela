@@ -554,22 +554,22 @@ h1 {
   0% {
     transform: translate(0%, 0%); }
   100% {
-    transform: translate(0%, -500px); } }
+    transform: translate(0%, -400px); } }
 @-moz-keyframes slow-float-helmet {
   0% {
     transform: translate(0%, 0%); }
   100% {
-    transform: translate(0%, -500px); } }
+    transform: translate(0%, -400px); } }
 @-ms-keyframes slow-float-helmet {
   0% {
     transform: translate(0%, 0%); }
   100% {
-    transform: translate(0%, -500px); } }
+    transform: translate(0%, -400px); } }
 @keyframes slow-float-helmet {
   0% {
     transform: translate(0%, 0%); }
   100% {
-    transform: translate(0%, -500px); } }
+    transform: translate(0%, -400px); } }
 .menu-button {
   top: 40%;
   left: 32%;
@@ -660,7 +660,7 @@ h1 {
         left: 5.309%;
         height: 71.65%;
         width: 89.38%;
-        clip-path: url(/yakcmxela/wp-content/themes/yakcmxela/sass/shield.svg) repeat 50% 50%;
+        -webkit-mask: url(/yakcmxela/wp-content/themes/yakcmxela/sass/shield.svg) repeat 50% 50%;
         mask: url(/yakcmxela/wp-content/themes/yakcmxela/sass/shield.svg) repeat 50% 50%;
         -webkit-mask-size: cover;
         mask-size: cover; }
@@ -668,7 +668,7 @@ h1 {
           width: 100%;
           position: absolute;
           left: 0;
-          bottom: -500px;
+          bottom: -400px;
           top: 0px; }
     .astronaut-container .astronaut .upper-body {
       height: 39.098%;
