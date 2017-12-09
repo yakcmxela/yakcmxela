@@ -1,0 +1,46 @@
+// Mixins
+// Background-gradient
+=linear-gradient($top, $bottom)
+	background: $top /* Old browsers */
+	background: -moz-linear-gradient(top,  $top 0%, $bottom 100%) /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$top), color-stop(100%,$bottom)) /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  $top 0%,$bottom 100%) /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  $top 0%,$bottom 100%) /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  $top 0%,$bottom 100%) /* IE10+ */
+	background: linear-gradient(to bottom,  $top 0%,$bottom 100%) /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ) /* IE6-9 */
+
+=radial-gradient($colorStart, $percStart, $colorEnd, $percEnd)
+	background: $colorStart /* Old browsers */
+	background: -moz-radial-gradient(center, circle cover, $colorStart $percStart, $colorEnd $percEnd) /* FF3.6+ */
+	background: -webkit-radial-gradient(center, circle cover, $colorStart $percStart, $colorEnd $percEnd) /* Chrome,Safari4+ */
+	background: -o-radial-gradient(center, circle cover, $colorStart $percStart, $colorEnd $percEnd) /* Opera 11.10+ */
+	background: -ms-radial-gradient(center, circle cover, $colorStart $percStart, $colorEnd $percEnd) /* IE10+ */
+	background: radial-gradient(center, circle cover, $colorStart $percStart, $colorEnd $percEnd) /* W3C */
+
+// Animations
+=transition($transition...)
+	-webkit-transition: $transition
+	-o-transition: $transition
+	-moz-transition: $transition
+	-ms-transition: $transition
+	transition: $transition
+=transition-two($transition1, $transition2)
+	-webkit-transition: $transition1, $transition2
+	-o-transition: $transition1, $transition2
+	-moz-transition: $transition1, $transition2
+	-ms-transition: $transition1, $transition2
+	transition: $transition1, $transition2
+=psuedo($content, $pos, $display)
+	content: $content
+	display: $display
+	position: $pos
+=keyframes($name)
+	@-webkit-keyframes #{$name}
+		@content
+	@-moz-keyframes #{$name}
+		@content
+	@-ms-keyframes #{$name}
+		@content
+	@keyframes #{$name}
+		@content
