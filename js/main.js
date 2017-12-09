@@ -170,7 +170,7 @@ $(document).ready(function() {
 			this.brightness = random( 50, 80 );
 			this.alpha = 1;
 			// set how fast the particle fades out
-			this.decay = random( 0.05, 0.01 );
+			this.decay = random( 0.01, 0.03 );
 		}
 
 		Particle.prototype.update = function( index ) {
