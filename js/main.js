@@ -170,7 +170,7 @@ $(document).ready(function() {
 			this.brightness = random( 50, 80 );
 			this.alpha = 1;
 			// set how fast the particle fades out
-			this.decay = random( 0.01, 0.03 );
+			this.decay = random( 0.015, 0.03 );
 		}
 
 		Particle.prototype.update = function( index ) {
@@ -207,7 +207,7 @@ $(document).ready(function() {
 			// move to the last tracked coordinates in the set, then draw a line to the current x and y
 			ctx.moveTo( this.coordinates[ this.coordinates.length - 1 ][ 0 ], this.coordinates[ this.coordinates.length - 1 ][ 1 ] );
 			ctx.lineTo( this.x, this.y );
-			ctx.arc(this.x, this.y, random(2, 8), 0, 2*Math.PI)
+			ctx.arc(this.x, this.y, random(2, 15), 0, 2*Math.PI)
 			ctx.closePath();
 			ctx.strokeStyle = 'hsla(' + this.hue + ', 100%, ' + this.brightness + '%, ' + this.alpha + ')';
 			this.hue++;
@@ -221,7 +221,7 @@ $(document).ready(function() {
 		findJets();
 		startJets = requestAnimationFrame(createParticles);
 		// increase the particle count for a bigger explosion, beware of the canvas performance hit with the increased particles though
-		var particleCount = 5;
+		var particleCount = 1;
 		while( particleCount-- ) {
 			particles.push( new Particle( leftJetX, leftJetY, 'left', true ) );
 			particles.push( new Particle( rightJetX, rightJetY, 'right', true ) );
