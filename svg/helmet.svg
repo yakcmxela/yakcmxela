@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="226" height="254" viewBox="0 0 226 254">
+<svg id="head" xmlns="http://www.w3.org/2000/svg" width="226" height="231" viewBox="0 0 226 231">
   <metadata><?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?>
 <x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6-c138 79.159824, 2016/09/14-01:09:01        ">
    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -31,9 +31,17 @@
     <style>
       .cls-1 {
         fill: #e3e3e3;
+      }
+
+      .cls-1, .cls-2 {
         fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: #101e28;
       }
     </style>
   </defs>
-  <path id="helmet-cover" class="cls-1" d="M9.748,228s51.343,26,102.745,26c53.076,0,105.889-26,105.889-26S268.535,0,111.056,0,9.748,228,9.748,228Z"/>
+  <path id="helmet-cover" class="cls-1" d="M9.748,228s51,3,102.311,3c52.981,0,106.323-3,106.323-3S268.535,0,111.056,0,9.748,228,9.748,228Z"/>
+  <path id="Rounded_Rectangle_2" data-name="Rounded Rectangle 2" class="cls-2" d="M108,186a2,2,0,0,1,2,2v33a2,2,0,0,1-4,0V188A2,2,0,0,1,108,186Zm8,0a2,2,0,0,1,2,2v33a2,2,0,0,1-4,0V188A2,2,0,0,1,116,186Zm8,3a1.859,1.859,0,0,1,2,1.676v27.648a2.031,2.031,0,0,1-4,0V190.676A1.859,1.859,0,0,1,124,189Zm7,3a1.783,1.783,0,0,1,2,1.405V216.6a2.126,2.126,0,0,1-4,0v-23.19A1.783,1.783,0,0,1,131,192Zm-31-3a1.859,1.859,0,0,0-2,1.676v27.648a2.031,2.031,0,0,0,4,0V190.676A1.859,1.859,0,0,0,100,189Zm-7,3a1.784,1.784,0,0,0-2,1.405V216.6a2.126,2.126,0,0,0,4,0v-23.19A1.784,1.784,0,0,0,93,192Z"/>
 </svg>

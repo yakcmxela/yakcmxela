@@ -5,7 +5,7 @@ $(document).ready(function() {
 	var rightJet = $('.right-arm .hand');
 	var nav = $('nav');
 	var color;
-	var startJets;
+	var blastOff;
 	var shootParticles;
 	var leftJetX;
 	var leftJetY;
@@ -115,6 +115,11 @@ $(document).ready(function() {
 		letterRandomizer(l, random(10, 1), L);
 		letterRandomizer(aa, random(10, 1), A);
 	}
+// Nav
+	$('.menu div').on('click', function(e) {
+		$('.menu div').removeClass('Active');
+		$(e.currentTarget).toggleClass('Active');
+	})
 // Canvas stuff 
 	var canvas = document.getElementById('space');
 	var ctx = canvas.getContext('2d');
@@ -181,7 +186,9 @@ $(document).ready(function() {
 		// });
 
 	// Find location of jets (hands of figure)
-	function findJets() {
+	function getSet() {
+		winWidth = window.innerWidth;
+		winHeight = window.innerHeight;
 		leftJetY = leftJet.offset().top + leftJet.height() * .5;
 		leftJetX = leftJet.offset().left + leftJet.width() * 1.05;
 		rightJetY = rightJet.offset().top + leftJet.height() * .5;
@@ -189,6 +196,7 @@ $(document).ready(function() {
 	}
 	//Particles
 		function Particle( x, y, side, init ) {
+
 			var hue = 190;
 			this.x = x;
 			this.y = y;
@@ -198,7 +206,12 @@ $(document).ready(function() {
 			while( this.coordinateCount-- ) {
 					this.coordinates.push( [ this.x, this.y ] );
 				}
-			
+			if (winWidth < 550) {
+				this.particleSize = 2;
+			} else {
+				this.particleSize = 6;
+			}
+			console.log(this.particleSize);
 			this.side = side;
 			this.init = init;
 			// set a random angle in all possible directions, in radians
@@ -253,13 +266,13 @@ $(document).ready(function() {
 			
 			// ctx.beginPath();
 			ctx.lineTo( this.x, this.y );
-			ctx.lineTo( this.x + 6, this.y + 9);
-			ctx.lineTo( this.x - 6, this.y + 9);
+			ctx.lineTo( this.x + this.particleSize, this.y + (this.particleSize * 1.5));
+			ctx.lineTo( this.x - this.particleSize, this.y + (this.particleSize * 1.5));
 			ctx.lineTo( this.x, this.y);
-			ctx.moveTo( this.x, this.y + 12);
-			ctx.lineTo( this.x -6, this.y + 3);
-			ctx.lineTo( this.x + 6, this.y + 3);
-			ctx.lineTo( this.x, this.y + 12);
+			ctx.moveTo( this.x, this.y + (this.particleSize * 2));
+			ctx.lineTo( this.x -this.particleSize, this.y + (this.particleSize / 2));
+			ctx.lineTo( this.x + this.particleSize, this.y + (this.particleSize / 2));
+			ctx.lineTo( this.x, this.y + (this.particleSize * 2));
 			ctx.fillStyle = this.pattern;
 			ctx.fill();
 			ctx.closePath();
@@ -267,8 +280,8 @@ $(document).ready(function() {
 		}
 	
 	function createParticles() {
-		findJets();
-		startJets = requestAnimationFrame(createParticles);
+		getSet();
+		blastOff = requestAnimationFrame(createParticles);
 		// increase the particle count for a bigger explosion, beware of the canvas performance hit with the increased particles though
 		var particleCount = 2;
 		while( particleCount-- ) {
@@ -287,8 +300,8 @@ $(document).ready(function() {
 	}
 
 	function removeParticles() {
-		findJets();
-		startJets = requestAnimationFrame(removeParticles);
+		getSet();
+		blastOff = requestAnimationFrame(removeParticles);
 		// increase the particle count for a bigger explosion, beware of the canvas performance hit with the increased particles though
 		var particleCount = 2;
 		while( particleCount-- ) {
@@ -310,16 +323,16 @@ $(document).ready(function() {
 
 	$('.to').on('click', function() {
 		takeOff();
-		startJets = requestAnimationFrame(createParticles);
+		blastOff = requestAnimationFrame(createParticles);
 	});
 
 	$('.db').on('click', function() {
-		cancelAnimationFrame(startJets);
+		cancelAnimationFrame(blastOff);
 		// ease jets out with new animation 
-		startJets = requestAnimationFrame(removeParticles);
+		blastOff = requestAnimationFrame(removeParticles);
 		// cancel animation frame after easing complete
 		setTimeout(function() {
-			cancelAnimationFrame(startJets);
+			cancelAnimationFrame(blastOff);
 			ctx.clearRect( 0, 0, canvas.width, canvas.height );
 		}, 2000);
 	});
@@ -352,18 +365,13 @@ $(document).ready(function() {
 	}
 
 	function activateAstronaut() {
-		astronaut.addClass('Arrive');
+	
 		
 		setTimeout(function() {
-			astronaut.addClass('Reposition-On-Entry');
+		
 		}, 3000)
 		setTimeout(function() {
-			astronaut.removeClass('Reposition-On-Entry');
-			astronaut.removeClass('Arrive');
-			astronaut.removeClass('Enter');
 			
-
-			astronaut.addClass('Relax');
 		}, 7000);
 	}
 

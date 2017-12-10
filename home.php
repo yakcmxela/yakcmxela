@@ -20,19 +20,16 @@
 	</div>
 	<canvas id="space"></canvas>
 	<div class="space Slow-Float" style="background-image: url('<?php echo get_template_directory_uri(); ?>/media/stars.jpg');"></div>
-	<button class="db">Down</button>
-	<button class="to">Take Off</button>
 	<div class="astronaut-container">
-		<div class="astronaut Enter">
+		<div class="astronaut Relax">
 			<div class="head">
 				<img class="helmet" src="<?php echo get_template_directory_uri(); ?>/svg/helmet.svg">
-				<div class="shield">
-					<div class="space-bg Slow-Float-Helmet" style="background-image: url('<?php echo get_template_directory_uri(); ?>/media/stars-small.jpg');"></div>
-				</div>
-				<!-- <img class="shield" src="<?php echo get_template_directory_uri(); ?>/svg/shield.svg"> -->
+				<img class="shield" src="<?php echo get_template_directory_uri(); ?>/svg/shield.svg">
 			</div>
 			<div class="upper-body">
-				<img class="torso" src="<?php echo get_template_directory_uri(); ?>/svg/torso.svg">
+				<img class="torso" src="<?php echo get_template_directory_uri(); ?>/svg/torso-contents.svg">
+				<img class="torso" src="<?php echo get_template_directory_uri(); ?>/svg/torso-clipped.svg">
+				<img class="torso" src="<?php echo get_template_directory_uri(); ?>/svg/torso-body.svg">
 				<div class="right-arm">
 					<img class="upper" src="<?php echo get_template_directory_uri(); ?>/svg/upper-arm-right.svg">
 					<div class="lower">

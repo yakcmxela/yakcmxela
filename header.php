@@ -25,10 +25,10 @@
 
 <nav>
 	<div class="menu d-flex">
-		<div class="work">
+		<div class="work to">
 			<img src="<?php echo get_template_directory_uri(); ?>/svg/work.svg">
 		</div>
-		<div class="skills">
+		<div class="skills db">
 			<img src="<?php echo get_template_directory_uri(); ?>/svg/skills.svg">
 		</div>
 		<div class="about">
