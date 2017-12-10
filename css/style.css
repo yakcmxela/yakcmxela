@@ -421,7 +421,7 @@ hr {
 
 nav {
   position: fixed;
-  bottom: 48px;
+  bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 9002; }
@@ -1340,7 +1340,7 @@ h1 {
   nav .menu .skills,
   nav .menu .about,
   nav .menu .contact {
-    width: 72px;
-    height: 72px; } }
+    width: 86px;
+    height: 86px; } }
 
 /*# sourceMappingURL=style.css.map */
