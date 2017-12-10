@@ -28,7 +28,6 @@
 			</div>
 			<div class="upper-body">
 				<img class="torso" src="<?php echo get_template_directory_uri(); ?>/svg/torso-contents.svg">
-				<img class="torso" src="<?php echo get_template_directory_uri(); ?>/svg/torso-clipped.svg">
 				<img class="torso" src="<?php echo get_template_directory_uri(); ?>/svg/torso-body.svg">
 				<div class="right-arm">
 					<img class="upper" src="<?php echo get_template_directory_uri(); ?>/svg/upper-arm-right.svg">
