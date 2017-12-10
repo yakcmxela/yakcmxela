@@ -425,36 +425,34 @@ nav {
   left: 50%;
   transform: translateX(-50%);
   z-index: 9002; }
-  nav .menu {
-    max-width: 340px; }
-    nav .menu .work,
-    nav .menu .skills,
-    nav .menu .experience,
-    nav .menu .about,
-    nav .menu .contact {
-      max-height: 68px;
-      max-width: 68px;
-      cursor: crosshair;
-      -webkit-transition: all 0.2s linear;
-      -o-transition: all 0.2s linear;
-      -moz-transition: all 0.2s linear;
-      -ms-transition: all 0.2s linear;
-      transition: all 0.2s linear; }
-      nav .menu .work img,
-      nav .menu .skills img,
-      nav .menu .experience img,
-      nav .menu .about img,
-      nav .menu .contact img {
-        height: 100%;
-        width: 100%; }
-      nav .menu .work:hover,
-      nav .menu .skills:hover,
-      nav .menu .experience:hover,
-      nav .menu .about:hover,
-      nav .menu .contact:hover {
-        transform: translateY(-8px); }
-    nav .menu .work {
-      background-color: #00b8db; }
+  nav .menu .work,
+  nav .menu .skills,
+  nav .menu .experience,
+  nav .menu .about,
+  nav .menu .contact {
+    height: 128px;
+    width: 128px;
+    cursor: crosshair;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    transition: all 0.2s linear; }
+    nav .menu .work img,
+    nav .menu .skills img,
+    nav .menu .experience img,
+    nav .menu .about img,
+    nav .menu .contact img {
+      height: 100%;
+      width: 100%; }
+    nav .menu .work:hover,
+    nav .menu .skills:hover,
+    nav .menu .experience:hover,
+    nav .menu .about:hover,
+    nav .menu .contact:hover {
+      transform: translateY(-8px); }
+  nav .menu .work {
+    background-color: #00b8db; }
 @-webkit-keyframes paintbrush {
   0%;
   100%; }
@@ -467,10 +465,10 @@ nav {
 @keyframes paintbrush {
   0%;
   100%; }
-      nav .menu .work img:hover {
-        animation: paintbrush 2s ease-in-out infinite; }
-    nav .menu .skills {
-      background-color: #ee41ff; }
+    nav .menu .work img:hover {
+      animation: paintbrush 2s ease-in-out infinite; }
+  nav .menu .skills {
+    background-color: #ee41ff; }
 @-webkit-keyframes ninja-spin {
   0% {
     transform: rotate(0deg); }
@@ -491,14 +489,10 @@ nav {
     transform: rotate(0deg); }
   100% {
     transform: rotate(360deg); } }
-      nav .menu .skills img:hover {
-        animation: ninja-spin 0.2s linear infinite; }
-    nav .menu .experience {
-      background-color: #f08737; }
-    nav .menu .about {
-      background-color: #8700f8; }
-    nav .menu .contact {
-      background-color: #009cff; }
+  nav .menu .about {
+    background-color: #f08737; }
+  nav .menu .contact {
+    background-color: #8700f8; }
 
 .page-content {
   background-color: #080035;
@@ -730,7 +724,13 @@ h1 {
         -webkit-mask: url(/yakcmxela/wp-content/themes/yakcmxela/sass/shield.svg) repeat 50% 50%;
         mask: url(/yakcmxela/wp-content/themes/yakcmxela/sass/shield.svg) repeat 50% 50%;
         -webkit-mask-size: cover;
-        mask-size: cover; }
+        mask-size: cover;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-mode: match-source;
+        mask-mode: match-source;
+        -webkit-mask-position: center;
+        mask-position: center; }
         .astronaut-container .astronaut .head .shield .space-bg {
           width: 100%;
           position: absolute;

@@ -122,14 +122,13 @@ nav
 	transform: translateX(-50%)
 	z-index: 9002
 	.menu
-		max-width: 340px
 		.work,
 		.skills,
 		.experience,
 		.about,
 		.contact
-			max-height: 68px
-			max-width: 68px
+			height: 128px
+			width: 128px
 			cursor: crosshair
 			+transition(all .2s linear)
 			img
@@ -154,13 +153,13 @@ nav
 					100%
 						transform: rotate(360deg)
 				&:hover
-					animation: ninja-spin .2s linear infinite
+					//animation: ninja-spin .35s linear infinite
 		.experience
-			background-color: #f08737
+			
 		.about
-			background-color: #8700f8
+			background-color: #f08737
 		.contact
-			background-color: #009cff
+			background-color: #8700f8
 
 // Stuff
 
@@ -329,6 +328,13 @@ h1
 				mask: url(/yakcmxela/wp-content/themes/yakcmxela/sass/shield.svg) repeat 50% 50%
 				-webkit-mask-size: cover
 				mask-size: cover
+				-webkit-mask-repeat: no-repeat
+				mask-repeat: no-repeat
+				-webkit-mask-mode: match-source
+				mask-mode: match-source
+				-webkit-mask-position: center
+				mask-position: center
+				
 				.space-bg
 					width: 100%
 					position: absolute
