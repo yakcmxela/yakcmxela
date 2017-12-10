@@ -3,6 +3,7 @@ $(document).ready(function() {
 	var outerspace = $('.space');
 	var leftJet = $('.left-arm .hand');
 	var rightJet = $('.right-arm .hand');
+	var nav = $('nav');
 	var color;
 	var startJets;
 	var shootParticles;
@@ -34,7 +35,7 @@ $(document).ready(function() {
 // Loader Animation
 	var alphabet = {1:"A", 2:"B", 3:"C", 4:"D", 5:"E", 6:"F", 7:"G", 8:"H", 9:"I", 10:"J", 11:"K", 12:"L", 13:"M", 14:"N", 15:"O", 16:"P", 17:"Q", 18:"R", 19:"S", 20:"T", 21:"U", 22:"V", 23:"W", 24:"X", 25:"Y", 26:"Z"};
 
-	var name = $('.name h1');
+	var name = $('.name');
 	var loader = $('.loader-container .loader');
 
 	var y = $('.y');
@@ -90,11 +91,9 @@ $(document).ready(function() {
 				setTimeout(function() {
 					loader.css('background-color', 'white')
 					loader.css('border-color', 'white')
-					name.css('transition', 'all .25s linear');
 					name.css('color', 'white');
 					setTimeout(function() {
-						name.css('opacity', '0');
-						loader.css('opacity', '0');
+						name.addClass('Loaded');
 					}, 1000);
 					activateAstronaut();
 				}, 1000);
@@ -116,9 +115,6 @@ $(document).ready(function() {
 		letterRandomizer(l, random(10, 1), L);
 		letterRandomizer(aa, random(10, 1), A);
 	}
-	$('.menu-button').on('click', function() {
-		astronaut.toggleClass('Menu');
-	})
 // Canvas stuff 
 	var canvas = document.getElementById('space');
 	var ctx = canvas.getContext('2d');
@@ -301,7 +297,7 @@ $(document).ready(function() {
 		}
 		ctx.globalCompositeOperation = 'destination-out';
         ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
-		ctx.fillRect( particle.x, particle.y, canvas.width, canvas.height );
+		ctx.fillRect( 0, 0, canvas.width, canvas.height );
 		console.log(particle.x);
 		ctx.globalCompositeOperation = 'lighter';
 		var i = particles.length;
@@ -324,11 +320,11 @@ $(document).ready(function() {
 		// cancel animation frame after easing complete
 		setTimeout(function() {
 			cancelAnimationFrame(startJets);
+			ctx.clearRect( 0, 0, canvas.width, canvas.height );
 		}, 2000);
 	});
 
 	astronaut.on('click', function() {
-		
 		outerspace.removeClass('Up');
 		astronaut.removeClass('Take-Off');
 	});
@@ -369,9 +365,6 @@ $(document).ready(function() {
 
 			astronaut.addClass('Relax');
 		}, 7000);
-		setTimeout(function() {
-			$('.menu-button').css('opacity', '1');
-		}, 7500);
 	}
 
 	$(window).on('resize', function() {

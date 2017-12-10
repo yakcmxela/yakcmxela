@@ -24,6 +24,22 @@
 ?>
 
 <nav>
-	
-
+	<div class="menu d-flex">
+		<div class="work">
+			<img src="<?php echo get_template_directory_uri(); ?>/svg/work.svg">
+		</div>
+		<div class="skills">
+			<img src="<?php echo get_template_directory_uri(); ?>/svg/skills.svg">
+		</div>
+		<div class="experience">
+			<img src="<?php echo get_template_directory_uri(); ?>/svg/work.svg">
+		</div>
+		<div class="about">
+			<img src="<?php echo get_template_directory_uri(); ?>/svg/about.svg">
+		</div>
+		<div class="contact" >
+			<img src="<?php echo get_template_directory_uri(); ?>/svg/work.svg">
+		</div>
+		
+	</div>
 </nav>

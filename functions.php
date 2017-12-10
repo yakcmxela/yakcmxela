@@ -22,6 +22,7 @@ function get_mah_scripts() {
 	function get_mah_styles() {
 	wp_enqueue_style('boostrap', get_template_directory_uri() . '/css/bootstrap/bootstrap.min.css');
 	wp_enqueue_style('style', get_template_directory_uri() . '/css/style.css');
+	wp_enqueue_style('jam-icons', 'https://unpkg.com/jam-icons@1.0.72/css/jam-icons.min.css');
 	wp_enqueue_style('Roboto', 'https://fonts.googleapis.com/css?family=Libre+Barcode+39+Text|Lato:300|Josefin+Sans:300');
 }
 	add_action('wp_enqueue_scripts', 'get_mah_jquery');

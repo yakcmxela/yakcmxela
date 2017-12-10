@@ -288,7 +288,8 @@ html, body {
   font-family: "Lato", sans-serif;
   box-sizing: border-box;
   letter-spacing: 1px;
-  color: #101e28; }
+  color: #101e28;
+  cursor: crosshair; }
 
 h1 {
   font-size: 62px;
@@ -418,6 +419,87 @@ hr {
 .block-shadow-hover {
   box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.25); }
 
+nav {
+  position: fixed;
+  bottom: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9002; }
+  nav .menu {
+    max-width: 340px; }
+    nav .menu .work,
+    nav .menu .skills,
+    nav .menu .experience,
+    nav .menu .about,
+    nav .menu .contact {
+      max-height: 68px;
+      max-width: 68px;
+      cursor: crosshair;
+      -webkit-transition: all 0.2s linear;
+      -o-transition: all 0.2s linear;
+      -moz-transition: all 0.2s linear;
+      -ms-transition: all 0.2s linear;
+      transition: all 0.2s linear; }
+      nav .menu .work img,
+      nav .menu .skills img,
+      nav .menu .experience img,
+      nav .menu .about img,
+      nav .menu .contact img {
+        height: 100%;
+        width: 100%; }
+      nav .menu .work:hover,
+      nav .menu .skills:hover,
+      nav .menu .experience:hover,
+      nav .menu .about:hover,
+      nav .menu .contact:hover {
+        transform: translateY(-8px); }
+    nav .menu .work {
+      background-color: #00b8db; }
+@-webkit-keyframes paintbrush {
+  0%;
+  100%; }
+@-moz-keyframes paintbrush {
+  0%;
+  100%; }
+@-ms-keyframes paintbrush {
+  0%;
+  100%; }
+@keyframes paintbrush {
+  0%;
+  100%; }
+      nav .menu .work img:hover {
+        animation: paintbrush 2s ease-in-out infinite; }
+    nav .menu .skills {
+      background-color: #ee41ff; }
+@-webkit-keyframes ninja-spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+@-moz-keyframes ninja-spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+@-ms-keyframes ninja-spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+@keyframes ninja-spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+      nav .menu .skills img:hover {
+        animation: ninja-spin 0.2s linear infinite; }
+    nav .menu .experience {
+      background-color: #f08737; }
+    nav .menu .about {
+      background-color: #8700f8; }
+    nav .menu .contact {
+      background-color: #009cff; }
+
 .page-content {
   background-color: #080035;
   height: 100%;
@@ -448,25 +530,28 @@ h1 {
   -moz-transition: 0.25s all linear;
   -ms-transition: 0.25s all linear;
   transition: 0.25s all linear; }
-
-.loader-container {
-  position: absolute;
-  bottom: -12px;
-  height: 12px;
-  z-index: 10;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 324px; }
-  .loader-container .loader {
-    border: 2px solid white;
-    height: 100%;
-    width: 0%;
-    background-color: rgba(255, 255, 255, 0.5);
-    -webkit-transition: all 1s ease-out;
-    -o-transition: all 1s ease-out;
-    -moz-transition: all 1s ease-out;
-    -ms-transition: all 1s ease-out;
-    transition: all 1s ease-out; }
+  .name .loader-container {
+    position: absolute;
+    bottom: -12px;
+    height: 12px;
+    z-index: 10;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 324px; }
+    .name .loader-container .loader {
+      border: 2px solid white;
+      height: 100%;
+      width: 0%;
+      background-color: rgba(255, 255, 255, 0.5);
+      -webkit-transition: all 1s ease-out;
+      -o-transition: all 1s ease-out;
+      -moz-transition: all 1s ease-out;
+      -ms-transition: all 1s ease-out;
+      transition: all 1s ease-out; }
+  .name.Loaded {
+    transform: translate(-100%, -50%);
+    opacity: 0;
+    visibility: 0; }
 
 .epaPlanet {
   position: absolute;
@@ -508,7 +593,8 @@ h1 {
   animation: slow-float 120s linear infinite; }
 
 .Slow-Float-Helmet {
-  animation: slow-float-helmet 60s linear infinite; }
+  animation: slow-float-helmet 60s linear infinite;
+  animation-direction: reverse; }
 
 @-webkit-keyframes space-travel {
   0% {
@@ -570,31 +656,12 @@ h1 {
     transform: translate(0%, 0%); }
   100% {
     transform: translate(0%, -400px); } }
-.menu-button {
-  top: 40%;
-  left: 32%;
-  height: 35px;
-  width: 35px;
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  -webkit-transition: all 0.1s linear;
-  -o-transition: all 0.1s linear;
-  -moz-transition: all 0.1s linear;
-  -ms-transition: all 0.1s linear;
-  transition: all 0.1s linear; }
-  .menu-button .line {
-    width: 100%;
-    height: 5px;
-    margin: 5px 0px;
-    background-color: white; }
-
 .astronaut-container {
   position: absolute;
   height: 75%;
   left: 50%;
   top: 50%;
-  z-index: 9000;
+  z-index: 9001;
   transform: translate(-50%, -50%); }
   .astronaut-container .astronaut {
     height: 100%;

@@ -12,6 +12,7 @@ html, body
 	box-sizing: border-box
 	letter-spacing: 1px
 	color: $dark-grey
+	cursor: crosshair
 h1
 	font-size: 62px
 	margin-bottom: 0
@@ -115,6 +116,51 @@ footer
 
 // Navigation
 nav
+	position: fixed
+	bottom: 48px
+	left: 50%
+	transform: translateX(-50%)
+	z-index: 9002
+	.menu
+		max-width: 340px
+		.work,
+		.skills,
+		.experience,
+		.about,
+		.contact
+			max-height: 68px
+			max-width: 68px
+			cursor: crosshair
+			+transition(all .2s linear)
+			img
+				height: 100%
+				width: 100%
+			&:hover
+				transform: translateY(-8px)
+		.work
+			background-color: #00b8db
+			img
+				+keyframes(paintbrush)
+					0%
+					100%
+				&:hover
+					animation: paintbrush 2s ease-in-out infinite
+		.skills
+			background-color: #ee41ff
+			img
+				+keyframes(ninja-spin)
+					0%
+						transform: rotate(0deg)
+					100%
+						transform: rotate(360deg)
+				&:hover
+					animation: ninja-spin .2s linear infinite
+		.experience
+			background-color: #f08737
+		.about
+			background-color: #8700f8
+		.contact
+			background-color: #009cff
 
 // Stuff
 
@@ -139,21 +185,24 @@ h1
 	padding: 1px
 	z-index: 10
 	+transition(0.25s all linear)
-
-.loader-container
-	position: absolute
-	bottom: -12px
-	height: 12px
-	z-index: 10
-	left: 50%
-	transform: translateX(-50%)
-	width: 324px
-	.loader
-		border: 2px solid white
-		height: 100%
-		width: 0%
-		background-color: rgba(255, 255, 255, .5)
-		+transition(all 1s ease-out)
+	.loader-container
+		position: absolute
+		bottom: -12px
+		height: 12px
+		z-index: 10
+		left: 50%
+		transform: translateX(-50%)
+		width: 324px
+		.loader
+			border: 2px solid white
+			height: 100%
+			width: 0%
+			background-color: rgba(255, 255, 255, .5)
+			+transition(all 1s ease-out)
+	&.Loaded
+		transform: translate(-100%, -50%)
+		opacity: 0
+		visibility: 0
 
 .epaPlanet
 	position: absolute
@@ -193,6 +242,7 @@ h1
 	animation: slow-float 120s linear infinite
 .Slow-Float-Helmet
 	animation: slow-float-helmet 60s linear infinite
+	animation-direction: reverse
 
 +keyframes(space-travel)
 	0%
@@ -211,28 +261,13 @@ h1
 	100%
 		transform: translate(0%, -400px)
 
-.menu-button
-	top: 40%
-	left: 32%
-	height: 35px
-	width: 35px
-	position: absolute
-	opacity: 0
-	cursor: pointer
-	+transition(all .1s linear)
-	.line
-		width: 100%
-		height: 5px
-		margin: 5px 0px
-		background-color: white
-
 // Skeletal
 .astronaut-container
 	position: absolute
 	height: 75%
 	left: 50%
 	top: 50%
-	z-index: 9000
+	z-index: 9001
 	transform: translate(-50%, -50%)
 	.astronaut
 		height: 100%

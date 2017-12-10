@@ -4,10 +4,6 @@
 <?php get_header(); ?>
 
 <div class="content">
-	<canvas id="space"></canvas>
-	<div class="space Slow-Float" style="background-image: url('<?php echo get_template_directory_uri(); ?>/media/stars.jpg');"></div>
-	<button class="db">Down</button>
-	<button class="to">Take Off</button>
 	<div class="name d-flex">
 		<h1 class="y">y</h1>
 		<h1 class="ab">a</h1>
@@ -22,11 +18,10 @@
 			<div class="loader"></div>
 		</div>
 	</div>
-	<div class="menu-button">
-		<div class="line"></div>
-		<div class="line"></div>
-		<div class="line"></div>
-	</div>
+	<canvas id="space"></canvas>
+	<div class="space Slow-Float" style="background-image: url('<?php echo get_template_directory_uri(); ?>/media/stars.jpg');"></div>
+	<button class="db">Down</button>
+	<button class="to">Take Off</button>
 	<div class="astronaut-container">
 		<div class="astronaut Enter">
 			<div class="head">
@@ -88,7 +83,7 @@
 <div class="canvas">
 	<div class="epaPlanet"></div>
 </div>
-<div class="info d-flex align-items-center justify-content-center flex-column">
+<!-- <div class="info d-flex align-items-center justify-content-center flex-column">
 	<h6 class="center">Hello, my name is Alex McKay. <br/>Welcome to my brain.</h6>
 	<div class="menu d-flex align-items-center justify-content-center">
 		<h6 id="portfolio" data-page="portfolio">Portfolio</h6>
@@ -96,7 +91,7 @@
 		<h6 id="experience" data-page="experience">Experience</h6>
 		<h6 id="bio" data-page="bio">Bio</h6>
 	</div>
-</div>
+</div> -->
 
 <script type="text/javascript">
 
