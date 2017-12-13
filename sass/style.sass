@@ -240,8 +240,10 @@ h1
 	background-repeat: repeat
 .Up
 	animation: space-travel 10s linear infinite
+
 .Slow-Float
 	animation: slow-float 120s linear infinite
+	
 .Slow-Float-Helmet
 	animation: slow-float-helmet 60s linear infinite
 	animation-direction: reverse
@@ -278,6 +280,7 @@ h1
 		.head,
 		.helmet,
 		.shield,
+		.details,
 		.upper-body,
 		.lower-body,
 		.torso,
@@ -311,7 +314,7 @@ h1
 		.flame
 			+transition(all 1s linear)
 		.head
-			height: 16.83%
+			height: 15.83%
 			width: 27.8668%
 			top: 0%
 			left: 36.498%
@@ -327,7 +330,11 @@ h1
 				left: 5.309%
 				height: 71.65%
 				width: 89.38%
-			
+			.details
+				width: 100%
+				z-index: 2
+				width: 100%
+				top: 80.5%
 				.space-bg
 					width: 100%
 					position: absolute
@@ -532,7 +539,13 @@ h1
 			.foot
 				+transition(all .5s ease-in-out)
 			.head
-				transform: translateY(50%)
+				transform: translateY(60%)
+				.helmet
+					transform: scaleY(0.9) translateY(-7%)
+				.shield
+					transform: translateY(-13%) scaleY(0.87) scaleX(0.95)
+				.details
+					transform: translateY(-100%) scaleY(0.85)
 			.upper-body
 				transform: translateY(20%)
 				.right-arm
@@ -590,9 +603,13 @@ h1
 			.foot
 				+transition(all .25s cubic-bezier(0.67, 0.07, 1, 1))
 			.head
-				transform: translateY(-10%)
+				transform: translateY(-12%)
+				.helmet
+					transform: scaleY(0.9) translateY(-7%)
 				.shield
-					transform: translateY(-2%)
+					transform: translateY(-13%) scaleY(0.87) scaleX(0.95)
+				.details
+					transform: translateY(-100%) scaleY(0.85)
 			.upper-body
 				transform: translateY(-10%)
 				.right-arm
@@ -725,6 +742,8 @@ h1
 				.left-arm
 					.lower
 						transform: rotate(46deg) translate(-70%, 6%)
+		&.No-Transition
+			+transition(all 0s linear)
 
 		+keyframes(blastoff-ra)
 			0%

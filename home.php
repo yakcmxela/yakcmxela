@@ -19,12 +19,13 @@
 		</div>
 	</div>
 	<canvas id="space"></canvas>
-	<div class="space Slow-Float" style="background-image: url('<?php echo get_template_directory_uri(); ?>/media/stars.jpg');"></div>
+	<div class="space Slow-Float" style="background-image: url('<?php echo get_template_directory_uri(); ?>/media/stars-retro.jpg');"></div>
 	<div class="astronaut-container">
 		<div class="astronaut Relax">
 			<div class="head">
 				<img class="helmet" src="<?php echo get_template_directory_uri(); ?>/svg/helmet.svg">
 				<img class="shield" src="<?php echo get_template_directory_uri(); ?>/svg/shield.svg">
+				<img class="details" src="<?php echo get_template_directory_uri(); ?>/svg/helmet-details.svg">
 			</div>
 			<div class="upper-body">
 				<img class="torso" src="<?php echo get_template_directory_uri(); ?>/svg/torso-contents.svg">

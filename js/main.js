@@ -73,6 +73,7 @@ $(document).ready(function() {
 			if (i > 1) { //50
 				clearInterval(randomLetter);
 				div.html(stopLetter);
+				activateAstronaut();
 			}
 
 		}, delay);	
@@ -211,7 +212,6 @@ $(document).ready(function() {
 			} else {
 				this.particleSize = 6;
 			}
-			console.log(this.particleSize);
 			this.side = side;
 			this.init = init;
 			// set a random angle in all possible directions, in radians
@@ -349,23 +349,37 @@ $(document).ready(function() {
 		astronaut.css('width', width);
 	}
 
-	setSizing();
-
-	var leftHand = $('.left-arm .lower .hand');
-	var rightHand = $('.right-arm .lower .hand');
-
 	function takeOff() {
 		astronaut.removeClass('Relax');
 		astronaut.removeClass('Take-Off');
 		astronaut.addClass('Down');
 		setTimeout(function() {
 			astronaut.addClass('Take-Off');
-			outerspace.addClass('Up');
+			spaceTravel = requestAnimationFrame(speedUp);
+			
 		}, 500);
 	}
 
-	function activateAstronaut() {
+	function easeInQuad (t) { 
+		return t;
+	}
 	
+	var baseSpaceSpeed = 120;
+	var easing = 1;
+	var targetSpeed = 1;
+	function speedUp() {
+		var targetSpeed = 1;
+		baseSpaceSpeed = baseSpaceSpeed - easing;
+		outerspace.css('animation-duration', baseSpaceSpeed + 's');
+		console.log(baseSpaceSpeed);
+		if (baseSpaceSpeed <= targetSpeed) {
+			spaceTravel = cancelAnimationFrame(speedUp);	
+		} else {
+			spaceTravel = requestAnimationFrame(speedUp);
+		}	
+	}
+
+	function activateAstronaut() {
 		
 		setTimeout(function() {
 		
@@ -377,6 +391,10 @@ $(document).ready(function() {
 
 	$(window).on('resize', function() {
 		setSizing();
+		$('.astronaut-container').find('*').addClass('No-Transition');
+		setTimeout(function() {
+			$('.astronaut-container').find('*').removeClass('No-Transition');
+		})
 	});
 
 	loaderBar();
@@ -611,4 +629,7 @@ $(document).ready(function() {
 		bioPage = false;
 		experiencePage = false;
 	});
+
+// On Load
+	setSizing();
 });

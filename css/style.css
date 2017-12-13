@@ -670,6 +670,7 @@ h1 {
     .astronaut-container .astronaut .head,
     .astronaut-container .astronaut .helmet,
     .astronaut-container .astronaut .shield,
+    .astronaut-container .astronaut .details,
     .astronaut-container .astronaut .upper-body,
     .astronaut-container .astronaut .lower-body,
     .astronaut-container .astronaut .torso,
@@ -711,7 +712,7 @@ h1 {
       -ms-transition: all 1s linear;
       transition: all 1s linear; }
     .astronaut-container .astronaut .head {
-      height: 16.83%;
+      height: 15.83%;
       width: 27.8668%;
       top: 0%;
       left: 36.498%; }
@@ -727,7 +728,12 @@ h1 {
         left: 5.309%;
         height: 71.65%;
         width: 89.38%; }
-        .astronaut-container .astronaut .head .shield .space-bg {
+      .astronaut-container .astronaut .head .details {
+        width: 100%;
+        z-index: 2;
+        width: 100%;
+        top: 80.5%; }
+        .astronaut-container .astronaut .head .details .space-bg {
           width: 100%;
           position: absolute;
           left: 0;
@@ -932,7 +938,13 @@ h1 {
       -ms-transition: all 0.5s ease-in-out;
       transition: all 0.5s ease-in-out; }
     .astronaut-container .astronaut.Down .head {
-      transform: translateY(50%); }
+      transform: translateY(60%); }
+      .astronaut-container .astronaut.Down .head .helmet {
+        transform: scaleY(0.9) translateY(-7%); }
+      .astronaut-container .astronaut.Down .head .shield {
+        transform: translateY(-13%) scaleY(0.87) scaleX(0.95); }
+      .astronaut-container .astronaut.Down .head .details {
+        transform: translateY(-100%) scaleY(0.85); }
     .astronaut-container .astronaut.Down .upper-body {
       transform: translateY(20%); }
       .astronaut-container .astronaut.Down .upper-body .right-arm {
@@ -994,9 +1006,13 @@ h1 {
         -ms-transition: all 0.25s cubic-bezier(0.67, 0.07, 1, 1);
         transition: all 0.25s cubic-bezier(0.67, 0.07, 1, 1); }
       .astronaut-container .astronaut.Take-Off .head {
-        transform: translateY(-10%); }
+        transform: translateY(-12%); }
+        .astronaut-container .astronaut.Take-Off .head .helmet {
+          transform: scaleY(0.9) translateY(-7%); }
         .astronaut-container .astronaut.Take-Off .head .shield {
-          transform: translateY(-2%); }
+          transform: translateY(-13%) scaleY(0.87) scaleX(0.95); }
+        .astronaut-container .astronaut.Take-Off .head .details {
+          transform: translateY(-100%) scaleY(0.85); }
       .astronaut-container .astronaut.Take-Off .upper-body {
         transform: translateY(-10%); }
         .astronaut-container .astronaut.Take-Off .upper-body .right-arm {
@@ -1125,6 +1141,12 @@ h1 {
       transform: scale(5) translate(65%, 20%); }
       .astronaut-container .astronaut.Menu .upper-body .left-arm .lower {
         transform: rotate(46deg) translate(-70%, 6%); }
+    .astronaut-container .astronaut.No-Transition {
+      -webkit-transition: all 0s linear;
+      -o-transition: all 0s linear;
+      -moz-transition: all 0s linear;
+      -ms-transition: all 0s linear;
+      transition: all 0s linear; }
 @-webkit-keyframes blastoff-ra {
   0% {
     transform: rotate(0deg) translate(0%, 0%); }
