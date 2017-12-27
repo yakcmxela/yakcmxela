@@ -483,6 +483,7 @@ nav {
       flex-direction: column;
       align-items: center;
       margin: 6px;
+      margin-bottom: 22px;
       -webkit-transition: all 0.15s ease-in-out;
       -o-transition: all 0.15s ease-in-out;
       -moz-transition: all 0.15s ease-in-out;
@@ -508,7 +509,15 @@ nav {
         padding-bottom: 0px;
         color: black;
         font-family: "Julius Sans One";
-        font-size: 18px; }
+        font-size: 18px;
+        top: 0;
+        z-index: -1; }
+      nav .menu .work:hover,
+      nav .menu .skills:hover,
+      nav .menu .experience:hover,
+      nav .menu .about:hover,
+      nav .menu .contact:hover {
+        transform: scale(1.05); }
     nav .menu .work {
       background-color: #00b8db; }
 @-webkit-keyframes paintbrush {
@@ -922,6 +931,7 @@ h1 {
     .astronaut-container .astronaut .lower,
     .astronaut-container .astronaut .calve,
     .astronaut-container .astronaut .hand,
+    .astronaut-container .astronaut .handBlack,
     .astronaut-container .astronaut .whole-hand,
     .astronaut-container .astronaut .finger-1,
     .astronaut-container .astronaut .finger-2,
@@ -966,11 +976,11 @@ h1 {
         left: 0%;
         height: 100%;
         width: 100%;
-        -webkit-transition: transform 0.5s linear, filter 7s linear;
-        -o-transition: transform 0.5s linear, filter 7s linear;
-        -moz-transition: transform 0.5s linear, filter 7s linear;
-        -ms-transition: transform 0.5s linear, filter 7s linear;
-        transition: transform 0.5s linear, filter 7s linear; }
+        -webkit-transition: transform 0.5s linear, filter 5s linear;
+        -o-transition: transform 0.5s linear, filter 5s linear;
+        -moz-transition: transform 0.5s linear, filter 5s linear;
+        -ms-transition: transform 0.5s linear, filter 5s linear;
+        transition: transform 0.5s linear, filter 5s linear; }
         .astronaut-container .astronaut .head .helmet.Black {
           filter: brightness(0%); }
       .astronaut-container .astronaut .head .shield {
@@ -996,11 +1006,11 @@ h1 {
       top: 15.175%;
       z-index: 3;
       transform-origin: bottom center;
-      -webkit-transition: transform 0.5s linear, filter 7s linear;
-      -o-transition: transform 0.5s linear, filter 7s linear;
-      -moz-transition: transform 0.5s linear, filter 7s linear;
-      -ms-transition: transform 0.5s linear, filter 7s linear;
-      transition: transform 0.5s linear, filter 7s linear; }
+      -webkit-transition: transform 0.5s linear, filter 5s linear;
+      -o-transition: transform 0.5s linear, filter 5s linear;
+      -moz-transition: transform 0.5s linear, filter 5s linear;
+      -ms-transition: transform 0.5s linear, filter 5s linear;
+      transition: transform 0.5s linear, filter 5s linear; }
       .astronaut-container .astronaut .upper-body.Black {
         filter: brightness(0%); }
       .astronaut-container .astronaut .upper-body .torso {
@@ -1033,25 +1043,29 @@ h1 {
             left: 0%;
             height: 61.58%;
             z-index: 2; }
-          .astronaut-container .astronaut .upper-body .right-arm .lower .hand {
+          .astronaut-container .astronaut .upper-body .right-arm .lower .hand,
+          .astronaut-container .astronaut .upper-body .right-arm .lower .handBlack {
             top: 50.73%;
             left: 63.84%;
             height: 45.85%;
             width: 36.3228%;
             z-index: 1; }
-            .astronaut-container .astronaut .upper-body .right-arm .lower .hand .whole-hand {
+            .astronaut-container .astronaut .upper-body .right-arm .lower .hand .whole-hand,
+            .astronaut-container .astronaut .upper-body .right-arm .lower .handBlack .whole-hand {
               height: 100%;
               top: 8%;
               left: -10%;
               z-index: 1;
               transform-origin: top center; }
-            .astronaut-container .astronaut .upper-body .right-arm .lower .hand .finger-1 {
+            .astronaut-container .astronaut .upper-body .right-arm .lower .hand .finger-1,
+            .astronaut-container .astronaut .upper-body .right-arm .lower .handBlack .finger-1 {
               height: 51.2%;
               right: 12.345%;
               top: 45.18%;
               z-index: 3;
               transform-origin: top right; }
-            .astronaut-container .astronaut .upper-body .right-arm .lower .hand .finger-2 {
+            .astronaut-container .astronaut .upper-body .right-arm .lower .hand .finger-2,
+            .astronaut-container .astronaut .upper-body .right-arm .lower .handBlack .finger-2 {
               bottom: 0%;
               left: 3.7%;
               right: 50%;
@@ -1117,11 +1131,11 @@ h1 {
       left: 30.5795%;
       z-index: 1;
       transform-origin: top center;
-      -webkit-transition: transform 0.5s linear, filter 7s linear;
-      -o-transition: transform 0.5s linear, filter 7s linear;
-      -moz-transition: transform 0.5s linear, filter 7s linear;
-      -ms-transition: transform 0.5s linear, filter 7s linear;
-      transition: transform 0.5s linear, filter 7s linear; }
+      -webkit-transition: transform 0.5s linear, filter 5s linear;
+      -o-transition: transform 0.5s linear, filter 5s linear;
+      -moz-transition: transform 0.5s linear, filter 5s linear;
+      -ms-transition: transform 0.5s linear, filter 5s linear;
+      transition: transform 0.5s linear, filter 5s linear; }
       .astronaut-container .astronaut .lower-body.Black {
         filter: brightness(0%); }
       .astronaut-container .astronaut .lower-body .right-leg {

@@ -164,6 +164,7 @@ nav
 			flex-direction: column
 			align-items: center
 			margin: 6px
+			margin-bottom: 22px
 			+transition(all .15s ease-in-out)
 			img,
 			.paintbrush
@@ -174,6 +175,10 @@ nav
 				color: black
 				font-family: "Julius Sans One"
 				font-size: 18px
+				top: 0
+				z-index: -1
+			&:hover
+				transform: scale(1.05)
 		.work
 			background-color: #00b8db
 			//transform: translate(-100%, 0%)
@@ -429,6 +434,7 @@ h1
 		.lower,
 		.calve,
 		.hand,
+		.handBlack,
 		.whole-hand,
 		.finger-1,
 		.finger-2,
@@ -465,7 +471,7 @@ h1
 				left: 0%
 				height: 100%
 				width: 100%
-				+transition(transform .5s linear, filter 7s linear)
+				+transition(transform .5s linear, filter 5s linear)
 				&.Black
 					filter: brightness(0%)
 			.shield
@@ -491,7 +497,7 @@ h1
 			top: 15.175%
 			z-index: 3
 			transform-origin: bottom center
-			+transition(transform .5s linear, filter 7s linear)
+			+transition(transform .5s linear, filter 5s linear)
 			&.Black
 				filter: brightness(0%)
 			.torso
@@ -524,7 +530,8 @@ h1
 						left: 0%
 						height: 61.58%
 						z-index: 2
-					.hand
+					.hand,
+					.handBlack
 						top: 50.73%
 						left: 63.84%
 						height: 45.85%
@@ -610,7 +617,7 @@ h1
 			left: 30.5795%
 			z-index: 1
 			transform-origin: top center
-			+transition(transform .5s linear, filter 7s linear)
+			+transition(transform .5s linear, filter 5s linear)
 			&.Black
 				filter: brightness(0%)
 			.right-leg
