@@ -1,10 +1,17 @@
 $(document).ready(function() {
+	var startMaine = $('.start-maine');
+	var horizonLeaving = $('.horizon-leaving')
+	var astronautContainer = $('.astronaut-container');
 	var astronaut = $('.astronaut');
-	var outerspace = $('.space');
+	var outerspace = $('.outerspace');
+	var space = $('.space-content');
+	var innerspace = $('.innerspace');
 	var leftJet = $('.left-arm .hand');
 	var rightJet = $('.right-arm .hand');
 	var nav = $('nav');
 	var color;
+	var earth = $('.earth-content');
+	var cloud = $('.cloud');
 	var blastOff;
 	var shootParticles;
 	var leftJetX;
@@ -73,7 +80,6 @@ $(document).ready(function() {
 			if (i > 1) { //50
 				clearInterval(randomLetter);
 				div.html(stopLetter);
-				activateAstronaut();
 			}
 
 		}, delay);	
@@ -96,7 +102,6 @@ $(document).ready(function() {
 					setTimeout(function() {
 						name.addClass('Loaded');
 					}, 1000);
-					activateAstronaut();
 				}, 1000);
 			} else {
 				width++;
@@ -117,10 +122,79 @@ $(document).ready(function() {
 		letterRandomizer(aa, random(10, 1), A);
 	}
 // Nav
-	$('.menu div').on('click', function(e) {
-		$('.menu div').removeClass('Active');
-		$(e.currentTarget).toggleClass('Active');
-	})
+	function cloud() {
+		cloudTransform = requestAnimationFrame(cloud);
+		windowHeight = window.innerHeight;
+		cloudHeight = cloud.height();
+
+		fullTransform = windowHeight + cloudHeight;
+
+		cloud.css('transform', 'translateY(' + fullTransform + 'px)')
+
+	}
+
+	$('.menu-button').on('click', function() {
+		$('.menu').toggleClass('Active');
+	});
+	var cloudTransform;
+	$('.about').on('click', function() {
+		$('.start-maine').toggleClass('Take-Off');
+		space.removeClass('Hidden');
+		setTimeout(function() {
+			cloud.addClass('Active');
+		}, 2000);
+		setTimeout(function() {
+			blastOff = requestAnimationFrame(createParticles);
+			astronaut.removeClass('On-Load');
+		}, 5000);
+
+		setTimeout(function() {
+			earth.addClass('Fade-Out');
+			astronaut.removeClass('On-Earth');
+			astronaut.removeClass('Jets-On');
+			$('.upper-body').removeClass('Black');
+			$('.lower-body').removeClass('Black');
+			$('.helmet').removeClass('Black');
+			cancelAnimationFrame(blastOff);
+			blastOff = requestAnimationFrame(removeParticles);
+			astronaut.addClass('Relax');
+		}, 15000);
+
+		setTimeout(function() {
+			cancelAnimationFrame(blastOff);
+			ctx.clearRect( 0, 0, canvas.width, canvas.height );
+		}, 16000);
+	});
+
+// Landing page
+	
+	
+	function parallax(div, scrollSpeed, axis) {
+		$.each(div, function() {
+			divPosition = $(this).offset().top;
+			divHeight = $(this).height();
+			pageLocation = $(window).scrollTop();
+			scroll = pageLocation / scrollSpeed;
+			console.log(scroll);
+
+			if (scroll <= 101 && scroll > -101) {
+				$(div).css('transform', 'translate' + axis + '(' + scroll + '%)');
+			}
+			
+			// if (scroll < 100 && scroll > 0) {
+			// 	$(div).css('transform', 'translate' + axis + '(' + scroll + '%)');
+			// } else if (scroll < 0 && scroll > -100) {
+			// 	$(div).css('transform', 'translate' + axis + '(' + (scroll) + '%)');
+			// }
+		});
+	};
+
+	$(window).on('scroll', function() {
+		// parallax(horizonLeaving, 0.1, 'y');
+		// parallax(startMaine, 10, 'y');
+		// parallax(nav, 10, 'y');
+	});
+
 // Canvas stuff 
 	var canvas = document.getElementById('space');
 	var ctx = canvas.getContext('2d');
@@ -179,7 +253,7 @@ $(document).ready(function() {
 
 		// 		stateWidth: regl.prop('stageWidth'),
 		// 		stageHeight: regl.prop('stageHeight'),
-		// 	},
+		// 	},x 1209 y 1015
 
 		// 	count: points.length,
 
@@ -188,12 +262,23 @@ $(document).ready(function() {
 
 	// Find location of jets (hands of figure)
 	function getSet() {
+		// Needed to keep the stars in the right place during zoom out
+		var scale = astronautContainer.css('transform').slice(7, 11);
+
+		if (scale < 1) {
+			leftJetY = leftJet.offset().top + (leftJet.height() / 2) * scale;
+			leftJetX = leftJet.offset().left + leftJet.width() * scale;
+			rightJetY = rightJet.offset().top + (leftJet.height() / 2) * scale;
+			rightJetX = rightJet.offset().left + leftJet.width() * scale;
+		} else {
+			leftJetY = leftJet.offset().top + (leftJet.height() / 2);
+			leftJetX = leftJet.offset().left + leftJet.width();
+			rightJetY = rightJet.offset().top + (leftJet.height() / 2);
+			rightJetX = rightJet.offset().left + leftJet.width();
+		}
 		winWidth = window.innerWidth;
 		winHeight = window.innerHeight;
-		leftJetY = leftJet.offset().top + leftJet.height() * .5;
-		leftJetX = leftJet.offset().left + leftJet.width() * 1.05;
-		rightJetY = rightJet.offset().top + leftJet.height() * .5;
-		rightJetX = rightJet.offset().left + leftJet.width() * 1.05;
+
 	}
 	//Particles
 		function Particle( x, y, side, init ) {
@@ -226,7 +311,7 @@ $(document).ready(function() {
 			this.brightness = random( 50, 80 );
 			this.alpha = 1;
 			// set how fast the particle fades out
-			this.decay = random( 0.015, 0.03 );
+			this.decay = random( 0.015, 0.1 );
 			this.pattern = ctx.createPattern(particleImage, 'repeat');
 		}
 
@@ -311,7 +396,6 @@ $(document).ready(function() {
 		ctx.globalCompositeOperation = 'destination-out';
         ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
 		ctx.fillRect( 0, 0, canvas.width, canvas.height );
-		console.log(particle.x);
 		ctx.globalCompositeOperation = 'lighter';
 		var i = particles.length;
 		while( i-- ) {
@@ -319,7 +403,6 @@ $(document).ready(function() {
 			particles[ i ].update( i );
 		}
 	}
-
 
 	$('.to').on('click', function() {
 		takeOff();
@@ -337,9 +420,8 @@ $(document).ready(function() {
 		}, 2000);
 	});
 
-	astronaut.on('click', function() {
-		outerspace.removeClass('Up');
-		astronaut.removeClass('Take-Off');
+	$('.contact').on('click', function() {
+		activateAstronaut();
 	});
 
 	function setSizing() {
@@ -351,13 +433,19 @@ $(document).ready(function() {
 
 	function takeOff() {
 		astronaut.removeClass('Relax');
-		astronaut.removeClass('Take-Off');
+		astronaut.removeClass('Jets-On');
 		astronaut.addClass('Down');
 		setTimeout(function() {
+			innerspace.addClass('Travel-Fade');
+			outerspace.addClass('Up');
 			astronaut.addClass('Take-Off');
-			spaceTravel = requestAnimationFrame(speedUp);
-			
+			astronaut.addClass('Jets-On');	
+			astronautContainer.addClass('Small');
 		}, 500);
+		setTimeout(function() {
+			init();
+			animate();
+		}, 5000)
 	}
 
 	function easeInQuad (t) { 
@@ -380,13 +468,17 @@ $(document).ready(function() {
 	}
 
 	function activateAstronaut() {
-		
+		startMaine.addClass('Lets-Go');
+		horizonLeaving.addClass('Lets-Go');
 		setTimeout(function() {
-		
-		}, 3000)
+		astronaut.removeClass('On-Load');
+		astronaut.addClass('Drop-In');
+		}, 2000)
 		setTimeout(function() {
-			
-		}, 7000);
+			astronaut.remove('Jets-On');
+			astronaut.removeClass('Drop-In');
+			astronaut.addClass('Relax');
+		}, 8000);
 	}
 
 	$(window).on('resize', function() {
@@ -433,9 +525,6 @@ $(document).ready(function() {
 	var portfolioPage = true;
 	var experiencePage = false;
 	var bioPage = false;
-
-	init();
-	animate();
 
 	function init() {
 		// Camera
@@ -503,7 +592,6 @@ $(document).ready(function() {
 
 		// Renderer
 		renderer = new THREE.WebGLRenderer({antialiased: true, alpha: true});
-		renderer.setClearColor( 0xffffff, 0 );
 		canvasHeight = $('.canvas').height();
 		console.log(canvasHeight);
 		renderer.setSize( window.innerWidth, canvasHeight );

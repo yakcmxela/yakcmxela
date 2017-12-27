@@ -282,14 +282,15 @@
   min-width: 100%; }
 
 html, body {
-  height: 100%;
+  height: 100vh;
+  width: 100%;
   margin: 0;
   padding: 0;
   font-family: "Lato", sans-serif;
   box-sizing: border-box;
   letter-spacing: 1px;
   color: #101e28;
-  cursor: crosshair; }
+  overflow: hidden; }
 
 h1 {
   font-size: 62px;
@@ -421,89 +422,167 @@ hr {
 
 nav {
   position: fixed;
-  bottom: 16px;
+  bottom: 12px;
   left: 50%;
-  transform: translateX(-50%);
-  z-index: 9002; }
+  width: 100%;
+  transform: translate(-50%, 0%);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-transition: all 3s cubic-bezier(0.22, 0.61, 0.36, 1);
+  -o-transition: all 3s cubic-bezier(0.22, 0.61, 0.36, 1);
+  -moz-transition: all 3s cubic-bezier(0.22, 0.61, 0.36, 1);
+  -ms-transition: all 3s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: all 3s cubic-bezier(0.22, 0.61, 0.36, 1); }
+  nav.Hidden .menu .work {
+    transform: translateY(-400%);
+    -webkit-transition: all 0.25s cubic-bezier(0.78, 0.17, 1, 1);
+    -o-transition: all 0.25s cubic-bezier(0.78, 0.17, 1, 1);
+    -moz-transition: all 0.25s cubic-bezier(0.78, 0.17, 1, 1);
+    -ms-transition: all 0.25s cubic-bezier(0.78, 0.17, 1, 1);
+    transition: all 0.25s cubic-bezier(0.78, 0.17, 1, 1); }
+  nav.Hidden .menu .skills {
+    transform: translateY(-400%);
+    -webkit-transition: all 0.5s cubic-bezier(0.78, 0.17, 1, 1);
+    -o-transition: all 0.5s cubic-bezier(0.78, 0.17, 1, 1);
+    -moz-transition: all 0.5s cubic-bezier(0.78, 0.17, 1, 1);
+    -ms-transition: all 0.5s cubic-bezier(0.78, 0.17, 1, 1);
+    transition: all 0.5s cubic-bezier(0.78, 0.17, 1, 1); }
+  nav.Hidden .menu .about {
+    transform: translateY(-400%);
+    -webkit-transition: all 0.75s cubic-bezier(0.78, 0.17, 1, 1);
+    -o-transition: all 0.75s cubic-bezier(0.78, 0.17, 1, 1);
+    -moz-transition: all 0.75s cubic-bezier(0.78, 0.17, 1, 1);
+    -ms-transition: all 0.75s cubic-bezier(0.78, 0.17, 1, 1);
+    transition: all 0.75s cubic-bezier(0.78, 0.17, 1, 1); }
+  nav.Hidden .menu .contact {
+    transform: translateY(-400%);
+    -webkit-transition: all 1s cubic-bezier(0.78, 0.17, 1, 1);
+    -o-transition: all 1s cubic-bezier(0.78, 0.17, 1, 1);
+    -moz-transition: all 1s cubic-bezier(0.78, 0.17, 1, 1);
+    -ms-transition: all 1s cubic-bezier(0.78, 0.17, 1, 1);
+    transition: all 1s cubic-bezier(0.78, 0.17, 1, 1); }
   nav .menu {
-    background-color: white; }
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+    padding: 6px; }
     nav .menu .work,
     nav .menu .skills,
     nav .menu .experience,
     nav .menu .about,
     nav .menu .contact {
-      height: 128px;
-      width: 128px;
+      height: 100px;
+      width: 100px;
       cursor: crosshair;
-      -webkit-transition: all 0.2s linear;
-      -o-transition: all 0.2s linear;
-      -moz-transition: all 0.2s linear;
-      -ms-transition: all 0.2s linear;
-      transition: all 0.2s linear; }
+      position: initial;
+      z-index: 1;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 6px;
+      -webkit-transition: all 0.15s ease-in-out;
+      -o-transition: all 0.15s ease-in-out;
+      -moz-transition: all 0.15s ease-in-out;
+      -ms-transition: all 0.15s ease-in-out;
+      transition: all 0.15s ease-in-out; }
       nav .menu .work img,
+      nav .menu .work .paintbrush,
       nav .menu .skills img,
+      nav .menu .skills .paintbrush,
       nav .menu .experience img,
+      nav .menu .experience .paintbrush,
       nav .menu .about img,
-      nav .menu .contact img {
-        height: 100%;
-        width: 100%; }
-      nav .menu .work.Active, nav .menu .work:hover,
-      nav .menu .skills.Active,
-      nav .menu .skills:hover,
-      nav .menu .experience.Active,
-      nav .menu .experience:hover,
-      nav .menu .about.Active,
-      nav .menu .about:hover,
-      nav .menu .contact.Active,
-      nav .menu .contact:hover {
-        transform: translateY(-8px); }
+      nav .menu .about .paintbrush,
+      nav .menu .contact img,
+      nav .menu .contact .paintbrush {
+        height: 100%; }
+      nav .menu .work p,
+      nav .menu .skills p,
+      nav .menu .experience p,
+      nav .menu .about p,
+      nav .menu .contact p {
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+        color: black;
+        font-family: "Julius Sans One";
+        font-size: 18px; }
     nav .menu .work {
       background-color: #00b8db; }
 @-webkit-keyframes paintbrush {
-  0%;
-  100%; }
+  0% {
+    transform: rotate(0deg); }
+  50% {
+    transform: rotate(-30deg); }
+  100% {
+    transform: rotate(0deg); } }
 @-moz-keyframes paintbrush {
-  0%;
-  100%; }
+  0% {
+    transform: rotate(0deg); }
+  50% {
+    transform: rotate(-30deg); }
+  100% {
+    transform: rotate(0deg); } }
 @-ms-keyframes paintbrush {
-  0%;
-  100%; }
+  0% {
+    transform: rotate(0deg); }
+  50% {
+    transform: rotate(-30deg); }
+  100% {
+    transform: rotate(0deg); } }
 @keyframes paintbrush {
-  0%;
-  100%; }
-      nav .menu .work img:hover {
+  0% {
+    transform: rotate(0deg); }
+  50% {
+    transform: rotate(-30deg); }
+  100% {
+    transform: rotate(0deg); } }
+@-webkit-keyframes brushtip {
+  0% {
+    transform: skew(0deg) translateX(0px); }
+  50% {
+    transform: skew(-10deg) translateX(4px); }
+  100% {
+    transform: skew(0deg) translateX(0px); } }
+@-moz-keyframes brushtip {
+  0% {
+    transform: skew(0deg) translateX(0px); }
+  50% {
+    transform: skew(-10deg) translateX(4px); }
+  100% {
+    transform: skew(0deg) translateX(0px); } }
+@-ms-keyframes brushtip {
+  0% {
+    transform: skew(0deg) translateX(0px); }
+  50% {
+    transform: skew(-10deg) translateX(4px); }
+  100% {
+    transform: skew(0deg) translateX(0px); } }
+@keyframes brushtip {
+  0% {
+    transform: skew(0deg) translateX(0px); }
+  50% {
+    transform: skew(-10deg) translateX(4px); }
+  100% {
+    transform: skew(0deg) translateX(0px); } }
+      nav .menu .work:hover .paintbrush {
         animation: paintbrush 2s ease-in-out infinite; }
+        nav .menu .work:hover .paintbrush img:nth-child(2) {
+          animation: brushtip 2s ease-in-out infinite; }
     nav .menu .skills {
       background-color: #ee41ff; }
-@-webkit-keyframes ninja-spin {
-  0% {
-    transform: rotate(0deg); }
-  100% {
-    transform: rotate(360deg); } }
-@-moz-keyframes ninja-spin {
-  0% {
-    transform: rotate(0deg); }
-  100% {
-    transform: rotate(360deg); } }
-@-ms-keyframes ninja-spin {
-  0% {
-    transform: rotate(0deg); }
-  100% {
-    transform: rotate(360deg); } }
-@keyframes ninja-spin {
-  0% {
-    transform: rotate(0deg); }
-  100% {
-    transform: rotate(360deg); } }
     nav .menu .about {
       background-color: #f08737; }
     nav .menu .contact {
-      background-color: #8700f8; }
+      background-color: #281753; }
 
 .page-content {
   background-color: #080035;
-  height: 100%;
+  height: 200%;
   width: 100%;
+  overflow: hidden;
   position: relative;
   -webkit-transition: all 1s ease-out;
   -o-transition: all 1s ease-out;
@@ -564,78 +643,236 @@ h1 {
   left: 50%;
   transform: translate(-50%, -50%); }
 
-.content {
-  width: 100%;
-  height: 100%;
+@-webkit-keyframes cloud-one {
+  0% {
+    transform: translateY(-100%); }
+  100% {
+    transform: translateY(500%); } }
+@-moz-keyframes cloud-one {
+  0% {
+    transform: translateY(-100%); }
+  100% {
+    transform: translateY(500%); } }
+@-ms-keyframes cloud-one {
+  0% {
+    transform: translateY(-100%); }
+  100% {
+    transform: translateY(500%); } }
+@keyframes cloud-one {
+  0% {
+    transform: translateY(-100%); }
+  100% {
+    transform: translateY(500%); } }
+@-webkit-keyframes cloud-two {
+  0% {
+    transform: translateY(-100%) scaleX(-1); }
+  100% {
+    transform: translateY(500%) scaleX(-1); } }
+@-moz-keyframes cloud-two {
+  0% {
+    transform: translateY(-100%) scaleX(-1); }
+  100% {
+    transform: translateY(500%) scaleX(-1); } }
+@-ms-keyframes cloud-two {
+  0% {
+    transform: translateY(-100%) scaleX(-1); }
+  100% {
+    transform: translateY(500%) scaleX(-1); } }
+@keyframes cloud-two {
+  0% {
+    transform: translateY(-100%) scaleX(-1); }
+  100% {
+    transform: translateY(500%) scaleX(-1); } }
+@-webkit-keyframes cloud-three {
+  0% {
+    transform: translateY(-100%) scaleY(-1); }
+  100% {
+    transform: translateY(500%) scaleY(-1); } }
+@-moz-keyframes cloud-three {
+  0% {
+    transform: translateY(-100%) scaleY(-1); }
+  100% {
+    transform: translateY(500%) scaleY(-1); } }
+@-ms-keyframes cloud-three {
+  0% {
+    transform: translateY(-100%) scaleY(-1); }
+  100% {
+    transform: translateY(500%) scaleY(-1); } }
+@keyframes cloud-three {
+  0% {
+    transform: translateY(-100%) scaleY(-1); }
+  100% {
+    transform: translateY(500%) scaleY(-1); } }
+.earth-content {
+  position: fixed;
   overflow: hidden;
-  position: relative; }
+  height: 100vh;
+  width: 100%;
+  background-color: white;
+  z-index: 2;
+  left: 50%;
+  transform: translateX(-50%); }
+  .earth-content .start-maine {
+    height: 100vh;
+    position: fixed;
+    bottom: 0;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    -webkit-transition: all 2s cubic-bezier(0.55, 0.06, 0.68, 0.19);
+    -o-transition: all 2s cubic-bezier(0.55, 0.06, 0.68, 0.19);
+    -moz-transition: all 2s cubic-bezier(0.55, 0.06, 0.68, 0.19);
+    -ms-transition: all 2s cubic-bezier(0.55, 0.06, 0.68, 0.19);
+    transition: all 2s cubic-bezier(0.55, 0.06, 0.68, 0.19); }
+    .earth-content .start-maine.Take-Off {
+      transform: translateY(150%); }
+    .earth-content .start-maine .gulls {
+      transform: translateY(-200%); }
+  .earth-content .cloud {
+    position: absolute;
+    transform: translateY(-100%);
+    top: 0;
+    -webkit-transition: all 5s linear;
+    -o-transition: all 5s linear;
+    -moz-transition: all 5s linear;
+    -ms-transition: all 5s linear;
+    transition: all 5s linear; }
+    .earth-content .cloud:nth-child(2) {
+      left: 50%; }
+    .earth-content .cloud:nth-child(3) {
+      right: 0; }
+    .earth-content .cloud.Active:nth-child(2) {
+      animation: cloud-one 5s linear infinite;
+      animation-delay: 5s;
+      animation-iteration-count: 2; }
+    .earth-content .cloud.Active:nth-child(3) {
+      animation: cloud-two 4.5s linear infinite;
+      animation-iteration-count: 3; }
+    .earth-content .cloud.Active:nth-child(4) {
+      animation: cloud-three 3.75s linear infinite;
+      animation-iteration-count: 3; }
+  .earth-content.Fade-Out {
+    -webkit-transition: all 5s linear;
+    -o-transition: all 5s linear;
+    -moz-transition: all 5s linear;
+    -ms-transition: all 5s linear;
+    transition: all 5s linear;
+    filter: blur(200px);
+    transform: translate(-50%, 150%) scaleX(2); }
+
+.horizon-leaving {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 9004;
+  transform: translateY(-99%);
+  background-size: cover;
+  background-position: bottom center;
+  -webkit-transition: all 5s linear;
+  -o-transition: all 5s linear;
+  -moz-transition: all 5s linear;
+  -ms-transition: all 5s linear;
+  transition: all 5s linear; }
+  .horizon-leaving.Lets-Go {
+    transform: translateY(100%); }
 
 #space {
   width: 100%;
   height: 100%;
   position: absolute;
-  z-index: 0; }
+  z-index: 3; }
 
-.space {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  top: -1240px;
-  right: 0;
+.space-content {
+  position: fixed;
+  height: 100%;
   width: 100%;
-  z-index: -1;
-  background-repeat: repeat; }
+  top: 0;
+  z-index: 1; }
+  .space-content.Hidden {
+    transform: translateY(-100%); }
+  .space-content .space-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1; }
+    .space-content .space-container .space {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      top: -1240px;
+      right: 0;
+      width: 100%;
+      z-index: -1;
+      background-repeat: repeat; }
 
 .Up {
-  animation: space-travel 10s linear infinite; }
+  animation: space-travel 1s linear infinite; }
 
 .Slow-Float {
-  animation: slow-float 120s linear infinite; }
+  animation: slow-float 120s linear infinite;
+  transform: scale(-1);
+  -webkit-transition: all 3s linear;
+  -o-transition: all 3s linear;
+  -moz-transition: all 3s linear;
+  -ms-transition: all 3s linear;
+  transition: all 3s linear; }
 
 .Slow-Float-Helmet {
   animation: slow-float-helmet 60s linear infinite;
   animation-direction: reverse; }
 
+.innerspace {
+  opacity: 0.75; }
+  .innerspace.Travel-Fade {
+    opacity: 0; }
+
+.outerspace {
+  -webkit-transition: all 3s cubic-bezier(0.6, -0.28, 0.74, 0.05);
+  -o-transition: all 3s cubic-bezier(0.6, -0.28, 0.74, 0.05);
+  -moz-transition: all 3s cubic-bezier(0.6, -0.28, 0.74, 0.05);
+  -ms-transition: all 3s cubic-bezier(0.6, -0.28, 0.74, 0.05);
+  transition: all 3s cubic-bezier(0.6, -0.28, 0.74, 0.05); }
+
 @-webkit-keyframes space-travel {
   0% {
-    transform: translateY(0%); }
+    transform: translate(0%, 0%); }
   100% {
-    transform: translateY(50%); } }
+    transform: translate(0%, 1240px); } }
 @-moz-keyframes space-travel {
   0% {
-    transform: translateY(0%); }
+    transform: translate(0%, 0%); }
   100% {
-    transform: translateY(50%); } }
+    transform: translate(0%, 1240px); } }
 @-ms-keyframes space-travel {
   0% {
-    transform: translateY(0%); }
+    transform: translate(0%, 0%); }
   100% {
-    transform: translateY(50%); } }
+    transform: translate(0%, 1240px); } }
 @keyframes space-travel {
   0% {
-    transform: translateY(0%); }
+    transform: translate(0%, 0%); }
   100% {
-    transform: translateY(50%); } }
+    transform: translate(0%, 1240px); } }
 @-webkit-keyframes slow-float {
   0% {
-    transform: translate(0%, 0%); }
+    transform: translate(0%, 0%) scale(-1); }
   100% {
-    transform: translate(0%, 1240px); } }
+    transform: translate(0%, 1240px) scale(-1); } }
 @-moz-keyframes slow-float {
   0% {
-    transform: translate(0%, 0%); }
+    transform: translate(0%, 0%) scale(-1); }
   100% {
-    transform: translate(0%, 1240px); } }
+    transform: translate(0%, 1240px) scale(-1); } }
 @-ms-keyframes slow-float {
   0% {
-    transform: translate(0%, 0%); }
+    transform: translate(0%, 0%) scale(-1); }
   100% {
-    transform: translate(0%, 1240px); } }
+    transform: translate(0%, 1240px) scale(-1); } }
 @keyframes slow-float {
   0% {
-    transform: translate(0%, 0%); }
+    transform: translate(0%, 0%) scale(-1); }
   100% {
-    transform: translate(0%, 1240px); } }
+    transform: translate(0%, 1240px) scale(-1); } }
 @-webkit-keyframes slow-float-helmet {
   0% {
     transform: translate(0%, 0%); }
@@ -662,7 +899,14 @@ h1 {
   left: 50%;
   top: 50%;
   z-index: 9001;
-  transform: translate(-50%, -55%); }
+  transform: translate(-50%, -55%);
+  -webkit-transition: all 5s cubic-bezier(0.22, 0.61, 0.36, 1);
+  -o-transition: all 5s cubic-bezier(0.22, 0.61, 0.36, 1);
+  -moz-transition: all 5s cubic-bezier(0.22, 0.61, 0.36, 1);
+  -ms-transition: all 5s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: all 5s cubic-bezier(0.22, 0.61, 0.36, 1); }
+  .astronaut-container.Small {
+    transform: translate(-50%, -30%) scale(0.05); }
   .astronaut-container .astronaut {
     height: 100%;
     width: 100%;
@@ -721,7 +965,14 @@ h1 {
         top: 0%;
         left: 0%;
         height: 100%;
-        width: 100%; }
+        width: 100%;
+        -webkit-transition: transform 0.5s linear, filter 7s linear;
+        -o-transition: transform 0.5s linear, filter 7s linear;
+        -moz-transition: transform 0.5s linear, filter 7s linear;
+        -ms-transition: transform 0.5s linear, filter 7s linear;
+        transition: transform 0.5s linear, filter 7s linear; }
+        .astronaut-container .astronaut .head .helmet.Black {
+          filter: brightness(0%); }
       .astronaut-container .astronaut .head .shield {
         z-index: 2;
         top: 3.3%;
@@ -744,7 +995,14 @@ h1 {
       width: 100%;
       top: 15.175%;
       z-index: 3;
-      transform-origin: bottom center; }
+      transform-origin: bottom center;
+      -webkit-transition: transform 0.5s linear, filter 7s linear;
+      -o-transition: transform 0.5s linear, filter 7s linear;
+      -moz-transition: transform 0.5s linear, filter 7s linear;
+      -ms-transition: transform 0.5s linear, filter 7s linear;
+      transition: transform 0.5s linear, filter 7s linear; }
+      .astronaut-container .astronaut .upper-body.Black {
+        filter: brightness(0%); }
       .astronaut-container .astronaut .upper-body .torso {
         top: 0%;
         height: 83.05%;
@@ -849,8 +1107,8 @@ h1 {
               transform-origin: top left; }
       .astronaut-container .astronaut .upper-body .belt {
         top: 73.22%;
-        height: 7.966%;
-        left: 33.66%;
+        height: 8.1%;
+        left: 33.36%;
         z-index: 3; }
     .astronaut-container .astronaut .lower-body {
       height: 57.057%;
@@ -858,7 +1116,14 @@ h1 {
       top: 42.942%;
       left: 30.5795%;
       z-index: 1;
-      transform-origin: top center; }
+      transform-origin: top center;
+      -webkit-transition: transform 0.5s linear, filter 7s linear;
+      -o-transition: transform 0.5s linear, filter 7s linear;
+      -moz-transition: transform 0.5s linear, filter 7s linear;
+      -ms-transition: transform 0.5s linear, filter 7s linear;
+      transition: transform 0.5s linear, filter 7s linear; }
+      .astronaut-container .astronaut .lower-body.Black {
+        filter: brightness(0%); }
       .astronaut-container .astronaut .lower-body .right-leg {
         height: 100%;
         width: 50%;
@@ -981,74 +1246,90 @@ h1 {
             transform: translateX(5%); }
           .astronaut-container .astronaut.Down .lower-body .right-leg .lower .foot {
             transform: translateY(-2.5%); }
+    .astronaut-container .astronaut.Jets-On .head,
+    .astronaut-container .astronaut.Jets-On .helmet,
+    .astronaut-container .astronaut.Jets-On .shield,
+    .astronaut-container .astronaut.Jets-On .upper-body,
+    .astronaut-container .astronaut.Jets-On .lower-body,
+    .astronaut-container .astronaut.Jets-On .torso,
+    .astronaut-container .astronaut.Jets-On .upper,
+    .astronaut-container .astronaut.Jets-On .lower,
+    .astronaut-container .astronaut.Jets-On .calve,
+    .astronaut-container .astronaut.Jets-On .hand,
+    .astronaut-container .astronaut.Jets-On .forearm,
+    .astronaut-container .astronaut.Jets-On .right-arm,
+    .astronaut-container .astronaut.Jets-On .left-arm,
+    .astronaut-container .astronaut.Jets-On .belt,
+    .astronaut-container .astronaut.Jets-On .left-leg,
+    .astronaut-container .astronaut.Jets-On .right-leg,
+    .astronaut-container .astronaut.Jets-On .foot {
+      -webkit-transition: all 0.25s cubic-bezier(0.67, 0.07, 1, 1);
+      -o-transition: all 0.25s cubic-bezier(0.67, 0.07, 1, 1);
+      -moz-transition: all 0.25s cubic-bezier(0.67, 0.07, 1, 1);
+      -ms-transition: all 0.25s cubic-bezier(0.67, 0.07, 1, 1);
+      transition: all 0.25s cubic-bezier(0.67, 0.07, 1, 1); }
+    .astronaut-container .astronaut.Jets-On .head {
+      transform: translateY(-12%); }
+      .astronaut-container .astronaut.Jets-On .head .helmet {
+        transform: scaleY(0.9) translateY(-7%); }
+      .astronaut-container .astronaut.Jets-On .head .shield {
+        transform: translateY(-13%) scaleY(0.87) scaleX(0.95); }
+      .astronaut-container .astronaut.Jets-On .head .details {
+        transform: translateY(-100%) scaleY(0.85); }
+    .astronaut-container .astronaut.Jets-On .upper-body {
+      transform: translateY(-10%); }
+      .astronaut-container .astronaut.Jets-On .upper-body .right-arm {
+        transform: rotate(5deg) translate(0%, -1.33%); }
+        .astronaut-container .astronaut.Jets-On .upper-body .right-arm .lower {
+          transform: rotate(5deg) translate(3%, -5%); }
+          .astronaut-container .astronaut.Jets-On .upper-body .right-arm .lower .hand {
+            transform: rotate(-65deg) translate(82%, 18%); }
+      .astronaut-container .astronaut.Jets-On .upper-body .left-arm {
+        transform: rotate(-5deg) translate(0%, 1.33%); }
+        .astronaut-container .astronaut.Jets-On .upper-body .left-arm .lower {
+          transform: rotate(-5deg) translate(-3%, -5%); }
+          .astronaut-container .astronaut.Jets-On .upper-body .left-arm .lower .hand {
+            transform: rotate(65deg) translate(-82%, 18%); }
+    .astronaut-container .astronaut.Jets-On .lower-body {
+      transform: translateY(-8%); }
+      .astronaut-container .astronaut.Jets-On .lower-body .left-leg {
+        transform: rotate(0deg); }
+        .astronaut-container .astronaut.Jets-On .lower-body .left-leg .upper {
+          transform: translateX(0%); }
+        .astronaut-container .astronaut.Jets-On .lower-body .left-leg .lower {
+          transform: rotate(-5deg) translateY(0%); }
+          .astronaut-container .astronaut.Jets-On .lower-body .left-leg .lower .calve {
+            transform: translateX(0%); }
+          .astronaut-container .astronaut.Jets-On .lower-body .left-leg .lower .foot {
+            transform: translate(3%, 0%) scaleY(1.1); }
+      .astronaut-container .astronaut.Jets-On .lower-body .right-leg {
+        transform: rotate(0deg); }
+        .astronaut-container .astronaut.Jets-On .lower-body .right-leg .upper {
+          transform: translateX(0%); }
+        .astronaut-container .astronaut.Jets-On .lower-body .right-leg .lower {
+          transform: rotate(5deg) translateY(0%); }
+          .astronaut-container .astronaut.Jets-On .lower-body .right-leg .lower .calve {
+            transform: translateX(0%); }
+          .astronaut-container .astronaut.Jets-On .lower-body .right-leg .lower .foot {
+            transform: translate(-3%, 0%) scaleY(1.1); }
+    .astronaut-container .astronaut.On-Earth {
+      transform: translateY(0%);
+      -webkit-transition: all 7s ease-in-out;
+      -o-transition: all 7s ease-in-out;
+      -moz-transition: all 7s ease-in-out;
+      -ms-transition: all 7s ease-in-out;
+      transition: all 7s ease-in-out; }
+    .astronaut-container .astronaut.On-Load {
+      transform: translateY(200%);
+      -webkit-transition: all 2s ease-in-out;
+      -o-transition: all 2s ease-in-out;
+      -moz-transition: all 2s ease-in-out;
+      -ms-transition: all 2s ease-in-out;
+      transition: all 2s ease-in-out; }
     .astronaut-container .astronaut.Take-Off {
       animation: up-down 3s ease-in-out; }
-      .astronaut-container .astronaut.Take-Off .head,
-      .astronaut-container .astronaut.Take-Off .helmet,
-      .astronaut-container .astronaut.Take-Off .shield,
-      .astronaut-container .astronaut.Take-Off .upper-body,
-      .astronaut-container .astronaut.Take-Off .lower-body,
-      .astronaut-container .astronaut.Take-Off .torso,
-      .astronaut-container .astronaut.Take-Off .upper,
-      .astronaut-container .astronaut.Take-Off .lower,
-      .astronaut-container .astronaut.Take-Off .calve,
-      .astronaut-container .astronaut.Take-Off .hand,
-      .astronaut-container .astronaut.Take-Off .forearm,
-      .astronaut-container .astronaut.Take-Off .right-arm,
-      .astronaut-container .astronaut.Take-Off .left-arm,
-      .astronaut-container .astronaut.Take-Off .belt,
-      .astronaut-container .astronaut.Take-Off .left-leg,
-      .astronaut-container .astronaut.Take-Off .right-leg,
-      .astronaut-container .astronaut.Take-Off .foot {
-        -webkit-transition: all 0.25s cubic-bezier(0.67, 0.07, 1, 1);
-        -o-transition: all 0.25s cubic-bezier(0.67, 0.07, 1, 1);
-        -moz-transition: all 0.25s cubic-bezier(0.67, 0.07, 1, 1);
-        -ms-transition: all 0.25s cubic-bezier(0.67, 0.07, 1, 1);
-        transition: all 0.25s cubic-bezier(0.67, 0.07, 1, 1); }
-      .astronaut-container .astronaut.Take-Off .head {
-        transform: translateY(-12%); }
-        .astronaut-container .astronaut.Take-Off .head .helmet {
-          transform: scaleY(0.9) translateY(-7%); }
-        .astronaut-container .astronaut.Take-Off .head .shield {
-          transform: translateY(-13%) scaleY(0.87) scaleX(0.95); }
-        .astronaut-container .astronaut.Take-Off .head .details {
-          transform: translateY(-100%) scaleY(0.85); }
-      .astronaut-container .astronaut.Take-Off .upper-body {
-        transform: translateY(-10%); }
-        .astronaut-container .astronaut.Take-Off .upper-body .right-arm {
-          transform: rotate(5deg) translate(0%, -1.33%); }
-          .astronaut-container .astronaut.Take-Off .upper-body .right-arm .lower {
-            transform: rotate(5deg) translate(3%, -5%); }
-            .astronaut-container .astronaut.Take-Off .upper-body .right-arm .lower .hand {
-              transform: rotate(-65deg) translate(82%, 18%); }
-        .astronaut-container .astronaut.Take-Off .upper-body .left-arm {
-          transform: rotate(-5deg) translate(0%, 1.33%); }
-          .astronaut-container .astronaut.Take-Off .upper-body .left-arm .lower {
-            transform: rotate(-5deg) translate(-3%, -5%); }
-            .astronaut-container .astronaut.Take-Off .upper-body .left-arm .lower .hand {
-              transform: rotate(65deg) translate(-82%, 18%); }
-      .astronaut-container .astronaut.Take-Off .lower-body {
-        transform: translateY(-8%); }
-        .astronaut-container .astronaut.Take-Off .lower-body .left-leg {
-          transform: rotate(0deg); }
-          .astronaut-container .astronaut.Take-Off .lower-body .left-leg .upper {
-            transform: translateX(0%); }
-          .astronaut-container .astronaut.Take-Off .lower-body .left-leg .lower {
-            transform: rotate(-5deg) translateY(0%); }
-            .astronaut-container .astronaut.Take-Off .lower-body .left-leg .lower .calve {
-              transform: translateX(0%); }
-            .astronaut-container .astronaut.Take-Off .lower-body .left-leg .lower .foot {
-              transform: translate(3%, 0%) scaleY(1.1); }
-        .astronaut-container .astronaut.Take-Off .lower-body .right-leg {
-          transform: rotate(0deg); }
-          .astronaut-container .astronaut.Take-Off .lower-body .right-leg .upper {
-            transform: translateX(0%); }
-          .astronaut-container .astronaut.Take-Off .lower-body .right-leg .lower {
-            transform: rotate(5deg) translateY(0%); }
-            .astronaut-container .astronaut.Take-Off .lower-body .right-leg .lower .calve {
-              transform: translateX(0%); }
-            .astronaut-container .astronaut.Take-Off .lower-body .right-leg .lower .foot {
-              transform: translate(-3%, 0%) scaleY(1.1); }
+    .astronaut-container .astronaut.Drop-In {
+      animation: drop-in 10s linear; }
     .astronaut-container .astronaut.Enter {
       transform: translate(-200%, 200%); }
       .astronaut-container .astronaut.Enter .head,
@@ -1108,11 +1389,12 @@ h1 {
       .astronaut-container .astronaut.Reposition-On-Entry .upper-body .right-arm .lower .hand {
         transform: rotate(-65deg) translate(96%, 7%); }
     .astronaut-container .astronaut.Relax {
-      -webkit-transition: all 3s ease-in;
-      -o-transition: all 3s ease-in;
-      -moz-transition: all 3s ease-in;
-      -ms-transition: all 3s ease-in;
-      transition: all 3s ease-in; }
+      filter: brightness(100%);
+      -webkit-transition: all 5s ease-in;
+      -o-transition: all 5s ease-in;
+      -moz-transition: all 5s ease-in;
+      -ms-transition: all 5s ease-in;
+      transition: all 5s ease-in; }
       .astronaut-container .astronaut.Relax .upper-body .left-arm {
         transform: rotate(-8.5deg); }
         .astronaut-container .astronaut.Relax .upper-body .left-arm .lower {
@@ -1207,6 +1489,50 @@ h1 {
     transform: translateY(2%); }
   100% {
     transform: translateY(0%); } }
+@-webkit-keyframes drop-in {
+  0% {
+    transform: translateY(-200%); }
+  25% {
+    transform: translateY(-100%); }
+  50% {
+    transform: translateY(50%); }
+  75% {
+    transform: translateY(25%); }
+  100% {
+    transform: translate(0%); } }
+@-moz-keyframes drop-in {
+  0% {
+    transform: translateY(-200%); }
+  25% {
+    transform: translateY(-100%); }
+  50% {
+    transform: translateY(50%); }
+  75% {
+    transform: translateY(25%); }
+  100% {
+    transform: translate(0%); } }
+@-ms-keyframes drop-in {
+  0% {
+    transform: translateY(-200%); }
+  25% {
+    transform: translateY(-100%); }
+  50% {
+    transform: translateY(50%); }
+  75% {
+    transform: translateY(25%); }
+  100% {
+    transform: translate(0%); } }
+@keyframes drop-in {
+  0% {
+    transform: translateY(-200%); }
+  25% {
+    transform: translateY(-100%); }
+  50% {
+    transform: translateY(50%); }
+  75% {
+    transform: translateY(25%); }
+  100% {
+    transform: translate(0%); } }
 @-webkit-keyframes shoot-down-1 {
   0% {
     transform: translate(0%, 0%);
@@ -1296,15 +1622,14 @@ h1 {
   top: 0;
   left: 0;
   width: 100%;
-  height: 65%;
-  z-index: 0;
-  display: none; }
+  height: 100%;
+  z-index: 0; }
   .canvas canvas {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 65%; }
+    height: 100%; }
 
 @-webkit-keyframes zoomies {
   0% {
@@ -1359,15 +1684,15 @@ h1 {
 
 @media (max-width: 550px) {
   nav {
-    width: 100%;
     bottom: 0; }
     nav .menu {
+      padding: 0px;
       width: 100%; }
       nav .menu .work,
       nav .menu .skills,
       nav .menu .about,
       nav .menu .contact {
         width: 25%;
-        height: auto; } }
+        margin: 0px; } }
 
 /*# sourceMappingURL=style.css.map */
