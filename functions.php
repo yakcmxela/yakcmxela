@@ -23,7 +23,7 @@ function get_mah_scripts() {
 	wp_enqueue_style('boostrap', get_template_directory_uri() . '/css/bootstrap/bootstrap.min.css');
 	wp_enqueue_style('style', get_template_directory_uri() . '/css/style.css');
 	wp_enqueue_style('jam-icons', 'https://unpkg.com/jam-icons@1.0.72/css/jam-icons.min.css');
-	wp_enqueue_style('Roboto', 'https://fonts.googleapis.com/css?family=Libre+Barcode+39+Text|Lato:300|Josefin+Sans:300|Poiret+One|Julius+Sans+One');
+	wp_enqueue_style('Roboto', 'https://fonts.googleapis.com/css?family=Libre+Barcode+39+Text|Lato:400, 700|Poiret+One|Julius+Sans+One|Montserrat+Alternates:800');
 }
 	add_action('wp_enqueue_scripts', 'get_mah_jquery');
 	add_action('wp_enqueue_scripts', 'get_mah_scripts');

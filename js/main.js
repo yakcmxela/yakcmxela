@@ -122,23 +122,10 @@ $(document).ready(function() {
 		letterRandomizer(aa, random(10, 1), A);
 	}
 // Nav
-	function cloud() {
-		cloudTransform = requestAnimationFrame(cloud);
-		windowHeight = window.innerHeight;
-		cloudHeight = cloud.height();
-
-		fullTransform = windowHeight + cloudHeight;
-
-		cloud.css('transform', 'translateY(' + fullTransform + 'px)')
-
-	}
-
-	$('.menu-button').on('click', function() {
-		$('.menu').toggleClass('Active');
-	});
-	var cloudTransform;
-	$('.about').on('click', function() {
-		$('.start-maine').toggleClass('Take-Off');
+	var page = 'about';
+	function fromEarth() {
+		$('.earth-content').css('z-index', 2);
+		$('.start-maine').addClass('Take-Off');
 		space.removeClass('Hidden');
 		setTimeout(function() {
 			cloud.addClass('Active');
@@ -146,7 +133,7 @@ $(document).ready(function() {
 		setTimeout(function() {
 			blastOff = requestAnimationFrame(createParticles);
 			astronaut.removeClass('On-Load');
-		}, 5000);
+		}, 3000);
 
 		setTimeout(function() {
 			earth.addClass('Fade-Out');
@@ -158,13 +145,71 @@ $(document).ready(function() {
 			cancelAnimationFrame(blastOff);
 			blastOff = requestAnimationFrame(removeParticles);
 			astronaut.addClass('Relax');
-		}, 15000);
+		}, 10000);
+		
+	}
 
+	function toSkills() {
 		setTimeout(function() {
+			astronaut.addClass('Menu');
 			cancelAnimationFrame(blastOff);
 			ctx.clearRect( 0, 0, canvas.width, canvas.height );
-		}, 16000);
+		}, 15000);
+		setTimeout(function() {
+			$('.skillset').addClass('Active');
+		}, 20000);
+		page = 'skills';
+	}
+
+	function toWork() {
+		astronaut.removeClass('Menu');
+		$('.skillset').removeClass('Active');
+		setTimeout(function() {
+			takeOff();
+			blastOff = requestAnimationFrame(createParticles);
+		}, 5500);
+		setTimeout(function() {
+			cancelAnimationFrame(blastOff);
+			blastOff = requestAnimationFrame(removeParticles);
+			// cancel animation frame after easing complete
+			init();
+			setTimeout(function() {
+				cancelAnimationFrame(blastOff);
+				ctx.clearRect( 0, 0, canvas.width, canvas.height );
+			}, 100);
+			innerspace.removeClass('Travel-Fade');
+			outerspace.removeClass('Up');
+		}, 15000)
+		page = 'work';
+	}
+
+
+	var menuButtons = $('.menu').children();
+
+	menuButtons.on('click', function() {
+		menuButtons.removeClass('Active');
+		$(this).toggleClass('Active');
+	})
+
+	$('.menu-button').on('click', function() {
+		$('.menu').toggleClass('Active');
 	});
+
+	$('.skills').on('click', function() {
+		fromEarth();
+		toSkills();
+	});
+
+	$('.work').on('click', function() {
+		console.log(page);
+		if (page == 'about') {
+			fromEarth();
+			toWork();
+		} else if (page == 'skills') {
+			toWork();
+		}
+		
+	})
 
 // Landing page
 	
@@ -479,6 +524,9 @@ $(document).ready(function() {
 			astronaut.removeClass('Drop-In');
 			astronaut.addClass('Relax');
 		}, 8000);
+		setTimeout(function() {
+			init();
+		}, 10000)
 	}
 
 	$(window).on('resize', function() {

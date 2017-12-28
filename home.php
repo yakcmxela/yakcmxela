@@ -3,6 +3,49 @@
 ?>
 <?php get_header(); ?>
 <canvas id="space"></canvas>
+<div class="skillset d-flex justify-content-center flex-wrap">
+	<ul class="languages">
+		<li>Languages</li>
+		<hr>
+		<li>HTML/CSS</li>
+		<li>Sass</li>
+		<li>JavaScript</li>
+		<li>PHP</li>
+		<li>Liquid</li>
+	</ul>
+	<ul class="environments">
+		<li>Environments</li>
+		<hr>
+		<li>WordPress</li>
+		<li>Shopify</li>
+		<li>Squarespace</li>
+		<li>WooCommerce</li>
+	</ul>
+	<ul class="libraries">
+		<li>Libraries</li>
+		<hr>
+		<li>JQuery</li>
+		<li>Bootstrap</li>
+		<li>three.js</li>
+		<li>d3.js</li>
+		<li>Mapbox / Leaflet</li>
+		<li>Turf.js</li>
+	</ul>
+	<ul class="design">
+		<li>Graphic Design</li>
+		<hr>
+		<li>Mad Photoshop Skills</li>
+		<li>Adobe Creative Suite</li>
+		<li>Blender (just started)</li>
+	</ul>
+	<ul class="marketing">
+		<li>Marketing</li>
+		<hr>
+		<li>Google Adwords</li>
+		<li>Facebook/IG Ads</li>
+		<li>Basic SEO</li>
+	</ul>
+</div>
 <div class="astronaut-container">
 	<div class="astronaut Jets-On On-Earth On-Load">
 		<div class="head">
@@ -61,13 +104,20 @@
 </div>
 <div class="earth-content">
 	<div class="start-maine" style="background-image: url('<?php echo get_template_directory_uri(); ?>/media/rocks-hendrix.jpg');"">
-	</div>	
+		<div class="about-content" style="max-width: 650px; padding: 64px">
+			<p><strong>Greetings</strong>,</p>
+			<p>I am a self taught web developer from Washington DC, now living in coastal Downeast Maine. Like so many, my journey into code began at sea, on a lobster fishing vessel named the Uptown Girl.</p>
+			<p>I created my first website while fishing -- a simple Shopify store. While I didn't earn any money, I discovered that more than anything, I loved tinkering with the site's code. My intrigue quickly snowballed into a passion.</p>
+			<p>I quit fishing soon afterwards, began <a href="www.boldcoastcreative.com" target="_blank">Bold Coast Creative</a>, and set out outbuilding websites for local businesses. I love researching, practicing, and improving my understanding of programming.</p>
+			<p>I am currently seeking full-time employment, and willing to relocate.</p>
+			<p class="right mr-3"><strong>Alex McKay</strong></p>
+		</div>
+	</div>
 	<img class="cloud" src="<?php echo get_template_directory_uri(); ?>/media/cloud.png">
 	<img class="cloud" src="<?php echo get_template_directory_uri(); ?>/media/cloud.png">
 	<img class="cloud" src="<?php echo get_template_directory_uri(); ?>/media/cloud.png">
 </div>
 <div class="space-content">
-
 	<div class="space-container">
 		<div class="space outerspace" style="background-image: url('<?php echo get_template_directory_uri(); ?>/media/stars-retro.jpg');"></div>
 		<div class="space innerspace Slow-Float" style="background-image: url('<?php echo get_template_directory_uri(); ?>/media/stars-retro.jpg');"></div>

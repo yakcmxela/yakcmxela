@@ -25,21 +25,17 @@
 
 <nav>
 	<div class="menu d-flex">
-		<div class="work to">
-			<!-- <div class="paintbrush">
-				<img src="<?php echo get_template_directory_uri(); ?>/svg/paintbrush.svg">
-				<img src="<?php echo get_template_directory_uri(); ?>/svg/brushtip.svg">
-			</div> -->
-			<img src="<?php echo get_template_directory_uri(); ?>/svg/work.svg">
-			<p>Work</p>
+		<div class="about Active">
+			<img src="<?php echo get_template_directory_uri(); ?>/svg/about.svg">
+			<p>About</p>
 		</div>
-		<div class="skills db">
+		<div class="skills">
 			<img src="<?php echo get_template_directory_uri(); ?>/svg/skills.svg">
 			<p>Skills</p>
 		</div>
-		<div class="about">
-			<img src="<?php echo get_template_directory_uri(); ?>/svg/about.svg">
-			<p>About</p>
+		<div class="work">
+			<img src="<?php echo get_template_directory_uri(); ?>/svg/work.svg">
+			<p>Work</p>
 		</div>
 		<div class="contact" >
 			<img src="<?php echo get_template_directory_uri(); ?>/svg/satellite-dish.svg">
