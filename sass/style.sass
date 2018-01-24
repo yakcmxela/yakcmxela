@@ -708,7 +708,7 @@ nav
 						transform: translate(0%, 100%)
 						+transition(all 1s cubic-bezier(0.22, 0.61, 0.36, 1))
 						&.Active
-							transform: translate(0%, 0%)
+							transform: translate(0%, 1%)
 					&.Active
 						transform: translateY(0%)
 						opacity: 1
@@ -733,24 +733,25 @@ nav
 				min-height: 225px
 				min-width: 300px
 				height: 600px
-				width: 800px
+				width: 850px
 				z-index: 10
 				position: relative
 				overflow: hidden
 				position: absolute
-				top: 60%
+				top: 62%
 				left: 50%
 				transform: translate(-50%, -50%)
 				+transition(all 1s cubic-bezier(0.22, 0.61, 0.36, 1))
 				&.About
-					transform: translate(-800px, -50%)
+					transform: translate(-850px, -50%)
 				&.Skills
 					transform: translate(-50%, -30%)
 				&.Contact
-					transform: translate(-50%, -15%)
+					transform: translate(-50%, -18%)
 				.tv
 					max-width: 100%
 					position: absolute
+					height: 110%
 					left: 50%
 					top: 50%
 					transform: translate(-50%, -50%)
@@ -1787,7 +1788,7 @@ nav
 			background-color: $light-grey-one-quarter
 			border-radius: 12px
 			cursor: pointer
-@media (max-width: 1650px)
+@media (max-width: 1750px)
 	h1
 		font-size: 52px
 	p
@@ -1801,17 +1802,18 @@ nav
 					.about
 					.contact
 						.antenna
-							width: 150px
 							transform: translate(-100%, 200%)
 							&.Active
-								transform: translate(-100%, 25%)
+								transform: translate(-20%, 0%)
 				.astro
 					width: 600px
 					height: 450px
 					left: 50%
 					top: 55%
 					&.About
-						transform: translate(-650px, -50%)
+						transform: translate(-600px, -50%)
+					&.Contact
+						transform: translate(-50%, -13%)
 
 @media (max-width: 1300px)
 	h1
@@ -1824,20 +1826,25 @@ nav
 			.section-block
 				.intro
 					width: 500px
+					&.About
+						transform: translate(2%, -50%)
 					.about
 					.contact
 						.antenna
-							width: 150px
+							width: 200px
 							transform: translate(-100%, 200%)
 							&.Active
-								transform: translate(-100%, 25%)
+								transform: translate(-70%, 1%)
 				.astro
 					width: 500px
 					height: 375px
 					top: 52%
 					left: 50%
 					&.About
-						transform: translate(-540px, -50%)
+						transform: translate(-520px, -50%)
+					&.Contact
+						transform: translate(-50%, -5%)
+
 
 @media (max-width: 1050px)
 	h1
@@ -1852,17 +1859,19 @@ nav
 					width: 500px
 					&.About
 						transform: translate(-50%, -200px)
+						h1
+							margin-bottom: 0px
 					.about
 					.contact
 						.antenna
-							width: 150px
+							width: 200px
 							transform: translate(-100%, 200%)
 							&.Active
-								transform: translate(-100%, 25%)
+								transform: translate(-70%, 1%)
 				.astro
 					width: 500px
 					height: 375px
-					top: 52%
+					top: 57%
 					left: 50%
 					&.About
 						transform: translate(-50%, 0%)
@@ -1881,15 +1890,7 @@ nav
 			.outro
 				margin-top: 128px
 
-@media (max-width: 650px)
-	h1
-		font-size: 42px
-		margin-bottom: 12px !important
-	h2
-		font-size: 32px !important
-		padding: 24px 12px !important
-	h4
-		font-size: 22px
+@media(max-width: 768px)
 	nav
 		top: 0
 		left: 50%
@@ -1918,7 +1919,7 @@ nav
 			position: relative
 			width: 75px
 			height: 75px
-			transform: translateX(700%)
+			transform: translateX(800%)
 			margin: 0px 2px
 		#skills
 			transition-delay: .1s
@@ -1934,6 +1935,16 @@ nav
 				border-width: 3px
 				width: 50px
 				height: 50px
+
+@media (max-width: 650px)
+	h1
+		font-size: 42px
+		margin-bottom: 12px !important
+	h2
+		font-size: 32px !important
+		padding: 24px 12px !important
+	h4
+		font-size: 22px
 	.page 
 		.intro-content
 			.section-block
@@ -1949,6 +1960,7 @@ nav
 					.about
 						max-width: 100%
 						padding: 12px
+						margin-top: 0px
 					.skills
 						flex-direction: column
 						width: 100%
@@ -1977,9 +1989,9 @@ nav
 							left: 50%
 							transform: translate(-100%, 200%)
 							&.Active
-								transform: translate(-50%, 50%)
+								transform: translate(-50%, 55%)
 				.astro
-					width: 300px
+					width: 325px
 					height: 225px
 					left: 50%
 					top: 50%
@@ -1990,8 +2002,13 @@ nav
 						transform: translate(-50%, 40%)
 					&.Skills 
 						transform: translate(-50%, -90%)
+					.tv
+						height: 110%
 					.space-bg
 						min-height: 200px
+						.outerspace,
+						.innerspace
+							opacity: 1
 		.page-content
 			margin-top: 64px
 			.section-block

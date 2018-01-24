@@ -181,13 +181,13 @@ $(document).ready(function() {
 	// Main nav
 	function setNavPos() {
 		defineViewport();
-		if(viewportWidth > 650) {
+		if(viewportWidth > 768) {
 			positionAroundCircle(nav.menuButton, nav.radius, findRadians(nav.container, 2, 90, 90));
 			positionAroundCircle(nav.main.about, nav.radius, findRadians(nav.main, 1, 0, 90));
 			positionAroundCircle(nav.main.work, nav.radius, findRadians(nav.main, 2, 0, 90));
 			positionAroundCircle(nav.main.skills, nav.radius, findRadians(nav.main, 3, 0, 90));
 			positionAroundCircle(nav.main.contact, nav.radius, findRadians(nav.main, 4, 0, 90));
-		} else if (viewportWidth < 650) {
+		} else if (viewportWidth <= 768) {
 			nav.menuButton.css('left', 'initial');
 			nav.menuButton.css('top', 'initial');
 			nav.main.about.css('left', 'initial');
@@ -509,6 +509,7 @@ $(document).ready(function() {
 	}
 
 	function closePortfolio() {
+		$('html, body').animate({scrollTop:0},'50');
 		astronaut.removeClass('Down');
 		astronaut.removeClass('Take-Off');
 		astronaut.removeClass('Jets-On');
