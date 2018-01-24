@@ -2,10 +2,10 @@
 @import "variables"
 @import "mixins"
 @import "positions"
+@import "animations"
 
 // HTML Elements
 html, body
-	height: 100vh
 	width: 100%
 	margin: 0
 	padding: 0
@@ -13,19 +13,26 @@ html, body
 	box-sizing: border-box
 	letter-spacing: 1px
 	color: $dark-grey
-	overflow: hidden
+
+h1, h2, h3,
+	font-weight: 300
+h4, h5, p, li
+	font-weight: 300
+	margin: 0px
 h1
-	font-size: 62px
-	margin-bottom: 0
+	font-size: 72px
+	letter-spacing: 0px
+	margin: 0px
 h2
 	font-size: 56px
-	margin-bottom: 0
+	margin: 0px 0px 12px 0px
 h3
 	font-size: 48px
-	margin-bottom: 0
+	margin: 0px 0px 12px 0px
 h4
 	font-size: 32px
-	margin-bottom: 16px
+	margin: 0px 0px 12px 0px
+	color: $mid-grey
 h5
 	font-size: 24px
 	margin-bottom: 0
@@ -33,17 +40,17 @@ h6
 	font-size: 18px
 	line-height: 26px
 	margin-bottom: 0	
-	font-family: $secondary-font
-p
-	font-size: 16px
+p, li
+	font-family: $primary-font
 	margin-bottom: 6px
-	font-weight: 400
-	line-height: 24px
-	
-	padding-bottom: 5px
+	font-size: 22px
+	line-height: 38px
 a
 	color: inherit
 	font-weight: inherit
+	text-decoration: none
+	font-size: 24px
+
 a:hover
 	color: inherit
 	text-decoration: none
@@ -116,132 +123,158 @@ footer
 	box-shadow: 1px 1px 3px 0px rgba(0,0,0,.25)
 
 // Navigation
+.nav-button
+	color: white
+	position: absolute
+	left: 50%
+	top: 5%
+	transform: translate(-50%, 0%)
+	z-index: 10000
+	cursor: pointer
+	background-color: black
+.portfolio-site-name
+	position: absolute
+	color: white
+	bottom: 24px
+	left: 24px
+	font-size: 32px
 nav
 	position: fixed
-	bottom: 12px
-	left: 50%
-	width: 100%
-	transform: translate(-50%, 0%)
+	top: 0
+	left: 0
+	width: 800px
+	height: 800px
+	border-radius: 100%
+	background-color: rgba(255, 255, 255, .75)
+	border: 3px dotted rgba(255, 255, 255, .75)
+	transform: translate(-50%, -50%) rotate(-90deg) scale(0.35)
 	z-index: 9999
 	display: flex
 	justify-content: center
 	align-items: center
-	+transition(all 3s cubic-bezier(0.22, 0.61, 0.36, 1))
-	&.Hidden
-		.menu
-			.work
-				transform: translateY(-400%)
-				+transition(all .25s cubic-bezier(0.78, 0.17, 1, 1))
-			.skills
-				transform: translateY(-400%)
-				+transition(all .5s cubic-bezier(0.78, 0.17, 1, 1))
-			.about
-				transform: translateY(-400%)
-				+transition(all .75s cubic-bezier(0.78, 0.17, 1, 1))
-			.contact
-				transform: translateY(-400%)
-				+transition(all 1s cubic-bezier(0.78, 0.17, 1, 1))
-	.menu
-		display: flex
-		flex-wrap: wrap
-		background-color: white
-		padding: 6px
-		//width: 352px
-		.menu-button
-
-		.work,
-		.skills,
-		.experience,
-		.about,
-		.contact
-			height: 100px
+	box-sizing: content-box
+	+transition(all 1s cubic-bezier(0.22, 0.61, 0.36, 1))
+	&:hover
+		#open-menu
+			i
+				background-color: #bffccd
+	&.Open
+		transform: translate(-50%, -50%) rotate(0deg) scale(1)
+		#open-menu
+			position: absolute
+			height: 200px
+			width: 200px
+			background-color: #c7c7c7
+			border-radius: 100%
+			transform: scale(.5)
+			+transition(all 1s cubic-bezier(0.22, 0.61, 0.36, 1))
+	#open-menu
+		position: absolute
+		height: 200px
+		width: 200px
+		background-color: #c7c7c7
+		border-radius: 100%
+		cursor: pointer
+		i
 			width: 100px
-			cursor: crosshair
-			position: initial
-			z-index: 1
-			position: relative
-			display: flex
-			flex-direction: column
-			align-items: center
-			margin: 6px
+			height: 100px
+			border: 12px solid white
+			position: absolute
+			left: 50%
+			top: 50%
+			transform: translate(-50%, -50%)
+			border-radius: 100%
+			+transition(all .25s cubic-bezier(0.22, 0.61, 0.36, 1))
+	#work,
+	#skills,
+	#about,
+	#contact
+		position: absolute
+		height: 100px
+		width: 100px
+		cursor: pointer
+		z-index: 1
+		display: flex
+		flex-direction: column
+		align-items: center
+		background-color: white
+		border-radius: 100%
+		border: 1px solid #d3d3d3
+		+transition(all .15s ease-in-out)
+		img
+			height: 80%
+			position: absolute
+			top: 50%
+			left: 50%
+			transform: translate(-50%, -50%)
+			z-index: 2
 			+transition(all .15s ease-in-out)
-			img,
-			.paintbrush
-				height: 100%
-				z-index: 2
-				box-sizing: content-box
-				border: 12px solid white
-				border-bottom: 0px
-				transform: translateY(-12px)
-				+transition(all .15s ease-in-out)
-			p
-				margin-bottom: 0px
-				padding-bottom: 0px
-				color: black
-				font-family: "Julius Sans One"
-				font-size: 18px
-				z-index: 1
-				position: absolute
-				bottom: 0
-			&.Active,
-			&:hover
-				img
-					transform: translateY(-48px)
+		p
+			margin-bottom: 0px
+			padding-bottom: 0px
+			color: black
+			font-size: 18px
+			z-index: 1
+			position: absolute
+			bottom: 0
+			display: none
+		&.Active,
+		&:hover
 
+	#work
+		img
+		//	background-color: #00b8d
+		&:hover
+			.paintbrush
+				animation: paintbrush 2s ease-in-out infinite
+				img
+					&:nth-child(2)
+						animation: brushtip 2s ease-in-out infinite
+	#skills
+		&.Active
+			transform: translate(-50%, 400%)
+			animation: full-rotation-absolute
+
+	#about
+		img
+		//	background-color: #f08737
+		// transform: translate(-300%, 0%)
+	#contact
+		img
+		//	background-color: #281753
+		// transform: translate(-400%, 0%)
+
+	&.Work
+		transform: translate(10%, -50%) rotate(-90deg)
+	&.Mini
+		transform: translate(-30%, -50%) rotate(-90deg) scale(.3)
+	&.Hidden
 		.work
-			//transform: translate(-100%, 0%)
-			img
-				background-color: #00b8db
-				+keyframes(paintbrush)
-					0%
-						transform: rotate(0deg)
-					50%
-						transform: rotate(-30deg)
-					100%
-						transform: rotate(0deg)
-				+keyframes(brushtip)
-					0%
-						transform: skew(0deg) translateX(0px)
-					50%
-						transform: skew(-10deg) translateX(4px)
-					100%
-						transform: skew(0deg) translateX(0px)
-			&:hover
-				.paintbrush
-					animation: paintbrush 2s ease-in-out infinite
-					img
-						&:nth-child(2)
-							animation: brushtip 2s ease-in-out infinite
+			transform: rotate(-35deg)
+			+transition(all .25s cubic-bezier(0.78, 0.17, 1, 1))
 		.skills
-			img
-				background-color: #ee41ff
-		.experience
-			
+			transform: rotate(-35deg)
+			+transition(all .5s cubic-bezier(0.78, 0.17, 1, 1))
 		.about
-			img
-				background-color: #f08737
-			// transform: translate(-300%, 0%)
+			transform: rotate(-35deg)
+			+transition(all .75s cubic-bezier(0.78, 0.17, 1, 1))
 		.contact
-			img
-				background-color: #281753
-			// transform: translate(-400%, 0%)
+			transform: rotate(-35deg)
+			+transition(all 1s cubic-bezier(0.78, 0.17, 1, 1))
+	.sun
+		width: 200px
+		height: 200px
+		border-radius: 100%
+		position: absolute
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		background-color: yellow
+
+	
 
 // Stuff
 
-.page-content
-	background-color: rgb(8, 0, 53)
-	height: 200%
-	width: 100%
-	overflow: hidden
-	position: relative
-	+transition(all 1s ease-out)
-h1
-	font-family: $silly-font
-	font-size: 72px
-	line-height: 72px
-	color: #13046b
-	letter-spacing: -1px
-	
 .name
 	position: absolute
 	top: 50%
@@ -269,31 +302,6 @@ h1
 		opacity: 0
 		visibility: 0
 
-.epaPlanet
-	position: absolute
-	width: 256px
-	height: 256px
-	border-radius: 100%
-	cursor: pointer
-	z-index: 11
-	top: 50%
-	left: 50%
-	transform: translate(-50%, -50%)
-+keyframes(cloud-one)
-	0%
-		transform: translateY(-100%)
-	100%
-		transform: translateY(500%)
-+keyframes(cloud-two)
-	0%
-		transform: translateY(-100%) scaleX(-1)
-	100%
-		transform: translateY(500%) scaleX(-1)
-+keyframes(cloud-three)
-	0%
-		transform: translateY(-100%) scaleY(-1)
-	100%
-		transform: translateY(500%) scaleY(-1)
 .earth-content
 	position: fixed
 	overflow: hidden
@@ -319,9 +327,6 @@ h1
 			max-width: 650px
 			padding: 64px
 			text-align: justify
-			a,
-			strong
-				font-weight: 700
 	.cloud
 		position: absolute
 		transform: translateY(-100%)
@@ -347,68 +352,830 @@ h1
 		filter: blur(200px)
 		transform: translate(-50%, 150%) scaleX(2)
 
-.horizon-leaving
-	height: 100%
-	width: 100%
-	position: absolute
-	z-index: 9004
-	transform: translateY(-99%)
-	background-size: cover
-	background-position: bottom center
-	+transition(all 5s linear)
-	&.Lets-Go
-		transform: translateY(100%)
-
-#space
-	width: 100%
-	height: 100%
-	position: absolute
-	z-index: 3
-.skillset
-	position: absolute
-	top: 50%
-	left: 50%
-	transform: translate(-50%, -50%) scale(0)
-	z-index: 4
-	max-width: 600px
-	+transition(all .25s linear)
-	ul
-		padding: 18px
-		background-color: white
-		border: 6px solid #00b8db
-		border-radius: 12px
-		box-shadow: inset 0px 0px 4px rgba(0, 0, 0, .45)
-		margin: 6px
-		li
-			&:first-of-type
-				font-weight: 700
-	&.Active
-		transform: translate(-50%, -50%) scale(1)
-.space-content
-	position: fixed
-	height: 100%
-	width: 100%
-	top: 0
-	z-index: 1
-	&.Hidden
-		transform: translateY(-100%)
-	.space-container
-		position: fixed
+// .space-bg
+// 	overflow: hidden
+// 	top: 0px
+// 	left: 0px
+// 	right: 120px
+// 	width: 100%
+// 	height: 512px
+// 	z-index: 200
+// 	+transition(all 1s cubic-bezier(0.22, 0.61, 0.36, 1))
+// 	&.Nav-Closed
+// 		transform: translateY(-214px)
+// 	.space
+// 		position: absolute
+// 		left: 0
+// 		bottom: 0
+// 		top: -1240px
+// 		right: 0
+// 		width: 100%
+// 		z-index: -1
+// 		background-repeat: repeat
+	.planets
+		position: absolute
+		height: 298px
 		width: 100%
-		height: 100%
-		z-index: -1
-		.space
+		bottom: 0px
+		+transition(all .15s ease-in-out)
+		img
+			height: 80%
 			position: absolute
-			left: 0
-			bottom: 0
-			top: -1240px
-			right: 0
+			top: 50%
+			left: 50%
+			transform: translate(-50%, -50%)
+			z-index: 2
+			+transition(all .15s ease-in-out)
+		.chipmans,
+		.nofrills,
+		.bcc,
+		.darthia,
+		.epa
+			width: 256px
+			height: 256px
+			border-radius: 100%
+			overflow: hidden
+			position: absolute
+			right: 64px
+			top: 50%
+			transform: translateY(-50%)
+			+transition(all 1s cubic-bezier(0.22, 0.61, 0.36, 1))
+			&.Hidden
+				transform: translateY(200%)
+		.chipmans
+			.buoy
+				width: 50px
+				transform: rotate(80deg) translate(-30%, -50%)
+				z-index: 2
+				animation: bob 5s ease-in-out infinite
+			.water-back
+				width: 115px
+				height: 112px
+				animation: full-rotation-absolute 40s ease-in-out infinite
+				z-index: 1
+			.water-front
+				width: 120px
+				height: 105px
+				animation: full-rotation-absolute 50s ease-in-out infinite
+				z-index: 3
+				opacity: .5
+				&:last-of-type
+					animation: full-rotation-scale 50s ease-in-out infinite
+					animation-duration: 40s
+					width: 130px
+			.lobster,
+			.antenna
+				transform: translate(-50%, -60%) rotate(90deg)
+				z-index: 4
+				opacity: .7
+			.antenna
+				animation: antenna 10s ease-in-out infinite
+		.epa
+			overflow: hidden
+			background-color: #1f7ec3
+			.water
+				width: 82%
+				height: 120%
+				opacity: .85
+				animation: full-rotation-absolute linear infinite
+				position: absolute
+				left: 50%
+				top: 50%
+				border: 4px solid white
+				z-index: 1
+				.ship
+					z-index: 2
+					position: absolute
+					width: 128px
+					left: 75%
+					animation: ship 20s linear infinite
+					&:first-of-type
+						left: 25%
+						width: 64px
+						animation: ship-reverse 10s linear infinite
+				&:nth-child(1)
+					background-color: #06567f
+					animation-duration: 50s
+					border-radius: 90%
+				&:nth-child(2)
+					background-color: #c6ebff
+					animation-duration: 30s
+					border-radius: 90%
+				&:nth-child(3)
+					background-color: #004071
+					animation-duration: 60s
+					border-width: 1px
+					border-radius: 90%
+		.nofrills
+			background-color: initial
+			overflow: visible
+			.planet
+				width: 75%
+				height: 75%
+				position: absolute
+				left: 50%
+				top: 50%
+				transform: translate(-50%, -50%)
+				z-index: 1
+				border-radius: 100%
+				background-color: #d6d6d6
+				border-right: 5px solid white
+				border-left: 5px solid #4a4a4a
+				box-sizing: border-box
+			.ring
+				width: 95%
+				height: 30%
+				position: absolute
+				left: 50%
+				top: 50%
+				border: 18px solid yellow
+				border-radius: 100%
+				transform: translate(-50%, -50%)
+				animation: full-rotation-absolute 60s linear infinite
+				&:nth-child(2)
+					z-index: 2
+					clip-path: inset(49% 0% 0% 0%)
+				&:nth-child(3)
+					z-index: 0
+					clip-path: inset(0% 0% 49% 0%)
+		.darthia
+			background-color: initial
+			.planet
+				animation: full-rotation-absolute 100s linear infinite
+				width: 100%
+				height: 100%
+				position: absolute
+				left: 50%
+				top: 50%
+				.dirt
+					position: absolute
+					width: 75%
+					height: 75%
+					transform: translate(-50%, -50%) rotate(90deg)
+					z-index: 4	
+				.plant
+					position: absolute
+					top: 50%
+					left: 50%
+					width: 100%
+					height: 100%
+					transform: translate(-50%, -50%) rotate(120deg)
+					.sprout
+						position: absolute
+						top: 50%
+						left: 50%
+						height: 100%
+						width: 100%
+						z-index: 3
+						animation: grow-tomato 10s linear
+						transform: translate(-95%, -35%) rotate(-90deg) scale(1)
+					.tomato
+						position: absolute
+						top: 50%
+						left: 0%
+						animation: grow-fruit 10s linear
+						transform: translate(-60%, -45%) scale(.4) rotate(-135deg)
+						z-index: 4
+					.carrot
+						background-color: orange
+						position: absolute
+						width: 50px
+						height: 30px
+						z-index: 4
+						left: 85%
+						bottom: 20%
+						border-radius: 25%
+						transform: translate(-50%, 0%)
+						animation: grow-carrot 10s linear
+					.petals
+						width: 50px
+						height: 50px
+						position: absolute
+						animation: grow-flower 10s linear
+						transform: translate(-50%, 110%) scale(1)
+						z-index: 4
+						.petal
+							width: 10px
+							height: 10px
+							background-color: purple
+							border-radius: 20px 0px 20px 0px
+							transform-origin: bottom
+							position: absolute
+							&:nth-child(1)
+								transform: rotate(45deg) translate(55%)
+								background-color: #b700df
+							&:nth-child(2)
+								transform: rotate(90deg) translate(55%)
+								background-color: #b720df
+							&:nth-child(3)
+								transform: rotate(135deg) translate(55%)
+								background-color: #b740df
+							&:nth-child(4)
+								transform: rotate(180deg) translate(55%)
+								background-color: #b760df
+							&:nth-child(5)
+								transform: rotate(225deg) translate(55%)
+								background-color: #b760df
+							&:nth-child(6)
+								transform: rotate(270deg) translate(55%)
+								background-color: #b740df
+							&:nth-child(7)
+								transform: rotate(315deg) translate(55%)
+								background-color: #b720df
+							&:nth-child(8)
+								transform: rotate(360deg) translate(55%)
+								background-color: #b700df
+					&:nth-child(3)
+						transform: translate(-50%, -50%)
+						.sprout,
+						.petals
+							animation-delay: 5s
+							animation-fill-mode: backwards
+					&:nth-child(4)
+						transform: translate(-30%, -15%) rotate(225deg) scale(0.65)
+						.sprout
+							animation: grow-carrot-leaf 10s linear
+							animation-delay: 10s
+							animation-fill-mode: backwards
+						.carrot
+							animation-delay: 10s
+							animation-fill-mode: backwards
+		.bcc
+			.rotate
+				height: 100%
+				width: 100%
+				position: absolute
+				top: 50%
+				transform: translateY(-50%) rotate(90deg)
+				overflow: hidden
+				animation: full-rotation-absolute-y 720s linear infinite
+				.bg
+					animation: bccbg 30s linear infinite
+					width: 512px
+					height: 512px
+					position: absolute
+					top: 50%
+					z-index: 1
+				.storm
+					animation: storm 60s linear infinite
+					position: absolute
+					top: 50%
+					z-index: 3
+.cover
+	height: 100vh
+	width: 100vw
+	background-repeat: no-repeat
+.page
+	animation: fade-in 3s cubic-bezier(0.22, 0.61, 0.36, 1)
+	opacity: 1
+	min-height: 101vh
+	+transition(all 1s cubic-bezier(0.22, 0.61, 0.36, 1))
+	canvas
+		position: absolute
+		left: 0
+		top: 0
+		z-index: 10
+		+transition(all .25s cubic-bezier(0.22, 0.61, 0.36, 1))
+		&.Hidden
+			opacity: 0
+			visibility: hidden
+	.intro-content
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		transform: translateY(0vh)
+		+transition(all 1s cubic-bezier(0.22, 0.61, 0.36, 1))
+		&.Up
+			transform: translateY(-100vh)
+		.section-block
+			height: 100vh
+			position: relative
+			overflow: hidden
+			.intro
+				position: absolute
+				top: 35%
+				left: 50%
+				transform: translate(-50%, -50%)
+				width: 800px
+				max-width: 100%
+				+transition(all 1s cubic-bezier(0.22, 0.61, 0.36, 1))
+				h1
+					animation: arrive-y 2s cubic-bezier(0.22, 0.61, 0.36, 1)
+				.skills
+					opacity: 0
+					visibility: hidden
+					position: absolute
+					transform: translateY(20%)
+					display: flex
+					align-items: center
+					+transition(all 1s cubic-bezier(0.22, 0.61, 0.36, 1))
+					.links
+						margin-left: 12px
+					a
+						width: 50px
+						height: 50px
+						margin: 6px
+						transform: translateY(14px)
+						img
+							opacity: 0
+							width: 50px
+							transform: translateX(-100%) rotate(-90deg)
+							cursor: initial
+							+transition(all 1s cubic-bezier(0.22, 0.61, 0.36, 1))
+					&.Active
+						transform: translateY(0%)
+						opacity: 1
+						visibility: visible
+						img
+							opacity: .25
+							transform: translate(0%) rotate(0deg)
+							&:hover
+								opacity: .75
+				.contact
+					opacity: 0
+					visibility: hidden
+					position: absolute
+					z-index: 9
+					transform: translateY(20%)
+					+transition(all 1s cubic-bezier(0.22, 0.61, 0.36, 1))
+					.antenna
+						width: 300px
+						position: absolute
+						right: -75%
+						bottom: -10%
+						transform: translate(0%, 100%)
+						+transition(all 1s cubic-bezier(0.22, 0.61, 0.36, 1))
+						&.Active
+							transform: translate(0%, 0%)
+					&.Active
+						transform: translateY(0%)
+						opacity: 1
+						visibility: visible
+				&.About
+					transform: translate(5%, -50%)
+				h1
+					margin-bottom: 24px
+					&.Hidden
+						opacity: 0
+						transform: translateY(-50%)
+				.about
+					max-width: 750px
+					position: absolute
+					top: 100%
+					margin-top: 24px
+					+transition(all 1s cubic-bezier(0.22, 0.61, 0.36, 1))
+					&.Hidden
+						display: none
+			.astro
+				max-width: 100%
+				min-height: 225px
+				min-width: 300px
+				height: 600px
+				width: 800px
+				z-index: 10
+				position: relative
+				overflow: hidden
+				position: absolute
+				top: 60%
+				left: 50%
+				transform: translate(-50%, -50%)
+				+transition(all 1s cubic-bezier(0.22, 0.61, 0.36, 1))
+				&.About
+					transform: translate(-800px, -50%)
+				&.Skills
+					transform: translate(-50%, -30%)
+				&.Contact
+					transform: translate(-50%, -15%)
+				.tv
+					max-width: 100%
+					position: absolute
+					left: 50%
+					top: 50%
+					transform: translate(-50%, -50%)
+					z-index: 11
+				canvas
+					position: absolute
+					left: 51%
+					top: 38%
+					transform: translate(-50%, -50%)
+					z-index: 9
+				.space-bg
+					position: absolute
+					left: 50%
+					top: 50%
+					transform: translate(-50%, -50%)
+					z-index: -1
+					overflow: hidden
+					width: 550px
+					height: 400px
+					&.No-Animate
+						+transition(initial)
+						animation: none
+						.outerspace
+							+transition(initial)
+							animation: none
+						.innerspace
+							+transition(initial)
+							animation: none
+					&.Nav-Closed
+						transform: translateY(-214px)
+					.space
+						position: absolute
+						left: 0
+						bottom: 0
+						top: -1240px
+						right: 0
+						width: 100%
+						z-index: -1
+						background-repeat: repeat
+	.page-content
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		margin-top: 128px
+		transform: translateY(100vh)
+		+transition(all 1s cubic-bezier(0.22, 0.61, 0.36, 1))
+		&.Up
+			transform: translateY(0vh)
+		.outro
+			min-height: 350px
 			width: 100%
-			z-index: -1
-			background-repeat: repeat
+			display: flex
+			flex-direction: column
+			align-items: center
+			justify-content: center
+			position: relative
+			h1
+				margin-top: 64px
+		.section-block
+			min-height: 650px
+			max-width: 1650px
+			margin: 64px
+			margin-left: auto
+			margin-right: auto
+			position: relative
+			overflow: hidden
+			opacity: 0
+			box-shadow: 1px 1px 3px rgba(0, 0, 0, .15)
+			+transition(all 1s cubic-bezier(0.22, 0.61, 0.36, 1))
+			&.Active
+				opacity: 1
+			h2
+				padding: 32px
+				margin-bottom: 0px
+			&.axly
+				background-color: #f5f5f5
+				overflow: visible
+				h2
+					position: absolute
+					bottom: 32px
+					right: 32px
+				.block
+					&.allgold,
+					&.joshuatree,
+					&.leaf
+						img
+							position: absolute
+							left: 50%
+							transform: translate(-50%, -50%)
+							+transition(all 1s linear)
+					&.allgold
+						width: 600px
+						height: 300px
+						max-width: 100%
+						left: 512px
+						bottom: 50%
+						img
+							top: 20%
+					&.joshuatree
+						width: 400px
+						height: 600px
+						left: 64px
+						bottom: 20%
+			&.chipmans
+				min-height: initial
+				.block
+					width: 100%
+					height: 100%
+					display: flex
+					position: relative
+					background-color: #f9f9f9
+					.menu
+						width: 100%
+						background-color: black
+						h2
+							color: white
+					.store
+						width: 25%
+						height: 25%
+					.wheel-container
+						width: 137px
+						height: 137px
+						position: absolute
+						background-color: white
+						right: 0
+						top: 0
+					.wheel
+						position: absolute
+						width: 100px
+						height: 100px
+						left: 50%
+						top: 50%
+						transform: translate(-50%, -50%)
+						display: flex
+						flex-direction: column
+						justify-content: center
+						align-items: center
+						cursor: pointer
+						.circle
+							position: absolute
+							border: 8px solid $blue
+							width: 100%
+							height: 100%
+							border-radius: 100%
+							background-color: white
+							z-index: -1
+							+transition(all .2s linear)
+						.bar
+							width: 62px
+							padding: 1.5px
+							+transition(all .2s linear)
+							&:nth-child(3)
+								opacity: 0
+								position: absolute
+								top: 50%
+								left: 50%
+								transform: translate(-50%, -50%)
+						&.Nav-Open
+							transform: translateY(-50%) rotate(-180deg)
+							+transition(all .35s linear)	
+							transition-delay: .25s
+							.circle
+								transform: scale(.5)
+							.bar
+								opacity: .5
+								&:nth-child(1)
+									transform: translateY(12px) rotate(45deg) scaleY(.5) scaleX(1.2)
+									+transition(transform .2s linear)
+								&:nth-child(2)
+									transform: scaleY(.5) scaleX(1.2)
+								&:nth-child(3)
+									transform: translate(-50%, -50%) rotate(90deg) scaleY(.5) scaleX(1.2)
+								&:nth-child(4)
+									transform: translateY(-12px) rotate(-45deg)  scaleY(.5) scaleX(1.2)
+									+transition(transform .2s linear)
+						&.Nav-Closed
+							transform: translateY(-50%)rotate(0deg)
+							+transition(all .35s linear)
+							.circle
+								transform: scale(1)
+								transition-delay: .35s
+							.bar
+								opacity: 1
+								transition-delay: .35s
+								&:nth-child(1)
+									transform: translateY(0px) rotate(0deg) scaleY(1) scaleX(1)
+									+transition(all .2s linear)
+									transition-delay: .35s
+								&:nth-child(2)
+									transform: scaleY(1) scaleX(1)
+									transition-delay: .35s
+								&:nth-child(3)
+									transform: translate(-50%, -50%) rotate(0deg) scaleY(1) scaleX(1)
+									transition-delay: .35s
+									opacity: 0
+								&:nth-child(4)
+									transform: translateY(0px) rotate(0deg)  scaleY(1) scaleX(1)
+									+transition(all .2s linear)
+									transition-delay: .35s
+			&.nofrills
+				h2
+					position: absolute
+					top: 50%
+					right: 0
+					width: 50%
+					transform: translateY(-50%)
+					background-color: white
+					border-top: 5px solid $yellow
+					z-index: 2
+					text-align: center
+					padding-left: 0
+					padding-right: 0
+				.images
+					width: 50%
+					height: 337.5px
+					margin-left: auto
+					.img-container
+						overflow: hidden
+						width: 100%
+						height: 100%
+						display: block
+						position: relative
+						img
+							position: absolute
+							top: 50%
+							left: 50%
+							transform: translate(-50%, -50%)
+				.forms
+					width: 50%
+					position: absolute
+					top: 30%
+					right: 50%
+					transform: translate(-50%, -50%)
+			.block
+				position: absolute
+				.about
+					max-width: 750px
+					position: absolute
+					transform: translate(-50%, 0%)
+					left: 50%
+					p
+						font-size: 22px
+						line-height: 32px
+					&.Hidden
+						opacity: 0
+				&.bcc
+					width: 100%
+					height: 100%
+					background-color: #5f9ca1
+					h2
+						color: white
+						position: absolute
+					.gulls
+						position: absolute
+						width: 35%
+						bottom: 15%
+						+transition(all 2s cubic-bezier(0.25, 0.46, 0.45, 0.94))
+					.cliff,
+					.water
+						position: absolute
+						width: 100%
+						bottom: 0
+			
+			
+.content
+	z-index: 1
+	//margin-top: 298px
+	opacity: 1
+	+transition(all 1s cubic-bezier(0.22, 0.61, 0.36, 1))
+	&.Nav-Open
+		transform: translateY(214px)
+	&.Transition
+		opacity: 0
+		overflow: hidden
+	.about,
+	.site-info
+		max-width: 650px
+		width: 100%
+		padding: 42px
+		position: absolute
+		left: 50%
+		top: 50%
+		transform: translate(-50%, -50%)
+		background-color: rgba(0, 0, 0, .75)
+		border: 1px solid #281753
+		border-radius: 4px
+		overflow: hidden
+		p
+			color: white
+			text-align: justify
+			font-size: 19px
+			&:last-of-type
+				margin-bottom: 0px
+		h3
+			font-style: italic
+			color: white
+			position: relative
+			z-index: 1
+			span
+				background-color: black
+				&:first-of-type
+					padding-right: 12px
+				&:last-of-type
+					padding-left: 12px
+			&:first-of-type
+				text-align: left
+				padding-bottom: 12px
+				margin-bottom: 12px
+				&:after
+					content: ""
+					position: absolute
+					height: 4px
+					width: 100%
+					top: 45%
+					left: 0
+					transform: translateY(-50%)
+					background-color: #ee41ff
+					z-index: -1
+			&:last-of-type
+				text-align: right
+				margin-top: 12px
+				&:after
+					content: ""
+					position: absolute
+					height: 4px
+					width: 100%
+					top: 60%
+					left: 0
+					transform: translateY(-50%)
+					background-color: #00b8db
+					z-index: -1
+	.project-gallery,
+	.project
+		display: flex
+		flex-wrap: wrap
+		padding: 32px 128px
+		max-width: 1264px
+		margin: auto
+	.project-gallery
+		.cover
+			width: 48.1%
+			margin: 12px
+			margin-left: auto
+			margin-right: auto
+			animation-fill-mode: backwards
+			position: relative
+			height: 375px
+			overflow: hidden
+			opacity: 0
+			transform: translateX(-12px)
+			cursor: pointer
+			+transition(all 1s ease-in-out)
+			&.Active
+				opacity: 1
+				transform: translateX(0px)
+			img, h4
+				position: absolute
+				top: 50%
+				left: 50%
+				transform: translate(-50%, -50%)
+			h4
+				z-index: 2
+				margin-bottom: 0px
+				background-color: white
+				padding: 12px
+			img
+				z-index: 1
+				width: 100%
+	.project
+		border-bottom: 1px solid #f0f0f0
+		.info
+			display: flex
+			margin: 12px
+			width: 100%
+			.read
+				max-width: 50%
+			.list
+				display: flex
+				align-items: flex-end
+				margin-left: auto
+				padding: 0px 0px 32px 0px
+				ul
+					margin: 0px 24px
+					&:first-of-type
+						margin-left: 0px
+					&:last-of-type
+						margin-right: 0px
+		.images
+			display: flex
+			flex-wrap: wrap
+			width: 100%
+			padding-bottom: 12px
+			.container
+				width: 31.33333%
+				height: 200px
+				position: relative
+				overflow: hidden
+				margin: 1%
+				box-shadow: 1px 1px 3px 0px rgba(0,0,0,.25)
+				.before
+					position: absolute
+					z-index: 2
+					box-shadow: 1px 1px 3px 0px rgba(0,0,0,.25)
+					padding: 24px
+					font-style: italic
+					background-color: black
+					color: white
+				img
+					position: absolute 
+					top: 50%
+					left: 50%
+					width: 100%
+					transform: translate(-50%, -50%)
+					z-index: 1
 
-.Up
-	animation: space-travel 1s linear infinite
+
+// Global animation classes
+
+.Glitch
+	opacity: 0
+.Loader
+	animation: glitch-load 3s cubic-bezier(0.6, -0.28, 0.74, 0.05)
+
+.Shut-Down
+	+transition(all .2s ease-in)	
 
 .Slow-Float
 	animation: slow-float 120s linear infinite
@@ -426,35 +1193,31 @@ h1
 .outerspace
 	+transition(all 3s cubic-bezier(0.6, -0.28, 0.74, 0.05))
 
-+keyframes(space-travel)
-	0%
-		transform: translate(0%, 0%)
-	100%
-		transform: translate(0%, 1240px)
-
-+keyframes(slow-float)
-	0%
-		transform: translate(0%, 0%) scale(-1)
-	100%
-		transform: translate(0%, 1240px) scale(-1)
-
-+keyframes(slow-float-helmet)
-	0%
-		transform: translate(0%, 0%)
-	100%
-		transform: translate(0%, -400px)
-
 // Skeletal
 .astronaut-container
 	position: absolute
-	height: 75%
-	left: 50%
-	top: 50%
-	z-index: 9001
+	height: 45%
+	left: 40%
+	top: 49%
+	z-index: 10
 	transform: translate(-50%, -55%)
 	+transition(all 5s cubic-bezier(0.22, 0.61, 0.36, 1))
 	&.Small
-		transform: translate(-50%, -30%) scale(0.05)
+		transform: translate(-50%, 0%) scale(0.2)
+	&.Init
+		transform: translate(-50%, 100%) scale(0.2)
+		+transition(all 5s cubic-bezier(0.22, 0.61, 0.36, 1))
+	&.To-Top
+		transform: translate(-50%, -200% ) scale(0.4)
+		+transition(all 4s cubic-bezier(0.22, 0.61, 0.36, 1))
+	&.Reset-Bottom
+		transform: translate(-50%, 100%) 
+		+transition(all 0s linear)
+	&.Transparent
+		opacity: 0
+	&.Up-Close
+		transform: translate(-50%, 100%) scale(3)
+		+transition(all 5s cubic-bezier(0.22, 0.61, 0.36, 1))
 	.astronaut
 		height: 100%
 		width: 100%
@@ -472,8 +1235,11 @@ h1
 		.hand,
 		.handBlack,
 		.whole-hand,
+		.thumb,
 		.finger-1,
 		.finger-2,
+		.finger-3,
+		.finger-4,
 		.forearm,
 		.right-arm,
 		.left-arm,
@@ -521,12 +1287,6 @@ h1
 				z-index: 2
 				width: 100%
 				top: 80.5%
-				.space-bg
-					width: 100%
-					position: absolute
-					left: 0
-					bottom: -400px
-					top: 0px
 		.upper-body
 			height: 39.098%
 			width: 100%
@@ -579,13 +1339,16 @@ h1
 							left: -10%
 							z-index: 1
 							transform-origin: top center
-						.finger-1
+						.finger-1,
+						.finger-3,
+						.thumb
 							height: 51.2%
 							right: 12.345%
 							top: 45.18%
 							z-index: 3
 							transform-origin: top right
-						.finger-2
+						.finger-2,
+						.finger-4
 							bottom: 0%
 							left: 3.7%
 							right: 50%
@@ -628,13 +1391,16 @@ h1
 							height: 100%
 							z-index: 1
 							transform-origin: top center
-						.finger-1
+						.finger-1,
+						.finger-3,
+						.thumb
 							height: 51.2%
 							left: 12.345%
 							top: 45.18%
 							z-index: 3
 							transform-origin: top left
-						.finger-2
+						.finger-2,
+						.finger-4
 							bottom: 0%
 							left: 3.7%
 							height: 50%
@@ -730,7 +1496,7 @@ h1
 			.left-leg,
 			.right-leg,
 			.foot
-				+transition(all .5s ease-in-out)
+				+transition(all 1s ease-in-out)
 			.head
 				transform: translateY(60%)
 				.helmet
@@ -910,7 +1676,6 @@ h1
 						.hand
 							transform: rotate(-65deg) translate(96%, 7%)
 		&.Relax
-			filter: brightness(100%)
 			+transition(all 5s ease-in)
 			.upper-body
 				.left-arm
@@ -945,61 +1710,54 @@ h1
 				.left-arm
 					.lower
 						transform: rotate(46deg) translate(-70%, 6%)
+		&.Wave
+			.upper-body
+				.left-arm
+					transform: rotate(-8.5deg)
+					.lower
+						transform: rotate(30deg) translate(-44%, -3%)
+					.hand
+						transform: rotate(36deg) translate(-66%, 0%)
+				.right-arm
+					
+					transform: rotate(-35deg) translate(-19%, 0%)
+					animation: wave-u 1s ease-in-out infinite
+					animation-delay: .5s
+					animation-iteration-count: 2
+					.lower
+						transform: rotate(-35deg) translate(60%, -5%)
+						animation: wave-l 1s ease-in-out infinite
+						animation-delay: .5s
+						animation-iteration-count: 2
+					.hand
+						transform: rotate(-30deg) translate(56%, -16%)
+						.whole-hand
+						.thumb
+							transform: translate(-158%, 5%) rotate(-51deg) scaleX(-1)
+						.finger-1
+							transform: translate(-63%, 12%) rotate(-45deg) scale(1.24)
+						.finger-2
+							transform: translate(127%, 35%) rotate(-13deg) scale(1.3)
+						.finger-3
+							transform: translate(-67%, 22%) rotate(-10deg) scale(1.3)
+						.finger-4
+							transform: translate(15%, 30%) rotate(15deg) scale(1)
+				.belt
+					transform: scaleX(1.02) translate(0%, 0%) rotate(-3deg)
+			.lower-body
+				.left-leg
+					.lower
+						transform: rotate(-9deg)
+						.foot
+							transform: rotate(-5deg) translate(10%, 0%)
+				.right-leg
+					transform: rotate(-8deg) translate(0%, -2%) scaleY(.9)
+					.lower
+						transform: rotate(12deg)
+						.foot
+							transform: rotate(5deg) translate(-10%, 0%)
 		&.No-Transition
 			+transition(all 0s linear)
-
-		+keyframes(blastoff-ra)
-			0%
-				transform: rotate(0deg) translate(0%, 0%)
-			50%
-				transform: rotate(-15deg) translate(0%, 5%)
-			100%
-
-+keyframes(up-down)
-	0%
-		transform: translateY(0%)
-	25%
-		transform: translateY(-20%)
-	75%
-		transform: translateY(2%)
-	100%
-		transform: translateY(0%)
-
-+keyframes(drop-in)
-	0%
-		transform: translateY(-200%)
-	25%
-		transform: translateY(-100%)
-	50%
-		transform: translateY(50%)
-	75%
-		transform: translateY(25%)
-	100%
-		transform: translate(0%)
-
-+keyframes(shoot-down-1)
-	0%
-		transform: translate(0%, 0%)
-		opacity: 1
-	100%
-		transform: translate(-500%, 3000%)
-		opacity: 0
-
-+keyframes(shoot-down-2)
-	0%
-		transform: translate(0%, 0%)
-		opacity: 1
-	100%
-		transform: translate(0%, 3000%)
-		opacity: 0
-
-+keyframes(shoot-down-3)
-	0%
-		transform: translate(0%, 0%)
-		opacity: 1
-	100%
-		transform: translate(500%, 3000%)
-		opacity: 0
 
 .canvas
 	position: absolute
@@ -1015,17 +1773,6 @@ h1
 		width: 100%
 		height: 100%
 
-+keyframes(zoomies)
-	0%
-		filter: blur(0px)
-	25%
-		filter: blur(.5px)
-	75%
-		filter: blur(.5px)
-	100%
-		filter: blur(0px)
-
-
 .info
 	width: 100%
 	height: 35%
@@ -1036,20 +1783,316 @@ h1
 			padding: 12px
 			padding-bottom: 10px
 			margin: 12px
-			font-weight: 300
 			background-color: $light-grey-one-quarter
 			border-radius: 12px
 			cursor: pointer
+@media (max-width: 1650px)
+	h1
+		font-size: 52px
+	p
+		font-size: 18px
+		line-height: 32px
+	.page 
+		.intro-content
+			.section-block
+				.intro
+					width: 600px
+					.about
+					.contact
+						.antenna
+							width: 150px
+							transform: translate(-100%, 200%)
+							&.Active
+								transform: translate(-100%, 25%)
+				.astro
+					width: 600px
+					height: 450px
+					left: 50%
+					top: 55%
+					&.About
+						transform: translate(-650px, -50%)
 
-@media (max-width: 550px)
+@media (max-width: 1300px)
+	h1
+		font-size: 52px
+	p
+		font-size: 16px
+		line-height: 28px
+	.page 
+		.intro-content
+			.section-block
+				.intro
+					width: 500px
+					.about
+					.contact
+						.antenna
+							width: 150px
+							transform: translate(-100%, 200%)
+							&.Active
+								transform: translate(-100%, 25%)
+				.astro
+					width: 500px
+					height: 375px
+					top: 52%
+					left: 50%
+					&.About
+						transform: translate(-540px, -50%)
+
+@media (max-width: 1050px)
+	h1
+		font-size: 52px
+	p
+		font-size: 16px
+		line-height: 28px
+	.page 
+		.intro-content
+			.section-block
+				.intro
+					width: 500px
+					&.About
+						transform: translate(-50%, -200px)
+					.about
+					.contact
+						.antenna
+							width: 150px
+							transform: translate(-100%, 200%)
+							&.Active
+								transform: translate(-100%, 25%)
+				.astro
+					width: 500px
+					height: 375px
+					top: 52%
+					left: 50%
+					&.About
+						transform: translate(-50%, 0%)
+		.page-content
+			.section-block
+				min-height: 400px
+				&.axly
+					h2
+						cursor: not-allowed
+					.block
+						&.allgold
+							position: relative
+							left: 64px
+						&.joshuatree
+							position: relative
+			.outro
+				margin-top: 128px
+
+@media (max-width: 650px)
+	h1
+		font-size: 42px
+		margin-bottom: 12px !important
+	h2
+		font-size: 32px !important
+		padding: 24px 12px !important
+	h4
+		font-size: 22px
 	nav
-		bottom: 0
-		.menu
-			padding: 0px
-			width: 100%
-			.work,
-			.skills,
-			.about,
-			.contact
-				width: 25%
-				margin: 0px
+		top: 0
+		left: 50%
+		width: initial
+		height: 125px
+		transform: translateX(-50%)
+		border-radius: 0px
+		background: initial
+		border: initial
+		i
+			background-color: #bffccd
+		&.Open
+			transform: translateX(-50%)
+			#work,
+			#skills,
+			#about,
+			#contact
+				transform: translateX(0%)
+			#open-menu
+				transform: translateX(-500%)
+		#work,
+		#skills,
+		#about,
+		#contact
+			+transition(all 1s cubic-bezier(0.22, 0.61, 0.36, 1))
+			position: relative
+			width: 75px
+			height: 75px
+			transform: translateX(700%)
+			margin: 0px 2px
+		#skills
+			transition-delay: .1s
+		#work
+			transition-delay: .2s
+		#contact
+			transition-delay: .3s
+		#open-menu
+			+transition(all 1s cubic-bezier(0.22, 0.61, 0.36, 1))
+			width: 75px
+			height: 75px
+			i
+				border-width: 3px
+				width: 50px
+				height: 50px
+	.page 
+		.intro-content
+			.section-block
+				.intro
+					width: 100%
+					top: 70%
+					&.About,
+					&.Skills,
+						transform: translate(-50%, -150%)
+					h1
+						text-align: center
+						margin: 12px 12px 12px 0px
+					.about
+						max-width: 100%
+						padding: 12px
+					.skills
+						flex-direction: column
+						width: 100%
+						align-items: center
+						justify: center
+						h1
+							margin: 12px
+						.links
+							text-align: center
+							margin-right: 6px
+							a
+								margin: 6px
+						&.Active
+							visibility: visible
+							opacity: 1
+					.contact
+						h1,h4
+						left: 50%
+						top: 0
+						transform: translate(-50%, -50%)
+						&.Active
+							transform: translate(-50%, -230%)
+						.antenna
+							width: 150px
+							top: 50%
+							left: 50%
+							transform: translate(-100%, 200%)
+							&.Active
+								transform: translate(-50%, 50%)
+				.astro
+					width: 300px
+					height: 225px
+					left: 50%
+					top: 50%
+					transform: translate(-50%, -50%)
+					&.About
+						transform: translate(-50%, -90%)
+					&.Contact 
+						transform: translate(-50%, 40%)
+					&.Skills 
+						transform: translate(-50%, -90%)
+					.space-bg
+						min-height: 200px
+		.page-content
+			margin-top: 64px
+			.section-block
+				min-height: 350px
+				&.bcc
+					.block
+						.gulls
+							width: 50%
+						h2
+							padding: 12px 0px
+				&.chipmans
+					.block
+						flex-wrap: wrap
+						.wheel-container
+							height: 90px
+							width: 90px
+						.wheel
+							height: 50px
+							width: 50px
+							right: 24px
+							.circle
+								border: 4px solid $blue
+							.bar
+								width: 32px
+								padding: 1.2px
+							&.Nav-Open
+								transform: rotate(180deg)
+								+transition(all .35s linear)	
+								transition-delay: .25s
+								.circle
+									transform: scale(.5)
+								.bar
+									opacity: .5
+									&:nth-child(1)
+										transform: translateY(7px) rotate(45deg) scaleY(.5) scaleX(1.2)
+										+transition(all .2s linear)
+									&:nth-child(2)
+										transform: scaleY(.5) scaleX(1.2)
+									&:nth-child(3)
+										transform: translate(-50%, -50%) rotate(90deg) scaleY(.5) scaleX(1.2)
+									&:nth-child(4)
+										transform: translateY(-7px) rotate(-45deg)  scaleY(.5) scaleX(1.2)
+										+transition(all .2s linear)
+							&.Nav-Closed
+								transform: rotate(0deg)
+								+transition(all .35s linear)
+								.circle
+									transform: scale(1)
+									transition-delay: .35s
+								.bar
+									opacity: 1
+									&:nth-child(1)
+										transform: translateY(0px) rotate(0deg) scaleY(1) scaleX(1)
+										+transition(all .2s linear)
+										transition-delay: .35s
+									&:nth-child(2)
+										transform: scaleY(1) scaleX(1)
+										transition-delay: .35s
+									&:nth-child(3)
+										opacity: 0
+										transform: translate(-50%, -50%) rotate(0deg) scaleY(1) scaleX(1)
+										+transition(all .2s linear)
+										transition-delay: .35s
+									&:nth-child(4)
+										transform: translateY(0px) rotate(0deg)  scaleY(1) scaleX(1)
+										+transition(all .2s linear)
+										transition-delay: .35s
+						.store
+							width: 50%
+				&.nofrills
+					h2 
+						top: 50%
+						right: initial
+						width: 100%
+						transform: translateY(-50%)
+						padding: 12px 0px
+					.forms
+						display: none
+					.images
+						width: 100%
+						height: 350px
+						.img-container
+							width: 100%
+							height: 50%
+				&.axly
+					.block
+						&.allgold
+							height: 200px
+							position: relative
+							width: 100%
+							left: 0
+							img
+								max-width: 100%
+						&.joshuatree
+							position: relative
+							width: 200px
+							height: 300px
+							left: 0
+							img
+								max-width: 100%
+								height: 300px
+			.outro
+				margin-top: initial
+				h5
+					font-size: 18px

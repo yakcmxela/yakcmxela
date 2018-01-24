@@ -1,17 +1,17 @@
 $(document).ready(function() {
-	var startMaine = $('.start-maine');
-	var horizonLeaving = $('.horizon-leaving')
-	var astronautContainer = $('.astronaut-container');
-	var astronaut = $('.astronaut');
-	var outerspace = $('.outerspace');
-	var space = $('.space-content');
-	var innerspace = $('.innerspace');
-	var leftJet = $('.left-arm .hand');
-	var rightJet = $('.right-arm .hand');
-	var nav = $('nav');
+	var startMaine = $(".start-maine");
+	var horizonLeaving = $(".horizon-leaving")
+	var astronautContainer = $(".astronaut-container");
+	var astronaut = $(".astronaut");
+	var outerspace = $(".outerspace");
+	var space = $(".space-content");
+	var innerspace = $(".innerspace");
+	var leftJet = $(".left-arm .hand");
+	var rightJet = $(".right-arm .hand");
+	var nav = $("nav");
 	var color;
-	var earth = $('.earth-content');
-	var cloud = $('.cloud');
+	var earth = $(".earth-content");
+	var cloud = $(".cloud");
 	var blastOff;
 	var shootParticles;
 	var leftJetX;
@@ -23,12 +23,21 @@ $(document).ready(function() {
   	window.requestAnimationFrame = requestAnimationFrame;
   	var cancelAnimationFrame = window.cancelAnimationFrame || window.mozCancelAnimationFrame;
 
+  	var viewportWidth;
+  	var viewportHeight;
+
+// Define viewport size
+	function defineViewport() {
+		viewportWidth = window.innerWidth;
+		viewportHeight = window.innerHeight;
+	}
+
 // Maths
 	function randomColor() {
 		var randomRed = Math.floor(Math.random() * 255) + 1;
 		var randomBlue = Math.floor(Math.random() * 255) + 1;
 		var randomGreen = Math.floor(Math.random() * (230 - 130)) + 130;
-		color = 'rgb(' + randomRed + ',' + randomGreen + ',' + 255 + ')'; 
+		color = "rgb(" + randomRed + "," + randomGreen + "," + 255 + ")"; 
 		return color;
 	}  	
 	function random( min, max ) {
@@ -42,26 +51,26 @@ $(document).ready(function() {
 // Loader Animation
 	var alphabet = {1:"A", 2:"B", 3:"C", 4:"D", 5:"E", 6:"F", 7:"G", 8:"H", 9:"I", 10:"J", 11:"K", 12:"L", 13:"M", 14:"N", 15:"O", 16:"P", 17:"Q", 18:"R", 19:"S", 20:"T", 21:"U", 22:"V", 23:"W", 24:"X", 25:"Y", 26:"Z"};
 
-	var name = $('.name');
-	var loader = $('.loader-container .loader');
+	var name = $(".name");
+	var loader = $(".loader-container .loader");
 
-	var y = $('.y');
-	var Y = 'Y';
-	var ab = $('.ab');
-	var A = 'A';
-	var k = $('.k');
-	var K = 'K'
-	var c = $('.c');
-	var C = 'C';
-	var m = $('.m');
-	var M = 'M';
-	var x = $('.x');
-	var X = 'X';
-	var e = $('.e');
-	var E = 'E';
-	var l = $('.l');
-	var L = 'L';
-	var aa = $('.aa')
+	var y = $(".y");
+	var Y = "Y";
+	var ab = $(".ab");
+	var A = "A";
+	var k = $(".k");
+	var K = "K"
+	var c = $(".c");
+	var C = "C";
+	var m = $(".m");
+	var M = "M";
+	var x = $(".x");
+	var X = "X";
+	var e = $(".e");
+	var E = "E";
+	var l = $(".l");
+	var L = "L";
+	var aa = $(".aa")
 
 	function letterRandomizer(div, delay, stopLetter) {
 		var i = 0;
@@ -75,7 +84,7 @@ $(document).ready(function() {
 			randomGreen = Math.floor(Math.random() * 255) + 1;
 
 			div.html(alphabet[letter]);
-			div.css('color', randomColor());
+			div.css("color", randomColor());
 
 			if (i > 1) { //50
 				clearInterval(randomLetter);
@@ -86,7 +95,7 @@ $(document).ready(function() {
 	}
 
 	setTimeout(function() {
-		$('.menu').addClass('Active');
+		$(".menu").addClass("Active");
 	}, 7500);
 
 	function loaderBar() {
@@ -96,16 +105,16 @@ $(document).ready(function() {
 			if (width >= 100) {
 				clearInterval(loaderBar);
 				setTimeout(function() {
-					loader.css('background-color', 'white')
-					loader.css('border-color', 'white')
-					name.css('color', 'white');
+					loader.css("background-color", "white")
+					loader.css("border-color", "white")
+					name.css("color", "white");
 					setTimeout(function() {
-						name.addClass('Loaded');
+						name.addClass("Loaded");
 					}, 1000);
 				}, 1000);
 			} else {
 				width++;
-				loader.css('width', width + '%');
+				loader.css("width", width + "%");
 			}
 		}, 1); //75
 	}
@@ -122,109 +131,463 @@ $(document).ready(function() {
 		letterRandomizer(aa, random(10, 1), A);
 	}
 // Nav
-	var page = 'about';
-	function fromEarth() {
-		$('.earth-content').css('z-index', 2);
-		$('.start-maine').addClass('Take-Off');
-		space.removeClass('Hidden');
-		setTimeout(function() {
-			cloud.addClass('Active');
-		}, 2000);
-		setTimeout(function() {
-			blastOff = requestAnimationFrame(createParticles);
-			astronaut.removeClass('On-Load');
-		}, 3000);
+	spacebg = $('.space-bg');
+	content = $('.content');
+	cover = $('.cover');
+	var nav = {
+		container: $("nav"),
+		radius: $("nav").width()/2,
+		menuButton: $('#open-menu'),
+		main: {
+			about: $("#about"),
+			work: $("#work"),
+			skills: $("#skills"),
+			contact: $("#contact")
+		},
+	}
 
-		setTimeout(function() {
-			earth.addClass('Fade-Out');
-			astronaut.removeClass('On-Earth');
-			astronaut.removeClass('Jets-On');
-			$('.upper-body').removeClass('Black');
-			$('.lower-body').removeClass('Black');
-			$('.helmet').removeClass('Black');
-			cancelAnimationFrame(blastOff);
-			blastOff = requestAnimationFrame(removeParticles);
-			astronaut.addClass('Relax');
-		}, 10000);
+	function findX(originX, radius, angle) {
+		btnX = originX + radius * Math.cos(angle);
+		return btnX;	
+	}
+
+	function findY(originY, radius, angle) {
+		btnY = originY + radius * Math.sin(angle);
+		return btnY;
+	}
+
+	function positionAroundCircle(button, radius, angle) {
+		var origin = (button.width()/2*-1) + radius;
 		
+		findX(origin, radius, angle);
+		findY(origin, radius, angle);
+
+		$(button).css("left", btnX);
+		$(button).css("top", btnY);
 	}
 
-	function toSkills() {
-		setTimeout(function() {
-			astronaut.addClass('Menu');
-			cancelAnimationFrame(blastOff);
-			ctx.clearRect( 0, 0, canvas.width, canvas.height );
-		}, 15000);
-		setTimeout(function() {
-			$('.skillset').addClass('Active');
-		}, 20000);
-		page = 'skills';
+	function findRadians(section, index, start, span) {
+		// Count length of nav buttons
+		var count = Object.keys(section).length;
+		// Find necessary angle to fit in quarter of circle
+		var angle = span / (count + 1);
+		// Add to 270 to make bottom right quadrant
+		var degrees =  (index * angle) + start;
+		// convert to radians
+		var radians = degrees * Math.PI/180;
+		
+		return radians;
 	}
-
-	function toWork() {
-		astronaut.removeClass('Menu');
-		$('.skillset').removeClass('Active');
-		setTimeout(function() {
-			takeOff();
-			blastOff = requestAnimationFrame(createParticles);
-		}, 5500);
-		setTimeout(function() {
-			cancelAnimationFrame(blastOff);
-			blastOff = requestAnimationFrame(removeParticles);
-			// cancel animation frame after easing complete
-			init();
-			setTimeout(function() {
-				cancelAnimationFrame(blastOff);
-				ctx.clearRect( 0, 0, canvas.width, canvas.height );
-			}, 100);
-			innerspace.removeClass('Travel-Fade');
-			outerspace.removeClass('Up');
-		}, 15000)
-		page = 'work';
-	}
-
-
-	var menuButtons = $('.menu').children();
-
-	menuButtons.on('click', function() {
-		menuButtons.removeClass('Active');
-		$(this).toggleClass('Active');
-	})
-
-	$('.menu-button').on('click', function() {
-		$('.menu').toggleClass('Active');
-	});
-
-	$('.skills').on('click', function() {
-		fromEarth();
-		toSkills();
-	});
-
-	$('.work').on('click', function() {
-		console.log(page);
-		if (page == 'about') {
-			fromEarth();
-			toWork();
-		} else if (page == 'skills') {
-			toWork();
+	// Main nav
+	function setNavPos() {
+		defineViewport();
+		if(viewportWidth > 650) {
+			positionAroundCircle(nav.menuButton, nav.radius, findRadians(nav.container, 2, 90, 90));
+			positionAroundCircle(nav.main.about, nav.radius, findRadians(nav.main, 1, 0, 90));
+			positionAroundCircle(nav.main.work, nav.radius, findRadians(nav.main, 2, 0, 90));
+			positionAroundCircle(nav.main.skills, nav.radius, findRadians(nav.main, 3, 0, 90));
+			positionAroundCircle(nav.main.contact, nav.radius, findRadians(nav.main, 4, 0, 90));
+		} else if (viewportWidth < 650) {
+			nav.menuButton.css('left', 'initial');
+			nav.menuButton.css('top', 'initial');
+			nav.main.about.css('left', 'initial');
+			nav.main.about.css('top', 'initial');
+			nav.main.work.css('left', 'initial');
+			nav.main.work.css('top', 'initial');
+			nav.main.skills.css('left', 'initial');
+			nav.main.skills.css('top', 'initial');
+			nav.main.contact.css('left', 'initial');
+			nav.main.contact.css('top', 'initial');
 		}
-		
-	})
+	};
 
-// Landing page
+	setNavPos();
+
+	nav.menuButton.on('click', function(){toggleNav()});
+	nav.main.about.on('click', function(){toggleNav()});
+	nav.main.work.on('click', function(){toggleNav()});
+	nav.main.contact.on('click', function(){toggleNav()});
+	nav.main.skills.on('click', function(){toggleNav()});
+
+	function toggleNav() {
+		nav.container.toggleClass('Open');
+	}
 	
+	function blinkOut(div, transform) {
+		div.addClass("Shut-Down");
+		div.css('transform', transform + ' scaleX(1.5) scaleY(0.03)')
+		setTimeout(function() {
+			div.css('transform', transform + ' scaleX(0.022) scaleY(0.03)')
+		}, 250);
+		setTimeout(function() {
+			div.remove();
+		}, 1000)
+		astronaut.removeClass("Wave");
+	}
+
+	function glitch(div, container, translate) {
+		div.removeClass("Shut-Down").removeClass("Pop");
+		var elLoader = div.clone().addClass("Loader").removeClass("Hidden");
+		var elRepeater = div.clone().addClass("Repeater");
+		div.eq(1).addClass("Original");
+
+		elLoader.appendTo(container);
+		elRepeater.appendTo(container);
+
+		var transform;
+
+		var glitchEffect = 
+			setInterval(function() {
+				var newEl = $(".Repeater").clone();
+				var randomNumber = random(.8, 1.2);
+
+				transform = translate + " scale(" + randomNumber + ")";
+
+				newEl.addClass("Glitch").removeClass("Hidden").removeClass("Repeater");
+				newEl.css("transform", transform);
+				newEl.css("filter", "blur(" + (randomNumber - .5) + "px)");
+
+				if (randomNumber > 1) { 
+					newEl.css("animation", "glitch-effect-right " + randomNumber + "s ease-in-out") 
+					newEl.css("box-shadow", "1px 1px 3px black");
+					newEl.css('background-color','black');
+					newEl.css('color', 'white');
+				} else if (randomNumber < .95) {
+					newEl.css("animation", "glitch-effect-left " + randomNumber + "s ease-in-out") 
+					newEl.css("box-shadow", "-1px 1px 3px rgba(0, 0, 0, .5)");
+					newEl.css('background-color', '#e8e8e8');
+					newEl.css('color', 'white');
+				} else {
+					newEl.css("animation", "glitch-effect-center " + randomNumber + "s ease-in-out") 
+				}
+				newEl.appendTo(container);
+			}, 200);
+
+		setTimeout(function() {
+			clearInterval(glitchEffect);
+		}, 2000);
+
+		setTimeout(function() {
+			div.removeClass("Hidden");
+			var loader = $(".Loader");
+			var glitch = $(".Glitch");
+			var repeater = $(".Repeater");
+			glitch.remove();
+			repeater.remove();
+			loader.remove();
+		}, 3200);
+	}
+
+	var pageOpen;
+	var animationsComplete;
+
+	// Outro
+		var outro = '<div class="outro">';
+			outro += '<h1>Get at me.</h1>';
+			outro += '<a href="mailto:alex@boldcoastcreative.com">';
+			outro += '<h5>alex@boldcoastcreative.com</h5>';
+			outro += '</a></div>';
+
+	// Open project collection
+		nav.main.work.on("click", function() {
+
+			var requestResponse = $.ajax({
+				url: "http://localhost/yakcmxela/wp-json/wp/v2/posts",
+				method: "GET",
+			});
+
+			requestResponse.fail(function(textStatus) {
+				console.log(textStatus);
+			});
+
+			requestResponse.done(function(data) {
+				console.log(data);
+				var portfolioArray = [];
+				var delay = .2;
+				if(pageOpen !== 'portfolio') {
+					$.each(data, function(key, val) {
+						var url = val.acf.url;
+						var name = val.title.rendered;
+						var id = val.id;
+						var slug = val.slug;
+						var dir = root_dir.template_url;
+						if(slug == 'bold-coast-creative') {
+							var section = '';
+							var svgs = val.acf.svgs;
+							section += '<div class="section-block" style="transition-delay:' + delay + '">';
+							section += '<div class="block bcc">';
+							svgs.forEach(function(filename){
+								section += '<img src="' + dir + '/svg/' + filename.svg + '.svg" class="' + filename.svg + '">';
+							});
+
+							section += '<a href="' + url +'"><h2>' + name + '</h2></a>';
+							section += '</div>';
+							section += '</div>';
+							console.log(section);
+						} else if(slug == 'chipmans-wharf') {
+							var section = '';
+							var svg = val.acf.svg;
+							var images = val.acf.images;
+							section += '<div class="section-block chipmans" style="transition-delay:' + delay + '">';
+							section += '<div class="block">';
+							section += '<div class="menu">';
+							section += '<a href="' + url +'"><h2>' + name + '</h2></a>';
+							section += '</div>';
+							section += '<div class="wheel-container">';
+							section += '<div class="wheel">';
+							section += '<img src="' + dir + '/svg/' + svg + '.svg" class="' + svg + '">';
+							section += '<img src="' + dir + '/svg/' + svg + '.svg" class="' + svg + '">';
+							section += '<img src="' + dir + '/svg/' + svg + '.svg" class="' + svg + '">';
+							section += '<img src="' + dir + '/svg/' + svg + '.svg" class="' + svg + '">';
+							section += '<div class="circle"></div>';
+							section += '</div>';
+							section += '</div>';
+							section += '</div>';
+							section += '<div class="block">';
+							images.forEach( function(image) {
+								section += '<img class="store ' + image.title + '" src="' + image.url + '">';
+							});
+							section += '</div>';
+							section += '</div>';
+						} else if(slug == 'no-frills-oil') {
+							var section = '';
+							var form = val.acf.forms;
+							var images = val.acf.images;
+							section += '<div class="section-block nofrills" style="transition-delay:' + delay + '">';;
+							section += '<a href="' + url +'"><h2>' + name + '</h2></a>';
+							section += '<img src="' + form + '" class="forms">';
+							section += '<div class="images">';
+							images.forEach( function(filename) {
+								section += '<div class="img-container">';
+								section += '<img src="' + filename.image + '">';
+								section +='</div>'; 
+							});
+							section += '</div>';
+							section += '</div>';
+						} else if(slug == 'axly') {
+							var section = '';
+							var blocks = val.acf.block;
+							section += '<div class="section-block axly" style="transition-delay:' + delay + '">';
+							blocks.forEach( function(image) {
+								section += '<div class="block ' + image.class + '" style="background-image: url(' + image.background + ')">';
+								section += '<img src="' + image.object + '">';
+								section += '</div>';
+							});
+							section += '<h2>' + name + '</h2>';
+							section += '</div>';
+							section += '</div>';
+						}
+						portfolioArray.unshift(section);
+						delay = delay + .05;
+					});
+					closePages();
+					nav.menuButton.css('pointer-events', 'none');
+					$('canvas').removeClass('Hidden');
+					setTimeout(function() {
+						activateAstronaut();
+					}, 200);
+					setTimeout(function() {
+						$('canvas').addClass('Hidden');
+						$('.intro-content').addClass('Up');
+						$('.page-content').addClass('Up');
+						$('.page-content').html(portfolioArray);
+						$('.page-content').append(outro);
+						portfolioEvents();
+					}, 2200);
+					setTimeout(function() {
+						$('.section-block').addClass('Active');
+						nav.menuButton.css('pointer-events', 'initial');
+					}, 2250);
+					pageOpen = 'portfolio'
+				}
+
+			});
+			
+		});
 	
-	function parallax(div, scrollSpeed, axis) {
+	// Open about content
+		nav.main.about.on('click', function() {
+			if(pageOpen !== 'about'){
+				var id = $(e.currentTarget).data('site');
+				var requestResponse = $.ajax({
+					url: "http://localhost/yakcmxela/wp-json/wp/v2/posts?categories=6",
+					method: "GET",
+				});
+
+				requestResponse.fail(function(textStatus) {
+					console.log(textStatus);
+				});
+
+				requestResponse.done(function(data) {
+					console.log(data);
+					var el = '';
+					$.each(data, function(key, val) {
+						var content = val.content.rendered;
+						el += '<div class="about Hidden">';
+						el += content;
+						el += '</div>';
+					});
+					closePages();
+					defineViewport();
+					if(viewportWidth < 650) {
+						$('.page .intro-content .section-block').css('overflow-y', 'visible');
+					}
+					nav.menuButton.css('pointer-events', 'none');
+					$('.intro').append(el);
+					$('canvas').addClass('Hidden');
+					setTimeout(function() {	
+						var container = $('.intro');
+						var div = $('.about');
+						$('.intro').addClass('About');
+						$('.astro').addClass('About');
+						glitch(div, container, 'translate(0%, 0%)');
+						astronaut.addClass('Wave');
+					}, 500);
+					setTimeout(function() {
+						astronaut.removeClass('Wave');
+						nav.menuButton.css('pointer-events', 'initial');
+					}, 3250);
+					pageOpen = 'about';
+					
+				});	
+			}	
+		});
+
+	// Open skills page
+		nav.main.skills.on('click', function() {
+			closePages();
+			$('canvas').addClass('Hidden');
+			$('.astro').addClass('Skills');
+			$('.intro').addClass('Skills');
+			$('.intro .skills').addClass('Active');
+			pageOpen = 'skills';
+		});
+
+	// Open contact page
+		nav.main.contact.on('click', function() {
+			closePages();
+			$('canvas').addClass('Hidden');
+			$('.astro').addClass('Contact');
+			$('.intro .contact').addClass('Active');
+			$('.antenna').addClass('Active');
+			pageOpen = 'contact';
+		})
+
+	function closePages() {
+		console.log(pageOpen);
+		if(pageOpen == 'contact') {
+			closeContact();
+		} else if(pageOpen == 'skills') {
+			closeSkills();
+		} else if(pageOpen == 'portfolio') {
+			closePortfolio();
+		} else if(pageOpen == 'about') {
+			closeAbout();
+		}	
+	}
+	function closeContact() {
+		$('.astro').removeClass('Contact');
+		$('.intro').removeClass('Contact');
+		$('.intro .contact').removeClass('Active');
+		$('canvas').addClass('Hidden');
+	}
+
+	function closeSkills() {
+		$('.astro').removeClass('Skills');
+		$('.intro').removeClass('Skills');
+		$('.intro .skills').removeClass('Active');
+		$('canvas').addClass('Hidden');
+	}
+	
+	function closeAbout() {
+		var div = $('.about');
+		blinkOut(div, 'translate(0%, 0%)');
+		astronaut.removeClass('Wave');
+		$('canvas').addClass('Hidden');
+		$('.intro').removeClass('About');
+		$('.astro').removeClass('About');
+	}
+
+	function closePortfolio() {
+		astronaut.removeClass('Down');
+		astronaut.removeClass('Take-Off');
+		astronaut.removeClass('Jets-On');
+		astronaut.addClass('Relax');
+		astronautContainer.removeClass('To-Top');
+		$('.intro-content').removeClass('Up');
+		$('.page-content').removeClass('Up');
+		$('canvas').addClass('Hidden');
+		setTimeout(function() {
+			$('.page-content').html('');
+		}, 1001);
+	}
+
+	function sizeSpaceBG() {
+		var height = $('.tv').outerHeight();
+		var width = $('.tv').outerWidth();
+		console.log(width);
+		spacebg.css('height', height - 75);
+		spacebg.css('width', width - 50);
+		spacebg.removeClass('No-Animate');
+	}
+
+	$(window).on('resize', function() {
+		sizeSpaceBG();
+		setNavPos();
+	});
+
+	function parallax(div, scrollSpeed, axis, centered, transforms) {
 		$.each(div, function() {
 			divPosition = $(this).offset().top;
 			divHeight = $(this).height();
 			pageLocation = $(window).scrollTop();
-			scroll = pageLocation / scrollSpeed;
-			console.log(scroll);
-
-			if (scroll <= 101 && scroll > -101) {
-				$(div).css('transform', 'translate' + axis + '(' + scroll + '%)');
+			scroll = (pageLocation / (divPosition + divHeight)) * scrollSpeed;
+			if(transforms == undefined) {
+				transforms = '';
 			}
+			if(axis == 'y' && centered == true) {
+
+				if (scroll < 50 && scroll > -50) {
+					if(transforms !== '') {
+						$(div).css('transform', 'translate(-50%, ' + scroll + '%) ' + transforms);
+					} else {
+						$(div).css('transform', 'translate(-50%, ' + scroll + '%)');
+					}
+				}
+			} else if(axis == 'x' && centered == true) {
+				if (scroll < 50 && scroll > -50) {
+					if(transforms !== '') {
+						$(div).css('transform', 'translate(' + scroll + '%, -50%) ' + transforms);
+					} else {
+						$(div).css('transform', 'translate(' + scroll + '%, -50%)');
+					}
+				}
+			} else if(axis == 'y' && centered == false) {
+				if (scroll < 50 && scroll > -50) {
+					if(transforms !== '') {
+						$(div).css('transform', 'translateY(' + scroll + '%) ' + transforms);
+					} else {
+						$(div).css('transform', 'translateY(' + scroll + '%)');
+					}
+				}
+			} else if(axis == 'x' && centered == false) {
+				if (scroll < 50 && scroll > -50) {
+					if(transforms !== '') {
+						$(div).css('transform', 'translateX(' + scroll + '%) ' + transforms);
+					} else {
+						$(div).css('transform', 'translateX(' + scroll + '%)');
+					}	
+				}
+			} else if(axis == 'lrbt') {
+				if (scroll < 50 && scroll > -50) {
+					if(transforms !== '') {
+						$(div).css('transform', 'translate(' + scroll + '%, ' + (-1* scroll) + '%) ' + transforms);
+					} else {
+						$(div).css('transform', 'translate(' + scroll + '%, ' + (-1* scroll) + '%)');
+					}	
+				}
+			}
+			
 			
 			// if (scroll < 100 && scroll > 0) {
 			// 	$(div).css('transform', 'translate' + axis + '(' + scroll + '%)');
@@ -234,16 +597,65 @@ $(document).ready(function() {
 		});
 	};
 
-	$(window).on('scroll', function() {
-		// parallax(horizonLeaving, 0.1, 'y');
-		// parallax(startMaine, 10, 'y');
-		// parallax(nav, 10, 'y');
+	var boat = $('.boat');
+	var lobster = $('.lobster');
+	var rockpile = $('.rockpile');
+	var oysters = $('.oysters');
+	var wheel = $('.wheel');
+	var wheelNavOpen = false;
+
+	wheel.on('click', function() {
+		if(wheelNavOpen == false) {
+			$(this).removeClass('Nav-Closed');
+			$(this).addClass('Nav-Open');
+			wheelNavOpen = true;
+		} else if(wheelNavOpen == true) {
+			$(this).removeClass('Nav-Open');
+			$(this).addClass('Nav-Closed');
+			wheelNavOpen = false;
+		}
 	});
 
+	function portfolioEvents() {
+		var forms = $('.forms');
+
+		var joshuatreeBG = $('.joshuatree');
+		var allgoldBG = $('.allgold');
+		var joshuatree = $('.joshuatree img');
+		var allgold = $('.allgold img');
+
+		var gulls = $('.gulls');
+
+		sizeSpaceBG();
+
+		parallax(forms, -50, 'y', false);
+
+		parallax(joshuatreeBG, 50, 'y', false);
+		parallax(allgoldBG, 50, 'y', false);
+
+		parallax(joshuatree, 50, 'y', true);
+		parallax(allgold, -50, 'y', true);
+
+		parallax(gulls, 50, 'xy', false);
+
+		$(window).on('scroll', function() {
+			parallax(forms, -50, 'y', false);
+
+			parallax(joshuatreeBG, 50, 'y', false);
+			parallax(allgoldBG, 50, 'y', false);
+
+			parallax(joshuatree, 50, 'y', true);
+			parallax(allgold, -50, 'y', true);
+
+			parallax(gulls, 50, 'lrbt', false);
+		});
+	}
+	portfolioEvents();
+	
 // Canvas stuff 
-	var canvas = document.getElementById('space');
-	var ctx = canvas.getContext('2d');
-	var particleImage = document.getElementById('particle');
+	var canvas = document.getElementById("space");
+	var ctx = canvas.getContext("2d");
+	var particleImage = document.getElementById("particle");
 	var ctxWidth;
 	var ctxHeight;
 	
@@ -252,63 +664,25 @@ $(document).ready(function() {
 		function canvasSize() {
 			ctxWidth = window.innerWidth;
 			ctxHeight = window.innerHeight;
-			canvas.setAttribute('width', ctxWidth);
-			canvas.setAttribute('height', ctxHeight);	
+			canvas.setAttribute("width", ctxWidth);
+			canvas.setAttribute("height", ctxHeight);	
 		}
 		canvasSize();
-		$(window).on('resize', function() {
+		$(window).on("resize", function() {
 			canvasSize();
 		});
-	// regl stuff
-		// var numPoints = 1e4;
-		// var pointWidth = 4;
-		// var winWidth = window.innerWidth;
-		// var winHeight = window.innerHeight;
-		// var rng = d3.randomNormal(0, 0.15);
-		// var points = d3.range(numPoints).map( i => ({
-		// 	x: (rng() * winWidth) + (winWidth / 2),
-		// 	y: (rng() * winHeight) + (winHeight / 2),
-		// 	color: [0, Math.random(), 0],
-		// }));
-
-		// regl.frame(() =>{
-		// 	regl.clear({
-		// 		color: [0, 0, 0, 1],
-		// 		depth: 1,
-		// 	});
-
-		// 	drawPoints({
-		// 		pointWidth,
-		// 		stageWidth: width,
-		// 		stageHeight: height,
-		// 	});
-		// });
-
-		// var drawPoints = regl({
-		// 	frag: '',
-		// 	vert: '',
-
-		// 	attributes: {
-		// 		position: points.map(d => [d.x, d.y]),
-		// 		color: points.map(d => d.color),
-		// 	},
-
-		// 	uniforms: {
-		// 		pointWidth: regl.prop('pointWidth'),
-
-		// 		stateWidth: regl.prop('stageWidth'),
-		// 		stageHeight: regl.prop('stageHeight'),
-		// 	},x 1209 y 1015
-
-		// 	count: points.length,
-
-		// 	primitive: 'points',
-		// });
 
 	// Find location of jets (hands of figure)
+	
 	function getSet() {
 		// Needed to keep the stars in the right place during zoom out
-		var scale = astronautContainer.css('transform').slice(7, 11);
+		// Scale array is the transform matrix turned into an array of strings. Use scaleArray[0] for scale value.
+		var scaleArray = astronautContainer.css("transform").slice(7);
+		scaleArray = scaleArray.slice(0, -1);
+		scaleArray = scaleArray.replace(/,/g, "");
+		scaleArray = scaleArray.trim().split(/\s+/);
+
+		var scale = scaleArray[0];
 
 		if (scale < 1) {
 			leftJetY = leftJet.offset().top + (leftJet.height() / 2) * scale;
@@ -323,8 +697,8 @@ $(document).ready(function() {
 		}
 		winWidth = window.innerWidth;
 		winHeight = window.innerHeight;
-
 	}
+	getSet();
 	//Particles
 		function Particle( x, y, side, init ) {
 
@@ -357,7 +731,7 @@ $(document).ready(function() {
 			this.alpha = 1;
 			// set how fast the particle fades out
 			this.decay = random( 0.015, 0.1 );
-			this.pattern = ctx.createPattern(particleImage, 'repeat');
+			this.pattern = ctx.createPattern(particleImage, "repeat");
 		}
 
 		Particle.prototype.update = function( index ) {
@@ -368,9 +742,9 @@ $(document).ready(function() {
 			// slow down the particle
 			this.speed *= this.friction;
 			// apply velocity
-			if (this.side == 'right' ) {
+			if (this.side == "right" ) {
 				this.x += Math.sin( this.angle ) * this.speed * -1;
-			} else if (this.side == 'left' ) {
+			} else if (this.side == "left" ) {
 				this.x += Math.sin( this.angle ) * this.speed;
 			}
 			this.y += Math.sin( this.angle ) * this.speed + this.gravity;
@@ -391,7 +765,7 @@ $(document).ready(function() {
 			// move to the last tracked coordinates in the set, then draw a line to the current x and y
 			ctx.moveTo( this.coordinates[ this.coordinates.length - 1 ][ 0 ], this.coordinates[ this.coordinates.length - 1 ][ 1 ] );
 			ctx.lineTo( this.x, this.y );
-			ctx.strokeStyle = 'hsla(' + this.hue + ', 100%, ' + this.brightness + '%, ' + this.alpha + ')';
+			ctx.strokeStyle = "hsla(" + this.hue + ", 100%, " + this.brightness + "%, " + this.alpha + ")";
 			ctx.lineWidth = 3;
 			
 			// ctx.beginPath();
@@ -407,6 +781,8 @@ $(document).ready(function() {
 			ctx.fill();
 			ctx.closePath();
 			ctx.stroke();
+			ctx.clearRect(0, 0, winWidth, topEndBoundary);
+			ctx.clearRect(0, bottomStartBoundary, winWidth, winHeight);
 		}
 	
 	function createParticles() {
@@ -415,13 +791,15 @@ $(document).ready(function() {
 		// increase the particle count for a bigger explosion, beware of the canvas performance hit with the increased particles though
 		var particleCount = 2;
 		while( particleCount-- ) {
-			particles.push( new Particle( leftJetX, leftJetY, 'left', true ) );
-			particles.push( new Particle( rightJetX, rightJetY, 'right', true ) );
+			particles.push( new Particle( leftJetX, leftJetY, "left", true ) );
+			particles.push( new Particle( rightJetX, rightJetY, "right", true ) );
 		}
-		ctx.globalCompositeOperation = 'destination-out';
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+		ctx.globalCompositeOperation = "destination-out";
+        ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
 		ctx.fillRect( particle.x, particle.y, canvas.width, canvas.height );
-		ctx.globalCompositeOperation = 'lighter';
+		ctx.globalCompositeOperation = "lighter";
+		topEndBoundary = spacebg.offset().top * 1.1;
+		bottomStartBoundary = spacebg.offset().top + spacebg.innerHeight() * .75;
 		var i = particles.length;
 		while( i-- ) {
 			particles[ i ].draw();
@@ -435,13 +813,15 @@ $(document).ready(function() {
 		// increase the particle count for a bigger explosion, beware of the canvas performance hit with the increased particles though
 		var particleCount = 2;
 		while( particleCount-- ) {
-			particles.push( new Particle( leftJetX, leftJetY, 'left', false ) );
-			particles.push( new Particle( rightJetX, rightJetY, 'right', false ) );
+			particles.push( new Particle( leftJetX, leftJetY, "left", false ) );
+			particles.push( new Particle( rightJetX, rightJetY, "right", false ) );
 		}
-		ctx.globalCompositeOperation = 'destination-out';
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+		ctx.globalCompositeOperation = "destination-out";
+        ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
 		ctx.fillRect( 0, 0, canvas.width, canvas.height );
-		ctx.globalCompositeOperation = 'lighter';
+		ctx.globalCompositeOperation = "lighter";
+		topEndBoundary = spacebg.offset().top * 1.1;
+		bottomStartBoundary = spacebg.offset().top + spacebg.innerHeight() * .75;
 		var i = particles.length;
 		while( i-- ) {
 			particles[ i ].draw();
@@ -449,48 +829,15 @@ $(document).ready(function() {
 		}
 	}
 
-	$('.to').on('click', function() {
-		takeOff();
-		blastOff = requestAnimationFrame(createParticles);
-	});
-
-	$('.db').on('click', function() {
-		cancelAnimationFrame(blastOff);
-		// ease jets out with new animation 
-		blastOff = requestAnimationFrame(removeParticles);
-		// cancel animation frame after easing complete
-		setTimeout(function() {
-			cancelAnimationFrame(blastOff);
-			ctx.clearRect( 0, 0, canvas.width, canvas.height );
-		}, 2000);
-	});
-
-	$('.contact').on('click', function() {
-		activateAstronaut();
-	});
+	var topEndBoundary;
+	var bottomStartBoundary;
 
 	function setSizing() {
+		getSet();
 		var containerHeight = astronaut.parent().height();
 		var width = containerHeight / 1.86;
-		astronaut.parent().css('width', width);
-		astronaut.css('width', width);
-	}
-
-	function takeOff() {
-		astronaut.removeClass('Relax');
-		astronaut.removeClass('Jets-On');
-		astronaut.addClass('Down');
-		setTimeout(function() {
-			innerspace.addClass('Travel-Fade');
-			outerspace.addClass('Up');
-			astronaut.addClass('Take-Off');
-			astronaut.addClass('Jets-On');	
-			astronautContainer.addClass('Small');
-		}, 500);
-		setTimeout(function() {
-			init();
-			animate();
-		}, 5000)
+		astronaut.parent().css("width", width);
+		astronaut.css("width", width);
 	}
 
 	function easeInQuad (t) { 
@@ -503,7 +850,7 @@ $(document).ready(function() {
 	function speedUp() {
 		var targetSpeed = 1;
 		baseSpaceSpeed = baseSpaceSpeed - easing;
-		outerspace.css('animation-duration', baseSpaceSpeed + 's');
+		outerspace.css("animation-duration", baseSpaceSpeed + "s");
 		console.log(baseSpaceSpeed);
 		if (baseSpaceSpeed <= targetSpeed) {
 			spaceTravel = cancelAnimationFrame(speedUp);	
@@ -512,33 +859,100 @@ $(document).ready(function() {
 		}	
 	}
 
-	function activateAstronaut() {
-		startMaine.addClass('Lets-Go');
-		horizonLeaving.addClass('Lets-Go');
+	function initAstronaut() {
+		setSizing();
+		astronaut.addClass("Take-Off");
+		astronaut.addClass("Jets-On");	
+		astronautContainer.removeClass("Init");
+		blastOff = requestAnimationFrame(createParticles);
 		setTimeout(function() {
-		astronaut.removeClass('On-Load');
-		astronaut.addClass('Drop-In');
-		}, 2000)
-		setTimeout(function() {
-			astronaut.remove('Jets-On');
-			astronaut.removeClass('Drop-In');
-			astronaut.addClass('Relax');
-		}, 8000);
-		setTimeout(function() {
-			init();
-		}, 10000)
+			astronaut.removeClass("Jets-On");
+			astronaut.removeClass("Take-Off");
+			astronaut.addClass("Relax");
+			cancelAnimationFrame(blastOff);
+			// ease jets out with new animation 
+			blastOff = requestAnimationFrame(removeParticles);
+		}, 3500);
+		setTimeout(function () {
+			// cancel animation frame after easing complete
+			cancelAnimationFrame(blastOff);
+			ctx.clearRect( 0, 0, canvas.width, canvas.height );
+		}, 3600);
 	}
 
-	$(window).on('resize', function() {
+	function relaxAstronaut() {
+		astronaut.removeClass("Jets-On");
+		astronaut.removeClass("Take-Off");
+	}
+
+	function activateAstronaut() {
 		setSizing();
-		$('.astronaut-container').find('*').addClass('No-Transition');
+		astronaut.removeClass("Relax");
+		astronaut.addClass("Down");
 		setTimeout(function() {
-			$('.astronaut-container').find('*').removeClass('No-Transition');
+			astronaut.addClass("Take-Off");
+			astronaut.addClass("Jets-On");
+			astronautContainer.addClass("To-Top");
+			blastOff = requestAnimationFrame(createParticles);
+		}, 1000);
+		setTimeout(function() {
+			
+		}, 1095);
+		setTimeout(function() {
+			cancelAnimationFrame(blastOff);
+		}, 4000);
+		setTimeout(function() {
+			blastOff = requestAnimationFrame(removeParticles);
+		}, 4001)
+		setTimeout(function() {
+			cancelAnimationFrame(blastOff);
+		}, 5000);
+	}
+
+	function closeUp() {
+		setSizing();
+		astronaut.removeClass("Relax");
+		astronaut.removeClass("Jets-On");
+		astronaut.addClass("Down");
+		setTimeout(function() {
+			astronaut.addClass("Take-Off");
+			astronaut.addClass("Jets-On");	
+			astronautContainer.addClass("To-Top");
+		}, 1000);
+		setTimeout(function() {
+			blastOff = requestAnimationFrame(createParticles);
+			astronautContainer.removeClass("Small");
+		}, 1095);
+		setTimeout(function() {
+			astronautContainer.removeClass("To-Top");
+			astronautContainer.addClass("Transparent");
+			astronautContainer.addClass("Reset-Bottom");
+			cancelAnimationFrame(blastOff);
+		}, 5500);
+		setTimeout(function() {
+			astronautContainer.removeClass("Transparent");
+			blastOff = requestAnimationFrame(removeParticles);
+		}, 5501)
+		setTimeout(function() {
+			astronautContainer.removeClass("Reset-Bottom");
+			astronautContainer.addClass("Up-Close");
+			relaxAstronaut();
+			cancelAnimationFrame(blastOff);
+			ctx.clearRect( 0, 0, canvas.width, canvas.height );
+		}, 6000)
+	}
+
+	$(window).on("resize", function() {
+		setSizing();
+		$(".astronaut-container").find("*").addClass("No-Transition");
+		setTimeout(function() {
+			$(".astronaut-container").find("*").removeClass("No-Transition");
 		})
 	});
 
 	loaderBar();
 	randomizeMyName();
+
 	var camera;
 	var controls;
 	var axes;
@@ -598,15 +1012,15 @@ $(document).ready(function() {
 
 		// Textures
 		textureLoader = new THREE.TextureLoader();
-		bccTexture = textureLoader.load('/yakcmxela/wp-content/themes/yakcmxela/textures/bcc.jpg');
+		bccTexture = textureLoader.load("/yakcmxela/wp-content/themes/yakcmxela/textures/bcc.jpg");
 		bccMaterial = new THREE.MeshBasicMaterial( { color: 0xffffff, map: bccTexture } );
-		darthiaTexture = textureLoader.load('/yakcmxela/wp-content/themes/yakcmxela/textures/darthia.jpg');
+		darthiaTexture = textureLoader.load("/yakcmxela/wp-content/themes/yakcmxela/textures/darthia.jpg");
 		darthiaMaterial = new THREE.MeshBasicMaterial( { color: 0xffffff, map: darthiaTexture } );
-		chipmansTexture = textureLoader.load('/yakcmxela/wp-content/themes/yakcmxela/textures/lobsters.jpg');
+		chipmansTexture = textureLoader.load("/yakcmxela/wp-content/themes/yakcmxela/textures/lobsters.jpg");
 		chipmansMaterial = new THREE.MeshBasicMaterial( { color: 0xffffff, map: chipmansTexture } );
-		epaTexture = textureLoader.load('/yakcmxela/wp-content/themes/yakcmxela/textures/water.jpg');
+		epaTexture = textureLoader.load("/yakcmxela/wp-content/themes/yakcmxela/textures/water.jpg");
 		epaMaterial = new THREE.MeshBasicMaterial( { color: 0xffffff, map: epaTexture } );
-		nofrillsTexture = textureLoader.load('/yakcmxela/wp-content/themes/yakcmxela/textures/nofrills.jpg');
+		nofrillsTexture = textureLoader.load("/yakcmxela/wp-content/themes/yakcmxela/textures/nofrills.jpg");
 		nofrillsMaterial = new THREE.MeshBasicMaterial( { color: 0xffffff, map: nofrillsTexture } );
 		nofrillsRingColor = new THREE.MeshBasicMaterial( { color: 0xFFC600 } );
 
@@ -640,10 +1054,10 @@ $(document).ready(function() {
 
 		// Renderer
 		renderer = new THREE.WebGLRenderer({antialiased: true, alpha: true});
-		canvasHeight = $('.canvas').height();
+		canvasHeight = $(".canvas").height();
 		console.log(canvasHeight);
 		renderer.setSize( window.innerWidth, canvasHeight );
-		$('.canvas').append( renderer.domElement );
+		$(".canvas").append( renderer.domElement );
 
 		// Add to scene
 		// scene.add( helper );
@@ -656,10 +1070,10 @@ $(document).ready(function() {
 		scene.add( epaSphere );
 		
 		// Events
-		// document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+		// document.addEventListener( "mousemove", onDocumentMouseMove, false );
 
 		// Click
-		$('.epaPlanet').on('click', function() {
+		$(".epaPlanet").on("click", function() {
 			function animatePlanet() {
 				requestAnimationFrame( animatePlanet );
 
@@ -720,7 +1134,7 @@ $(document).ready(function() {
 		tween.start();
 	}
 
-	$('#capabilities').on('click', function() {
+	$("#capabilities").on("click", function() {
 		if ( portfolioPage = true ) {
 			tweenings(bccSphere, -60, -10, -260, -10 );
 			tweenings(darthiaSphere, -30, -3, -230, -3 );
@@ -728,8 +1142,8 @@ $(document).ready(function() {
 			tweenings(nofrillsSphere, 30, 6, -170, 6 );
 			tweenings(nofrillsRing, 30, 6, -170, 6 );
 			tweenings(chipmansSphere, 60, 9, -140, 9 );
-			outerspace.css('background-position-x', '-500%')
-			outerspace.css('animation', 'zoomies 3s cubic-bezier(0.68, -0.55, 0.27, 1.55)');
+			outerspace.css("background-position-x", "-500%")
+			outerspace.css("animation", "zoomies 3s cubic-bezier(0.68, -0.55, 0.27, 1.55)");
 		}
 		setTimeout(function() {
 			scene.remove( bccSphere );
@@ -745,7 +1159,7 @@ $(document).ready(function() {
 		experiencePage = false;
 	});
 
-	$('#portfolio').on('click', function() {
+	$("#portfolio").on("click", function() {
 		scene.add( bccSphere );
 		scene.add( nofrillsSphere );
 		scene.add( nofrillsRing );
@@ -758,14 +1172,18 @@ $(document).ready(function() {
 		tweenings(nofrillsSphere, -170, 6, 30, 6 );
 		tweenings(nofrillsRing, -170, 6, 30, 6 );
 		tweenings(chipmansSphere, -140, 9, 60, 9 );
-		outerspace.css('background-position-x', '0%')
-		outerspace.css('animation', 'zoomies 3s cubic-bezier(0.68, -0.55, 0.27, 1.55)');
+		outerspace.css("background-position-x", "0%")
+		outerspace.css("animation", "zoomies 3s cubic-bezier(0.68, -0.55, 0.27, 1.55)");
 		portfolioPage = true;
 		capabilitiesPage = false;
 		bioPage = false;
 		experiencePage = false;
 	});
 
-// On Load
+// Document Ready
 	setSizing();
+	getSet();
+// On Load
+
+		
 });

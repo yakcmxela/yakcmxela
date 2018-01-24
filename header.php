@@ -23,24 +23,26 @@
 
 ?>
 
+<h3 class="portfolio-site-name"></h3>
 <nav>
-	<div class="menu d-flex">
-		<div class="about Active">
-			<img src="<?php echo get_template_directory_uri(); ?>/svg/about.svg">
-			<p>About</p>
-		</div>
-		<div class="skills">
-			<img src="<?php echo get_template_directory_uri(); ?>/svg/skills.svg">
-			<p>Skills</p>
-		</div>
-		<div class="work">
-			<img src="<?php echo get_template_directory_uri(); ?>/svg/work.svg">
-			<p>Work</p>
-		</div>
-		<div class="contact" >
-			<img src="<?php echo get_template_directory_uri(); ?>/svg/satellite-dish.svg">
-			<p>Contact</p>
-		</div>
-		
+	<div id="open-menu">
+		<i class="button"></i>
+	</div>
+	<div id="about">
+		<img src="<?php echo get_bloginfo('template_directory') ?>/svg/about-color.svg">
+		<p>About</p>
+	</div>
+	<div id="skills">
+		<img src="<?php echo get_bloginfo('template_directory') ?>/svg/skills-color.svg">
+		<p>Resume</p>
+		<p>LinkedIn</p>
+	</div>
+	<div id="work">
+		<img src="<?php echo get_bloginfo('template_directory') ?>/svg/work-color.svg">
+		<p>Work</p>
+	</div>
+	<div id="contact" >
+		<img src="<?php echo get_bloginfo('template_directory') ?>/svg/contact-color.svg">
+		<p>Contact</p>
 	</div>
 </nav>
