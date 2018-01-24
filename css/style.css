@@ -3199,6 +3199,7 @@ nav {
       height: 75px;
       position: fixed;
       left: 50% !important;
+      top: 24px !important;
       transform: translateX(-50%); }
       nav #open-menu i {
         border-width: 3px;
