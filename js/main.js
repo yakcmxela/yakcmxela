@@ -250,11 +250,17 @@ $(document).ready(function() {
 				if (randomNumber > 1) { 
 					newEl.css("animation", "glitch-effect-right " + randomNumber + "s ease-in-out") 
 					newEl.css("box-shadow", "1px 1px 3px black");
+					newEl.css('background-color',randomColor());
+					newEl.css('color', 'white');
 				} else if (randomNumber < .95) {
 					newEl.css("animation", "glitch-effect-left " + randomNumber + "s ease-in-out") 
 					newEl.css("box-shadow", "-1px 1px 3px rgba(0, 0, 0, .5)");
+					newEl.css('background-color', '#e8e8e8');
+					newEl.css('color', 'white');
 				} else {
 					newEl.css("animation", "glitch-effect-center " + randomNumber + "s ease-in-out") 
+					newEl.css('background-color',randomColor());
+					newEl.css('color', 'white');
 				}
 				newEl.appendTo(container);
 			}, 200);
