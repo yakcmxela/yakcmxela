@@ -410,7 +410,7 @@ $(document).ready(function() {
 			if(pageOpen !== 'about'){
 				var id = $(e.currentTarget).data('site');
 				var requestResponse = $.ajax({
-					url: "https://boldcoastdev.com/yakcmxela/index.php/wp-json/wp/v2/posts?categories=6",
+					url: "https://boldcoastdev.com/yakcmxela/index.php/wp-json/wp/v2/posts?categories=5",
 					method: "GET",
 				});
 
