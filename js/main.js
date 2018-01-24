@@ -295,7 +295,6 @@ $(document).ready(function() {
 			});
 
 			requestResponse.done(function(data) {
-				console.log(data);
 				var portfolioArray = [];
 				var delay = .2;
 				if(pageOpen !== 'portfolio') {
@@ -317,7 +316,6 @@ $(document).ready(function() {
 							section += '<a href="' + url +'"><h2>' + name + '</h2></a>';
 							section += '</div>';
 							section += '</div>';
-							console.log(section);
 						} else if(slug == 'chipmans-wharf') {
 							var section = '';
 							var svg = val.acf.svg;
@@ -413,7 +411,6 @@ $(document).ready(function() {
 				});
 
 				requestResponse.done(function(data) {
-					console.log(data);
 					var el = '';
 					$.each(data, function(key, val) {
 						var content = val.content.rendered;
@@ -468,7 +465,6 @@ $(document).ready(function() {
 		})
 
 	function closePages() {
-		console.log(pageOpen);
 		if(pageOpen == 'contact') {
 			closeContact();
 		} else if(pageOpen == 'skills') {
@@ -520,7 +516,6 @@ $(document).ready(function() {
 	function sizeSpaceBG() {
 		var height = $('.tv').outerHeight();
 		var width = $('.tv').outerWidth();
-		console.log(width);
 		spacebg.css('height', height - 75);
 		spacebg.css('width', width - 50);
 		spacebg.removeClass('No-Animate');
@@ -600,20 +595,8 @@ $(document).ready(function() {
 	var lobster = $('.lobster');
 	var rockpile = $('.rockpile');
 	var oysters = $('.oysters');
-	var wheel = $('.wheel');
-	var wheelNavOpen = false;
+	
 
-	wheel.on('click', function() {
-		if(wheelNavOpen == false) {
-			$(this).removeClass('Nav-Closed');
-			$(this).addClass('Nav-Open');
-			wheelNavOpen = true;
-		} else if(wheelNavOpen == true) {
-			$(this).removeClass('Nav-Open');
-			$(this).addClass('Nav-Closed');
-			wheelNavOpen = false;
-		}
-	});
 
 	function portfolioEvents() {
 		var forms = $('.forms');
@@ -648,6 +631,21 @@ $(document).ready(function() {
 
 			parallax(gulls, 50, 'lrbt', false);
 		});
+
+		var wheel = $('.wheel');
+		var wheelNavOpen = false;
+
+		wheel.on('click', function() {
+			if(wheelNavOpen == false) {
+				$('.wheel').removeClass('Nav-Closed');
+				$('.wheel').addClass('Nav-Open');
+			} else {
+				$('.wheel').removeClass('Nav-Open');
+				$('.wheel').addClass('Nav-Closed');
+			}
+			wheelNavOpen = !wheelNavOpen;
+		});
+
 	}
 	portfolioEvents();
 	
@@ -797,7 +795,9 @@ $(document).ready(function() {
         ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
 		ctx.fillRect( particle.x, particle.y, canvas.width, canvas.height );
 		ctx.globalCompositeOperation = "lighter";
-		topEndBoundary = spacebg.offset().top * 1.1;
+		var spacebgHeight = spacebg.innerHeight();
+		var extraChop = (71/600) * spacebgHeight;
+		topEndBoundary = spacebg.offset().top + extraChop;
 		bottomStartBoundary = spacebg.offset().top + spacebg.innerHeight() * .75;
 		var i = particles.length;
 		while( i-- ) {
@@ -819,7 +819,9 @@ $(document).ready(function() {
         ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
 		ctx.fillRect( 0, 0, canvas.width, canvas.height );
 		ctx.globalCompositeOperation = "lighter";
-		topEndBoundary = spacebg.offset().top * 1.1;
+		var spacebgHeight = spacebg.innerHeight();
+		var extraChop = (71/600) * spacebgHeight;
+		topEndBoundary = spacebg.offset().top + extraChop;
 		bottomStartBoundary = spacebg.offset().top + spacebg.innerHeight() * .75;
 		var i = particles.length;
 		while( i-- ) {
@@ -850,7 +852,6 @@ $(document).ready(function() {
 		var targetSpeed = 1;
 		baseSpaceSpeed = baseSpaceSpeed - easing;
 		outerspace.css("animation-duration", baseSpaceSpeed + "s");
-		console.log(baseSpaceSpeed);
 		if (baseSpaceSpeed <= targetSpeed) {
 			spaceTravel = cancelAnimationFrame(speedUp);	
 		} else {
@@ -1054,7 +1055,6 @@ $(document).ready(function() {
 		// Renderer
 		renderer = new THREE.WebGLRenderer({antialiased: true, alpha: true});
 		canvasHeight = $(".canvas").height();
-		console.log(canvasHeight);
 		renderer.setSize( window.innerWidth, canvasHeight );
 		$(".canvas").append( renderer.domElement );
 
@@ -1090,7 +1090,6 @@ $(document).ready(function() {
 		mouseX /= 500;
 		mouseY /= 500;
 		// var target = { x: mouseX, y: mouseY };
-		// console.log(target);
 		// var tween = new TWEEN.Tween(position).to(target, 2000);
 		// tween.onUpdate(function() {
 			
@@ -1122,7 +1121,6 @@ $(document).ready(function() {
 		var target = {x: ex, y: ey}
 
 		var tween = new TWEEN.Tween(position).to(target, 3000);
-		console.log(position);
 		tween.onUpdate(function() {
 			obj.position.x = position.x;
 			obj.position.y = position.y;

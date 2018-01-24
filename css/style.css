@@ -2080,7 +2080,7 @@ nav {
                 left: 50%;
                 transform: translate(-50%, -50%); }
             .page .page-content .section-block.chipmans .block .wheel.Nav-Open {
-              transform: translateY(-50%) rotate(-180deg);
+              transform: translate(-50%, -50%) rotate(-180deg);
               -webkit-transition: all 0.35s linear;
               -o-transition: all 0.35s linear;
               -moz-transition: all 0.35s linear;
@@ -2110,7 +2110,7 @@ nav {
                   -ms-transition: transform 0.2s linear;
                   transition: transform 0.2s linear; }
             .page .page-content .section-block.chipmans .block .wheel.Nav-Closed {
-              transform: translateY(-50%) rotate(0deg);
+              transform: translate(-50%, -50%) rotate(0deg);
               -webkit-transition: all 0.35s linear;
               -o-transition: all 0.35s linear;
               -moz-transition: all 0.35s linear;
@@ -3302,7 +3302,7 @@ nav {
             width: 32px;
             padding: 1.2px; }
           .page .page-content .section-block.chipmans .block .wheel.Nav-Open {
-            transform: rotate(180deg);
+            transform: translate(-50%, -50%) rotate(180deg);
             -webkit-transition: all 0.35s linear;
             -o-transition: all 0.35s linear;
             -moz-transition: all 0.35s linear;
@@ -3332,7 +3332,7 @@ nav {
                 -ms-transition: all 0.2s linear;
                 transition: all 0.2s linear; }
           .page .page-content .section-block.chipmans .block .wheel.Nav-Closed {
-            transform: rotate(0deg);
+            transform: translate(-50%, -50%) rotate(0deg);
             -webkit-transition: all 0.35s linear;
             -o-transition: all 0.35s linear;
             -moz-transition: all 0.35s linear;

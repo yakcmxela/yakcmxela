@@ -911,7 +911,7 @@ nav
 								left: 50%
 								transform: translate(-50%, -50%)
 						&.Nav-Open
-							transform: translateY(-50%) rotate(-180deg)
+							transform: translate(-50%, -50%) rotate(-180deg)
 							+transition(all .35s linear)	
 							transition-delay: .25s
 							.circle
@@ -929,7 +929,7 @@ nav
 									transform: translateY(-12px) rotate(-45deg)  scaleY(.5) scaleX(1.2)
 									+transition(transform .2s linear)
 						&.Nav-Closed
-							transform: translateY(-50%)rotate(0deg)
+							transform: translate(-50%, -50%) rotate(0deg)
 							+transition(all .35s linear)
 							.circle
 								transform: scale(1)
@@ -2041,7 +2041,7 @@ nav
 								width: 32px
 								padding: 1.2px
 							&.Nav-Open
-								transform: rotate(180deg)
+								transform: translate(-50%, -50%) rotate(180deg)
 								+transition(all .35s linear)	
 								transition-delay: .25s
 								.circle
@@ -2059,7 +2059,7 @@ nav
 										transform: translateY(-7px) rotate(-45deg)  scaleY(.5) scaleX(1.2)
 										+transition(all .2s linear)
 							&.Nav-Closed
-								transform: rotate(0deg)
+								transform: translate(-50%, -50%) rotate(0deg)
 								+transition(all .35s linear)
 								.circle
 									transform: scale(1)
