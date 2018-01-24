@@ -292,7 +292,7 @@ $(document).ready(function() {
 		nav.main.work.on("click", function() {
 
 			var requestResponse = $.ajax({
-				url: "https://boldcoastdev.com/yakcmxela/wp-json/wp/v2/posts",
+				url: "https://boldcoastdev.com/yakcmxela/index.php/wp-json/wp/v2/posts",
 				method: "GET",
 			});
 
@@ -410,7 +410,7 @@ $(document).ready(function() {
 			if(pageOpen !== 'about'){
 				var id = $(e.currentTarget).data('site');
 				var requestResponse = $.ajax({
-					url: "https://boldcoastdev.com/yakcmxela/wp-json/wp/v2/posts?categories=6",
+					url: "https://boldcoastdev.com/yakcmxela/index.php/wp-json/wp/v2/posts?categories=6",
 					method: "GET",
 				});
 
@@ -529,8 +529,12 @@ $(document).ready(function() {
 		spacebg.css('height', height - 75);
 		spacebg.css('width', width - 50);
 		spacebg.removeClass('No-Animate');
-	}
 
+	}
+	$(window).on('load',function() {
+		sizeSpaceBG();
+		setNavPos();
+	});
 	$(window).on('resize', function() {
 		sizeSpaceBG();
 		setNavPos();
