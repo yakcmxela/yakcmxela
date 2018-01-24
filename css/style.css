@@ -3168,7 +3168,7 @@ nav {
       nav.Open #contact {
         transform: translateX(0%); }
       nav.Open #open-menu {
-        transform: translateX(-500%); }
+        transform: translateX(-800%); }
     nav #work,
     nav #skills,
     nav #about,
@@ -3196,7 +3196,10 @@ nav {
       -ms-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
       transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
       width: 75px;
-      height: 75px; }
+      height: 75px;
+      position: fixed;
+      left: 50% !important;
+      transform: translateX(-50%); }
       nav #open-menu i {
         border-width: 3px;
         width: 50px;
