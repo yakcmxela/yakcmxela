@@ -1316,7 +1316,8 @@ html, body {
   font-family: "Assistant", sans-serif;
   box-sizing: border-box;
   letter-spacing: 1px;
-  color: #282B2A; }
+  color: #282B2A;
+  overflow-x: hidden; }
 
 h1, h2, h3 {
   font-weight: 300; }
