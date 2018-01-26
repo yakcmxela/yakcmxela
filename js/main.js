@@ -299,6 +299,7 @@ $(document).ready(function() {
 				var delay = .2;
 				if(pageOpen !== 'portfolio') {
 					$.each(data, function(key, val) {
+						console.log(data);
 						var url = val.acf.url;
 						var name = val.title.rendered;
 						var id = val.id;
@@ -307,13 +308,14 @@ $(document).ready(function() {
 						if(slug == 'bold-coast-creative') {
 							var section = '';
 							var svgs = val.acf.svgs;
+							var logo = val.acf.logo;
 							section += '<div class="section-block" style="transition-delay:' + delay + '">';
 							section += '<div class="block bcc">';
 							svgs.forEach(function(filename){
 								section += '<img src="' + dir + '/svg/' + filename.svg + '.svg" class="' + filename.svg + '">';
 							});
 
-							section += '<a href="' + url +'"><h2>' + name + '</h2></a>';
+							section += '<a href="' + url +'"><img class="logo" src="' + logo +'"><h2>' + name + '</h2></a>';
 							section += '</div>';
 							section += '</div>';
 						} else if(slug == 'chipmans-wharf') {
@@ -345,10 +347,11 @@ $(document).ready(function() {
 							var section = '';
 							var form = val.acf.forms;
 							var images = val.acf.images;
+							var logo = val.acf.logo;
 							section += '<div class="section-block nofrills" style="transition-delay:' + delay + '">';;
-							section += '<a href="' + url +'"><h2>' + name + '</h2></a>';
 							section += '<img src="' + form + '" class="forms">';
 							section += '<div class="images">';
+							section += '<a href="' + url +'"><img class="logo" src="' + logo + '"></a>';
 							images.forEach( function(filename) {
 								section += '<div class="img-container">';
 								section += '<img src="' + filename.image + '">';
@@ -798,8 +801,8 @@ $(document).ready(function() {
 		ctx.fillRect( particle.x, particle.y, canvas.width, canvas.height );
 		ctx.globalCompositeOperation = "lighter";
 		var spacebgHeight = spacebg.innerHeight();
-		var extraChop = (71/600) * spacebgHeight;
-		topEndBoundary = spacebg.offset().top + extraChop;
+		var extraChop = (71/600) * $('.astro').innerHeight();
+		topEndBoundary = $('.astro').offset().top + extraChop;
 		bottomStartBoundary = spacebg.offset().top + spacebg.innerHeight() * .75;
 		var i = particles.length;
 		while( i-- ) {

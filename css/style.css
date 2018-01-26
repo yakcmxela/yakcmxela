@@ -2164,22 +2164,20 @@ nav {
                   -ms-transition: all 0.2s linear;
                   transition: all 0.2s linear;
                   transition-delay: 0.35s; }
-      .page .page-content .section-block.nofrills h2 {
-        position: absolute;
-        top: 50%;
-        right: 0;
-        width: 50%;
-        transform: translateY(-50%);
-        background-color: white;
-        border-top: 5px solid #ffc600;
-        z-index: 2;
-        text-align: center;
-        padding-left: 0;
-        padding-right: 0; }
       .page .page-content .section-block.nofrills .images {
         width: 50%;
         height: 337.5px;
         margin-left: auto; }
+        .page .page-content .section-block.nofrills .images .logo {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 350px;
+          transform: translate(-50%, -50%);
+          z-index: 2;
+          text-align: center;
+          padding-left: 0;
+          padding-right: 0; }
         .page .page-content .section-block.nofrills .images .img-container {
           overflow: hidden;
           width: 100%;
@@ -2213,9 +2211,19 @@ nav {
           width: 100%;
           height: 100%;
           background-color: #5f9ca1; }
-          .page .page-content .section-block .block.bcc h2 {
-            color: white;
-            position: absolute; }
+          .page .page-content .section-block .block.bcc a {
+            width: 100%;
+            display: flex;
+            padding: 24px;
+            align-items: flex-end; }
+            .page .page-content .section-block .block.bcc a .logo {
+              height: 50px;
+              width: 50px;
+              margin-right: 12px; }
+            .page .page-content .section-block .block.bcc a h2 {
+              color: white;
+              padding: 0px;
+              line-height: 50px; }
           .page .page-content .section-block .block.bcc .gulls {
             position: absolute;
             width: 35%;
@@ -3139,6 +3147,10 @@ nav {
       left: 64px; }
     .page .page-content .section-block.axly .block.joshuatree {
       position: relative; }
+    .page .page-content .section-block.nofrills .images {
+      height: 400px; }
+      .page .page-content .section-block.nofrills .images .img-container {
+        height: 50%; }
   .page .page-content .outro {
     margin-top: 128px; } }
 @media(max-width: 768px) {
@@ -3269,13 +3281,21 @@ nav {
       .page .intro-content .section-block .astro.Contact {
         transform: translate(-50%, 33%); }
   .page .page-content {
-    margin-top: 64px; }
+    margin-top: 108px; }
     .page .page-content .section-block {
-      min-height: 350px; }
-      .page .page-content .section-block.bcc .block .gulls {
+      min-height: 350px;
+      margin: 12px; }
+      .page .page-content .section-block .block.bcc a {
+        display: flex; }
+      .page .page-content .section-block .block.bcc .gulls {
         width: 50%; }
-      .page .page-content .section-block.bcc .block h2 {
+      .page .page-content .section-block .block.bcc a {
+        align-items: center;
+        justify-content: center;
+        width: 100%;
         padding: 12px 0px; }
+        .page .page-content .section-block .block.bcc a h2 {
+          padding: 0px !important; }
       .page .page-content .section-block.chipmans .block {
         flex-wrap: wrap; }
         .page .page-content .section-block.chipmans .block .wheel-container {
@@ -3362,6 +3382,12 @@ nav {
                 transition-delay: 0.35s; }
         .page .page-content .section-block.chipmans .block .store {
           width: 50%; }
+        .page .page-content .section-block.chipmans .block:first-of-type {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          z-index: 10;
+          height: 90px; }
       .page .page-content .section-block.nofrills h2 {
         top: 50%;
         right: initial;
