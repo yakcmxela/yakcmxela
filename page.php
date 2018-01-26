@@ -7,7 +7,7 @@
 	<div class="intro-content">
 		<div class="section-block">
 			<div class="intro">
-				<h1>Hey, I'm Alex.</h1>
+				<h1 class="hi">Hey, I'm Alex.</h1>
 				<div class="skills">
 					<h4>Here's my resume.</h4>
 					<div class="links">

@@ -1753,7 +1753,8 @@ nav {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
     transform: translateY(0vh);
     -webkit-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
     -o-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -1763,28 +1764,40 @@ nav {
     .page .intro-content.Up {
       transform: translateY(-100vh); }
     .page .intro-content .section-block {
-      height: 100vh;
-      position: relative;
-      overflow: hidden; }
+      height: 700px;
+      width: 100%;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%); }
       .page .intro-content .section-block .intro {
         position: absolute;
-        top: 35%;
+        top: 0%;
         left: 50%;
-        transform: translate(-50%, -50%);
-        width: 800px;
+        transform: translate(-50%, 0%);
+        width: 750px;
+        height: 200px;
         max-width: 100%;
         -webkit-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
         -o-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
         -moz-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
         -ms-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
         transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1); }
+        .page .intro-content .section-block .intro .hi {
+          position: absolute;
+          bottom: 0%; }
         .page .intro-content .section-block .intro h1 {
+          -webkit-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+          -o-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+          -moz-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+          -ms-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+          transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
           animation: arrive-y 2s cubic-bezier(0.22, 0.61, 0.36, 1); }
         .page .intro-content .section-block .intro .skills {
           opacity: 0;
           visibility: hidden;
           position: absolute;
-          transform: translateY(20%);
+          transform: translateY(100%);
           display: flex;
           align-items: center;
           -webkit-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -1810,7 +1823,7 @@ nav {
               -ms-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
               transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1); }
           .page .intro-content .section-block .intro .skills.Active {
-            transform: translateY(0%);
+            transform: translateY(50%);
             opacity: 1;
             visibility: visible; }
             .page .intro-content .section-block .intro .skills.Active img {
@@ -1841,13 +1854,15 @@ nav {
             -ms-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
             transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1); }
             .page .intro-content .section-block .intro .contact .antenna.Active {
-              transform: translate(0%, 1%); }
+              transform: translate(0%, 8%); }
           .page .intro-content .section-block .intro .contact.Active {
-            transform: translateY(0%);
+            transform: translateY(50%);
             opacity: 1;
             visibility: visible; }
         .page .intro-content .section-block .intro.About {
-          transform: translate(5%, -50%); }
+          transform: translate(2%, 0%); }
+        .page .intro-content .section-block .intro.Contact .hi {
+          opacity: 0; }
         .page .intro-content .section-block .intro h1 {
           margin-bottom: 24px; }
           .page .intro-content .section-block .intro h1.Hidden {
@@ -1858,39 +1873,43 @@ nav {
           position: absolute;
           top: 100%;
           margin-top: 24px;
+          visibility: visible;
+          opacity: 1;
           -webkit-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
           -o-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
           -moz-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
           -ms-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
           transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1); }
           .page .intro-content .section-block .intro .about.Hidden {
-            display: none; }
+            opacity: 0;
+            visibility: hidden; }
       .page .intro-content .section-block .astro {
         max-width: 100%;
         min-height: 225px;
         min-width: 300px;
-        height: 600px;
-        width: 850px;
+        height: 500px;
+        width: 750px;
         z-index: 10;
         position: relative;
         overflow: hidden;
         position: absolute;
-        top: 62%;
+        bottom: 0%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, 0%);
         -webkit-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
         -o-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
         -moz-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
         -ms-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
         transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1); }
         .page .intro-content .section-block .astro.About {
-          transform: translate(-850px, -50%); }
+          transform: translate(-750px, 0%); }
         .page .intro-content .section-block .astro.Skills {
-          transform: translate(-50%, -30%); }
+          transform: translate(-50%, 0%); }
         .page .intro-content .section-block .astro.Contact {
-          transform: translate(-50%, -18%); }
+          transform: translate(-50%, 20%); }
         .page .intro-content .section-block .astro .tv {
           max-width: 100%;
+          width: 800px;
           position: absolute;
           height: 110%;
           left: 50%;
@@ -3062,30 +3081,24 @@ nav {
       border-radius: 12px;
       cursor: pointer; }
 
-@media (max-width: 1750px) {
-  h1 {
-    font-size: 52px; }
-
+@media (max-width: 1550px) {
   p {
-    font-size: 18px;
-    line-height: 32px; }
+    font-size: 20px;
+    line-height: 36px; }
 
-  .page .intro-content .section-block .intro {
-    width: 600px; }
-    .page .intro-content .section-block .intro .contact .antenna {
-      transform: translate(-100%, 200%); }
-      .page .intro-content .section-block .intro .contact .antenna.Active {
-        transform: translate(-20%, 0%); }
-  .page .intro-content .section-block .astro {
-    width: 600px;
-    height: 450px;
-    left: 50%;
-    top: 55%; }
-    .page .intro-content .section-block .astro.About {
-      transform: translate(-600px, -50%); }
-    .page .intro-content .section-block .astro.Contact {
-      transform: translate(-50%, -13%); } }
-@media (max-width: 1300px) {
+  .page .intro-content .section-block {
+    height: 650px; }
+    .page .intro-content .section-block .intro {
+      width: 650px; }
+      .page .intro-content .section-block .intro .about {
+        width: 650px;
+        margin-top: 0px; }
+    .page .intro-content .section-block .astro {
+      height: 450px;
+      width: 650px; }
+      .page .intro-content .section-block .astro.About {
+        transform: translate(-650px, 0%); } }
+@media (max-width: 1350px) {
   h1 {
     font-size: 52px; }
 
@@ -3093,50 +3106,30 @@ nav {
     font-size: 16px;
     line-height: 28px; }
 
-  .page .intro-content .section-block .intro {
-    width: 500px; }
-    .page .intro-content .section-block .intro.About {
-      transform: translate(2%, -50%); }
-    .page .intro-content .section-block .intro .contact .antenna {
-      width: 200px;
-      transform: translate(-100%, 200%); }
-      .page .intro-content .section-block .intro .contact .antenna.Active {
-        transform: translate(-70%, 1%); }
-  .page .intro-content .section-block .astro {
-    width: 500px;
-    height: 375px;
-    top: 52%;
-    left: 50%; }
-    .page .intro-content .section-block .astro.About {
-      transform: translate(-520px, -50%); }
-    .page .intro-content .section-block .astro.Contact {
-      transform: translate(-50%, -5%); } }
-@media (max-width: 1050px) {
-  h1 {
-    font-size: 52px; }
-
-  p {
-    font-size: 16px;
-    line-height: 28px; }
-
-  .page .intro-content .section-block .intro {
-    width: 500px; }
-    .page .intro-content .section-block .intro.About {
-      transform: translate(-50%, -200px); }
-      .page .intro-content .section-block .intro.About h1 {
-        margin-bottom: 0px; }
-    .page .intro-content .section-block .intro .contact .antenna {
-      width: 200px;
-      transform: translate(-100%, 200%); }
-      .page .intro-content .section-block .intro .contact .antenna.Active {
-        transform: translate(-70%, 1%); }
-  .page .intro-content .section-block .astro {
-    width: 500px;
-    height: 375px;
-    top: 57%;
-    left: 50%; }
-    .page .intro-content .section-block .astro.About {
-      transform: translate(-50%, 0%); }
+  .page .intro-content .section-block {
+    height: 575px; }
+    .page .intro-content .section-block .intro {
+      width: 550px; }
+      .page .intro-content .section-block .intro.About {
+        transform: translate(-50%, -200px); }
+        .page .intro-content .section-block .intro.About h1 {
+          margin-bottom: 0px; }
+      .page .intro-content .section-block .intro .about {
+        width: 550px;
+        margin-top: 24px; }
+      .page .intro-content .section-block .intro .contact .antenna {
+        width: 200px;
+        transform: translate(-100%, 200%); }
+        .page .intro-content .section-block .intro .contact .antenna.Active {
+          transform: translate(-70%, 1%); }
+    .page .intro-content .section-block .astro {
+      width: 550px;
+      height: 375px;
+      left: 50%; }
+      .page .intro-content .section-block .astro.About {
+        transform: translate(-50%, 40%); }
+      .page .intro-content .section-block .astro.Contact {
+        transform: translate(-50%, 10%); }
   .page .page-content .section-block {
     min-height: 400px; }
     .page .page-content .section-block.axly h2 {
@@ -3220,65 +3213,36 @@ nav {
   h4 {
     font-size: 22px; }
 
-  .page .intro-content .section-block .intro {
-    width: 100%;
-    top: 72%; }
-    .page .intro-content .section-block .intro.About, .page .intro-content .section-block .intro.Skills {
-      transform: translate(-50%, -150%); }
-    .page .intro-content .section-block .intro h1 {
-      text-align: center;
-      margin: 12px 12px 12px 0px; }
-    .page .intro-content .section-block .intro .about {
-      max-width: 100%;
-      padding: 12px;
-      margin-top: 0px; }
-    .page .intro-content .section-block .intro .skills {
-      flex-direction: column;
-      width: 100%;
-      align-items: center;
-      justify: center; }
-      .page .intro-content .section-block .intro .skills h1 {
-        margin: 12px; }
-      .page .intro-content .section-block .intro .skills .links {
-        text-align: center;
-        margin-right: 6px; }
-        .page .intro-content .section-block .intro .skills .links a {
-          margin: 6px; }
+  .page .intro-content .section-block {
+    height: 300px; }
+    .page .intro-content .section-block .intro {
+      height: 75px;
+      width: 350px; }
+      .page .intro-content .section-block .intro.About {
+        transform: translate(-50%, 200px); }
+      .page .intro-content .section-block .intro.Contact {
+        transform: translate(-50%, -100%); }
+        .page .intro-content .section-block .intro.Contact .contact {
+          width: 100%;
+          text-align: center; }
+          .page .intro-content .section-block .intro.Contact .contact .antenna {
+            width: 100px;
+            right: 0px;
+            transform: translate(-130%, 100%); }
+      .page .intro-content .section-block .intro.Skills .hi {
+        opacity: 0; }
+      .page .intro-content .section-block .intro .about {
+        max-width: 100%;
+        margin-top: 0; }
       .page .intro-content .section-block .intro .skills.Active {
-        visibility: visible;
-        opacity: 1; }
-    .page .intro-content .section-block .intro .contact {
-      left: 50%;
-      top: 0;
-      transform: translate(-50%, -50%); }
-      .page .intro-content .section-block .intro .contact.Active {
-        transform: translate(-50%, -230%); }
-      .page .intro-content .section-block .intro .contact .antenna {
-        width: 150px;
-        top: 50%;
-        left: 50%;
-        transform: translate(-100%, 200%); }
-        .page .intro-content .section-block .intro .contact .antenna.Active {
-          transform: translate(-50%, 62%); }
-  .page .intro-content .section-block .astro {
-    width: 325px;
-    height: 225px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%); }
-    .page .intro-content .section-block .astro.About {
-      transform: translate(-50%, -90%); }
-    .page .intro-content .section-block .astro.Contact {
-      transform: translate(-50%, 40%); }
-    .page .intro-content .section-block .astro.Skills {
-      transform: translate(-50%, -90%); }
-    .page .intro-content .section-block .astro .tv {
-      height: 110%; }
-    .page .intro-content .section-block .astro .space-bg {
-      min-height: 200px; }
-      .page .intro-content .section-block .astro .space-bg .outerspace,
-      .page .intro-content .section-block .astro .space-bg .innerspace {
-        opacity: 1; }
+        transform: translateY(10%); }
+    .page .intro-content .section-block .astro {
+      width: 350px;
+      height: 225px; }
+      .page .intro-content .section-block .astro.About {
+        transform: translate(-50%, -50%); }
+      .page .intro-content .section-block .astro.Contact {
+        transform: translate(-50%, 50%); }
   .page .page-content {
     margin-top: 64px; }
     .page .page-content .section-block {

@@ -431,7 +431,7 @@ $(document).ready(function() {
 						var div = $('.about');
 						$('.intro').addClass('About');
 						$('.astro').addClass('About');
-						glitch(div, container, 'translate(0%, 0%)');
+						div.removeClass('Hidden');
 						astronaut.addClass('Wave');
 					}, 500);
 					setTimeout(function() {
@@ -459,6 +459,7 @@ $(document).ready(function() {
 			closePages();
 			$('canvas').addClass('Hidden');
 			$('.astro').addClass('Contact');
+			$('.intro').addClass('Contact');
 			$('.intro .contact').addClass('Active');
 			$('.antenna').addClass('Active');
 			pageOpen = 'contact';
