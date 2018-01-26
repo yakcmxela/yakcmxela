@@ -2184,6 +2184,10 @@ nav {
           height: 100%;
           display: block;
           position: relative; }
+          .page .page-content .section-block.nofrills .images .img-container:first-of-type {
+            border-bottom: 2px solid white; }
+          .page .page-content .section-block.nofrills .images .img-container:last-of-type {
+            border-top: 2px solid white; }
           .page .page-content .section-block.nofrills .images .img-container img {
             position: absolute;
             top: 50%;
