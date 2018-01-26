@@ -495,6 +495,7 @@ $(document).ready(function() {
 		blinkOut(div, 'translate(0%, 0%)');
 		astronaut.removeClass('Wave');
 		$('canvas').addClass('Hidden');
+		$('.intro').addClass('Hidden');
 		$('.intro').removeClass('About');
 		$('.astro').removeClass('About');
 	}

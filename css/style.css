@@ -3162,6 +3162,14 @@ nav {
         transform: translateX(0%); }
       nav.Open #open-menu {
         transform: translateX(-800%); }
+      nav.Open #about {
+        transition-delay: 0s; }
+      nav.Open #skills {
+        transition-delay: 0.1s; }
+      nav.Open #work {
+        transition-delay: 0.2s; }
+      nav.Open #contact {
+        transition-delay: 0.3s; }
     nav #work,
     nav #skills,
     nav #about,
@@ -3176,12 +3184,14 @@ nav {
       height: 75px;
       transform: translateX(800%);
       margin: 0px 2px; }
-    nav #skills {
-      transition-delay: 0.1s; }
-    nav #work {
-      transition-delay: 0.2s; }
-    nav #contact {
+    nav #about {
       transition-delay: 0.3s; }
+    nav #skills {
+      transition-delay: 0.2s; }
+    nav #work {
+      transition-delay: 0.1s; }
+    nav #contact {
+      transition-delay: 0s; }
     nav #open-menu {
       -webkit-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
       -o-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -3226,14 +3236,15 @@ nav {
           width: 100%;
           text-align: center; }
           .page .intro-content .section-block .intro.Contact .contact .antenna {
-            width: 100px;
-            right: 0px;
             transform: translate(-130%, 100%); }
       .page .intro-content .section-block .intro.Skills .hi {
         opacity: 0; }
       .page .intro-content .section-block .intro .about {
         max-width: 100%;
         margin-top: 0; }
+      .page .intro-content .section-block .intro .contact .antenna {
+        width: 100px;
+        right: 0px; }
       .page .intro-content .section-block .intro .skills.Active {
         transform: translateY(10%); }
     .page .intro-content .section-block .astro {
