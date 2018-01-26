@@ -1504,11 +1504,11 @@ nav {
       background-color: #c7c7c7;
       border-radius: 100%;
       transform: scale(0.5);
-      -webkit-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
-      -o-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
-      -moz-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
-      -ms-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
-      transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1); }
+      -webkit-transition: all 2s cubic-bezier(0.22, 0.61, 0.36, 1);
+      -o-transition: all 2s cubic-bezier(0.22, 0.61, 0.36, 1);
+      -moz-transition: all 2s cubic-bezier(0.22, 0.61, 0.36, 1);
+      -ms-transition: all 2s cubic-bezier(0.22, 0.61, 0.36, 1);
+      transition: all 2s cubic-bezier(0.22, 0.61, 0.36, 1); }
   nav #open-menu {
     position: absolute;
     height: 200px;
@@ -3193,11 +3193,11 @@ nav {
     nav #contact {
       transition-delay: 0s; }
     nav #open-menu {
-      -webkit-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
-      -o-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
-      -moz-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
-      -ms-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
-      transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+      -webkit-transition: all 2s cubic-bezier(0.22, 0.61, 0.36, 1);
+      -o-transition: all 2s cubic-bezier(0.22, 0.61, 0.36, 1);
+      -moz-transition: all 2s cubic-bezier(0.22, 0.61, 0.36, 1);
+      -ms-transition: all 2s cubic-bezier(0.22, 0.61, 0.36, 1);
+      transition: all 2s cubic-bezier(0.22, 0.61, 0.36, 1);
       width: 75px;
       height: 75px;
       position: fixed;
@@ -3231,7 +3231,7 @@ nav {
       .page .intro-content .section-block .intro.About {
         transform: translate(-50%, 200px); }
       .page .intro-content .section-block .intro.Contact {
-        transform: translate(-50%, -100%); }
+        transform: translate(-50%, -150%); }
         .page .intro-content .section-block .intro.Contact .contact {
           width: 100%;
           text-align: center; }
@@ -3253,7 +3253,7 @@ nav {
       .page .intro-content .section-block .astro.About {
         transform: translate(-50%, -50%); }
       .page .intro-content .section-block .astro.Contact {
-        transform: translate(-50%, 50%); }
+        transform: translate(-50%, 33%); }
   .page .page-content {
     margin-top: 64px; }
     .page .page-content .section-block {

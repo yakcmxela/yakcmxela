@@ -21,7 +21,7 @@
 				</div>
 				<div class="contact">
 					<h1>Get at me.</h1>
-					<h4>alex@boldcoastcreative.com</h4>
+					<a href="mailto:alex@boldcoastcreative.com"><h4>alex@boldcoastcreative.com</h4></a>
 					<img class="antenna" src="<?php echo get_bloginfo('template_directory') ?>/media/antenna.png">
 				</div>
 			</div>

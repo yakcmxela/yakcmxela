@@ -492,10 +492,10 @@ $(document).ready(function() {
 	
 	function closeAbout() {
 		var div = $('.about');
-		blinkOut(div, 'translate(0%, 0%)');
 		astronaut.removeClass('Wave');
 		$('canvas').addClass('Hidden');
 		$('.intro').addClass('Hidden');
+		$('.about').addClass('Hidden');
 		$('.intro').removeClass('About');
 		$('.astro').removeClass('About');
 	}
