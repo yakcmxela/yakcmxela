@@ -3153,6 +3153,8 @@ nav {
     border: initial; }
     nav #open-menu {
       transform: translateX(-50) scale(1);
+      height: 75px;
+      width: 75px;
       -webkit-transition: all 2s linear;
       -o-transition: all 2s linear;
       -moz-transition: all 2s linear;
@@ -3169,7 +3171,9 @@ nav {
       nav.Open #contact {
         transform: translateX(0%) scale(1); }
       nav.Open #open-menu {
-        transform: translateX(-800%); }
+        transform: translateX(-800%) scale(1);
+        height: 75px;
+        width: 75px; }
         nav.Open #open-menu i {
           transform: translate(-50%, -50%) scale(1); }
       nav.Open #about {
