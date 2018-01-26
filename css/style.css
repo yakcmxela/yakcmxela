@@ -3388,17 +3388,13 @@ nav {
           transform: translateY(-50%);
           z-index: 10;
           height: 90px; }
-      .page .page-content .section-block.nofrills h2 {
-        top: 50%;
-        right: initial;
-        width: 100%;
-        transform: translateY(-50%);
-        padding: 12px 0px; }
       .page .page-content .section-block.nofrills .forms {
         display: none; }
       .page .page-content .section-block.nofrills .images {
         width: 100%;
         height: 350px; }
+        .page .page-content .section-block.nofrills .images .logo {
+          width: 175px; }
         .page .page-content .section-block.nofrills .images .img-container {
           width: 100%;
           height: 50%; }
