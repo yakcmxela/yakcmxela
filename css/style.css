@@ -3151,17 +3151,22 @@ nav {
     border-radius: 0px;
     background: initial;
     border: initial; }
-    nav i {
-      background-color: #bffccd; }
+    nav #open-menu {
+      transform: translateX(-50) scale(1); }
+      nav #open-menu i {
+        background-color: #bffccd;
+        transform: translate(-50%, -50%) scale(1); }
     nav.Open {
       transform: translateX(-50%); }
       nav.Open #work,
       nav.Open #skills,
       nav.Open #about,
       nav.Open #contact {
-        transform: translateX(0%); }
+        transform: translateX(0%) scale(1); }
       nav.Open #open-menu {
         transform: translateX(-800%); }
+        nav.Open #open-menu i {
+          transform: translate(-50%, -50%) scale(1); }
       nav.Open #about {
         transition-delay: 0s; }
       nav.Open #skills {

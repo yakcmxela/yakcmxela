@@ -1882,17 +1882,22 @@ nav
 		border-radius: 0px
 		background: initial
 		border: initial
-		i
-			background-color: #bffccd
+		#open-menu
+			transform: translateX(-50) scale(1)
+			i
+				background-color: #bffccd
+				transform: translate(-50%, -50%) scale(1)
 		&.Open
 			transform: translateX(-50%)
 			#work,
 			#skills,
 			#about,
 			#contact
-				transform: translateX(0%)
+				transform: translateX(0%) scale(1)
 			#open-menu
 				transform: translateX(-800%)
+				i
+					transform: translate(-50%, -50%) scale(1)
 			#about
 				transition-delay: 0s
 			#skills
