@@ -469,6 +469,7 @@ $(document).ready(function() {
 		})
 
 	function closePages() {
+		$('html, body').animate({scrollTop:0},'50');
 		if(pageOpen == 'contact') {
 			closeContact();
 		} else if(pageOpen == 'skills') {
@@ -505,7 +506,6 @@ $(document).ready(function() {
 	}
 
 	function closePortfolio() {
-		$('html, body').animate({scrollTop:0},'50');
 		astronaut.removeClass('Down');
 		astronaut.removeClass('Take-Off');
 		astronaut.removeClass('Jets-On');

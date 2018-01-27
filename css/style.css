@@ -1571,7 +1571,6 @@ nav {
     nav #contact p {
       margin-bottom: 0px;
       padding-bottom: 0px;
-      color: #c4c4c3;
       font-size: 12px;
       z-index: 1;
       position: absolute;
@@ -3303,7 +3302,7 @@ nav {
       .page .intro-content .section-block .astro.Contact {
         transform: translate(-50%, 33%); }
   .page .page-content {
-    margin-top: 118px; }
+    margin-top: 122px; }
     .page .page-content .section-block {
       min-height: 350px;
       margin: 12px; }
