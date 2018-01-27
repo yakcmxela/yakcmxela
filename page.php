@@ -14,7 +14,7 @@
 						<a href="https://www.linkedin.com/in/alexander-mckay-b870b625?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BuKy9V3wPQfyFGMnJVXJ2nQ%3D%3D">
 							<img src="<?php echo get_bloginfo('template_directory') ?>/svg/linkedin.svg">
 						</a>
-						<a href="<?php echo get_bloginfo('template_directory') ?>/media/resume.pdf">
+						<a href="<?php echo get_bloginfo('template_directory') ?>/media/McKay_Alex_Resume.pdf">
 							<img src="<?php echo get_bloginfo('template_directory') ?>/svg/resume.svg">
 						</a>
 					</div>
