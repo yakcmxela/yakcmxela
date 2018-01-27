@@ -15,6 +15,16 @@
 	<!--[if lt IE 9]>
 	<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/html5.js"></script>
 <![endif]-->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-113186429-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-113186429-1');
+</script>
+
 <?php wp_head(); ?>
 </head>
 
@@ -34,8 +44,7 @@
 	</div>
 	<div id="skills">
 		<img src="<?php echo get_bloginfo('template_directory') ?>/svg/skills-color.svg">
-		<p>Resume</p>
-		<p>LinkedIn</p>
+		<p>Skills</p>
 	</div>
 	<div id="work">
 		<img src="<?php echo get_bloginfo('template_directory') ?>/svg/work-color.svg">

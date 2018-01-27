@@ -1571,12 +1571,11 @@ nav {
     nav #contact p {
       margin-bottom: 0px;
       padding-bottom: 0px;
-      color: black;
-      font-size: 18px;
+      color: #c4c4c3;
+      font-size: 12px;
       z-index: 1;
       position: absolute;
-      bottom: 0;
-      display: none; }
+      bottom: -30%; }
   nav #work:hover .paintbrush {
     animation: paintbrush 2s ease-in-out infinite; }
     nav #work:hover .paintbrush img:nth-child(2) {
@@ -2018,11 +2017,11 @@ nav {
           position: absolute;
           left: 50%;
           transform: translate(-50%, -50%);
-          -webkit-transition: all 1s linear;
-          -o-transition: all 1s linear;
-          -moz-transition: all 1s linear;
-          -ms-transition: all 1s linear;
-          transition: all 1s linear; }
+          -webkit-transition: all 1s ease-out;
+          -o-transition: all 1s ease-out;
+          -moz-transition: all 1s ease-out;
+          -ms-transition: all 1s ease-out;
+          transition: all 1s ease-out; }
         .page .page-content .section-block.axly .block.allgold {
           width: 600px;
           height: 300px;
@@ -3157,7 +3156,7 @@ nav {
         height: 50%; }
   .page .page-content .outro {
     margin-top: 128px; } }
-@media(max-width: 768px) {
+@media(max-width: 1150px) {
   nav {
     top: 0;
     left: 50%;
@@ -3168,14 +3167,14 @@ nav {
     background: initial;
     border: initial; }
     nav #open-menu {
-      transform: translateX(-50) scale(1);
+      transform: translateX(-50%) scale(1);
       height: 75px;
       width: 75px;
-      -webkit-transition: all 2s linear;
-      -o-transition: all 2s linear;
-      -moz-transition: all 2s linear;
-      -ms-transition: all 2s linear;
-      transition: all 2s linear; }
+      -webkit-transition: all 2s cubic-bezier(0.22, 0.61, 0.36, 1);
+      -o-transition: all 2s cubic-bezier(0.22, 0.61, 0.36, 1);
+      -moz-transition: all 2s cubic-bezier(0.22, 0.61, 0.36, 1);
+      -ms-transition: all 2s cubic-bezier(0.22, 0.61, 0.36, 1);
+      transition: all 2s cubic-bezier(0.22, 0.61, 0.36, 1); }
       nav #open-menu i {
         background-color: #bffccd;
         transform: translate(-50%, -50%) scale(1); }
@@ -3185,9 +3184,25 @@ nav {
       nav.Open #skills,
       nav.Open #about,
       nav.Open #contact {
-        transform: translateX(0%) scale(1); }
+        transform: translateY(0%) scale(1);
+        -webkit-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+        -o-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+        -moz-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+        -ms-transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+        transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1); }
+        nav.Open #work p,
+        nav.Open #skills p,
+        nav.Open #about p,
+        nav.Open #contact p {
+          bottom: -35%;
+          top: initial; }
       nav.Open #open-menu {
-        transform: translateX(-800%) scale(1);
+        -webkit-transition: all 1.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+        -o-transition: all 1.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+        -moz-transition: all 1.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+        -ms-transition: all 1.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+        transition: all 1.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+        transform: translateX(-1000%) scale(1);
         height: 75px;
         width: 75px; }
         nav.Open #open-menu i {
@@ -3212,7 +3227,7 @@ nav {
       position: relative;
       width: 75px;
       height: 75px;
-      transform: translateX(800%);
+      transform: translateY(-200%);
       margin: 0px 2px; }
     nav #about {
       transition-delay: 0.3s; }
@@ -3237,11 +3252,11 @@ nav {
       nav #open-menu i {
         border-width: 3px;
         width: 50px;
-        height: 50px; }
-
+        height: 50px; } }
+@media(max-width: 768px) {
   .page .page-content {
     margin-top: 64px; } }
-@media (max-width: 650px) {
+@media (max-width: 540px) {
   h1 {
     font-size: 42px;
     margin-bottom: 12px !important; }
@@ -3262,19 +3277,22 @@ nav {
         transform: translate(-50%, 200px); }
       .page .intro-content .section-block .intro.Contact {
         transform: translate(-50%, -150%); }
-        .page .intro-content .section-block .intro.Contact .contact {
-          width: 100%;
-          text-align: center; }
-          .page .intro-content .section-block .intro.Contact .contact .antenna {
-            transform: translate(-130%, 100%); }
+        .page .intro-content .section-block .intro.Contact .contact .antenna {
+          transform: translate(-130%, 100%); }
+      .page .intro-content .section-block .intro.Skills h4 {
+        margin-bottom: 0px; }
       .page .intro-content .section-block .intro.Skills .hi {
         opacity: 0; }
       .page .intro-content .section-block .intro .about {
         max-width: 100%;
         margin-top: 0; }
-      .page .intro-content .section-block .intro .contact .antenna {
-        width: 100px;
-        right: 0px; }
+      .page .intro-content .section-block .intro .contact {
+        text-align: center;
+        width: 100%; }
+        .page .intro-content .section-block .intro .contact .antenna {
+          width: 100px;
+          right: 0px;
+          transform: translate(-130%, 1%); }
       .page .intro-content .section-block .intro .skills.Active {
         transform: translateY(10%); }
     .page .intro-content .section-block .astro {
@@ -3285,15 +3303,15 @@ nav {
       .page .intro-content .section-block .astro.Contact {
         transform: translate(-50%, 33%); }
   .page .page-content {
-    margin-top: 108px; }
+    margin-top: 118px; }
     .page .page-content .section-block {
       min-height: 350px;
       margin: 12px; }
-      .page .page-content .section-block .block.bcc a {
-        display: flex; }
       .page .page-content .section-block .block.bcc .gulls {
-        width: 50%; }
+        width: 60%;
+        bottom: 35%; }
       .page .page-content .section-block .block.bcc a {
+        display: flex;
         align-items: center;
         justify-content: center;
         width: 100%;
@@ -3398,7 +3416,7 @@ nav {
         width: 100%;
         height: 350px; }
         .page .page-content .section-block.nofrills .images .logo {
-          width: 175px; }
+          width: 250px; }
         .page .page-content .section-block.nofrills .images .img-container {
           width: 100%;
           height: 50%; }
@@ -3408,7 +3426,8 @@ nav {
         width: 100%;
         left: 0; }
         .page .page-content .section-block.axly .block.allgold img {
-          max-width: 100%; }
+          max-width: 100%;
+          top: 0%; }
       .page .page-content .section-block.axly .block.joshuatree {
         position: relative;
         width: 200px;
@@ -3416,9 +3435,12 @@ nav {
         left: 0; }
         .page .page-content .section-block.axly .block.joshuatree img {
           max-width: 100%;
-          height: 300px; }
+          height: 300px;
+          top: -15%; }
     .page .page-content .outro {
       margin-top: initial; }
+      .page .page-content .outro h1 {
+        margin-top: 128px; }
       .page .page-content .outro h5 {
         font-size: 18px; } }
 
