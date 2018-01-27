@@ -3277,7 +3277,7 @@ nav {
       .page .intro-content .section-block .intro.Contact {
         transform: translate(-50%, -150%); }
         .page .intro-content .section-block .intro.Contact .contact .antenna {
-          transform: translate(-130%, 100%); }
+          transform: translate(-130%, 98%); }
       .page .intro-content .section-block .intro.Skills h4 {
         margin-bottom: 0px; }
       .page .intro-content .section-block .intro.Skills .hi {
@@ -3292,8 +3292,12 @@ nav {
           width: 100px;
           right: 0px;
           transform: translate(-130%, 1%); }
-      .page .intro-content .section-block .intro .skills.Active {
-        transform: translateY(10%); }
+      .page .intro-content .section-block .intro .skills {
+        justify-content: center; }
+        .page .intro-content .section-block .intro .skills .links {
+          margin-left: 0; }
+        .page .intro-content .section-block .intro .skills.Active {
+          transform: translateY(10%); }
     .page .intro-content .section-block .astro {
       width: 350px;
       height: 225px; }

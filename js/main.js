@@ -534,6 +534,13 @@ $(document).ready(function() {
 	$(window).on('resize', function() {
 		sizeSpaceBG();
 		setNavPos();
+		setSizing();
+		canvasSize();
+		$(".astronaut-container").find("*").addClass("No-Transition");
+		setTimeout(function() {
+			$(".astronaut-container").find("*").removeClass("No-Transition");
+		}, 10);
+
 	});
 
 	function parallax(div, scrollSpeed, axis, centered, transforms) {
@@ -671,9 +678,6 @@ $(document).ready(function() {
 			canvas.setAttribute("height", ctxHeight);	
 		}
 		canvasSize();
-		$(window).on("resize", function() {
-			canvasSize();
-		});
 
 	// Find location of jets (hands of figure)
 	
@@ -947,14 +951,6 @@ $(document).ready(function() {
 			ctx.clearRect( 0, 0, canvas.width, canvas.height );
 		}, 6000)
 	}
-
-	$(window).on("resize", function() {
-		setSizing();
-		$(".astronaut-container").find("*").addClass("No-Transition");
-		setTimeout(function() {
-			$(".astronaut-container").find("*").removeClass("No-Transition");
-		})
-	});
 
 	loaderBar();
 	randomizeMyName();
